@@ -1,8 +1,18 @@
 package sdk.jassinaturas.clients;
 
+import java.io.IOException;
+
+import org.apache.commons.httpclient.DefaultHttpMethodRetryHandler;
+import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.HttpException;
+import org.apache.commons.httpclient.HttpStatus;
+import org.apache.commons.httpclient.methods.GetMethod;
+import org.apache.commons.httpclient.params.HttpMethodParams;
+
 import sdk.jassinaturas.clients.attributes.Interval;
 import sdk.jassinaturas.clients.attributes.PlanStatus;
 import sdk.jassinaturas.clients.attributes.Trial;
+import sdk.jassinaturas.communicators.Communicator;
 import sdk.jassinaturas.communicators.PlanCommunicator;
 import feign.Feign;
 import feign.gson.GsonDecoder;
@@ -19,16 +29,12 @@ public class Plan {
 	private Interval interval;
 	private int billingCycles;
 	private Trial trial;
+	
+	private static Communicator<PlanCommunicator> communicator = new Communicator<>();
 
 	public static Plan show(final String code) {
-		PlanCommunicator communicator = Feign
-				.builder()
-				.decoder(new GsonDecoder())
-				.target(PlanCommunicator.class,
-						"https://sandbox.moip.com.br/assinaturas/v1");
-
-		Plan plan = communicator.contributors(code);
-		System.out.println(plan.toString());
+		PlanCommunicator planCommunicator = communicator.build(PlanCommunicator.class);
+		Plan plan = planCommunicator.show(code);
 		return plan;
 	}
 

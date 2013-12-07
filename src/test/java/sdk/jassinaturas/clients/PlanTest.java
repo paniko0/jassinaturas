@@ -23,7 +23,7 @@ public class PlanTest {
 
 	@Test
 	public void shouldListAllPlans() {
-
+		
 	}
 
 	@Betamax(tape = "GET_SINGLE_PLAN")

@@ -1,0 +1,21 @@
+!tape
+name: GET_SINGLE_PLAN
+interactions:
+- recorded: 2013-12-07T00:24:25.788Z
+  request:
+    method: GET
+    uri: https://sandbox.moip.com.br/assinaturas/v1/plans/plano04
+    headers:
+      Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+      Authorization: Basic U0dQQTBLMFI3TzBJVkxSUE9WTEpES0FXWUJPMURaRjM6UVVKRVNHTTlKVTE3NU9HWFJGUkpJWU0wU0lGT01JRlVZQ0JXSDlXQQ==
+      Connection: keep-alive
+      Host: sandbox.moip.com.br
+      User-Agent: Java/1.7.0_45
+  response:
+    status: 200
+    headers:
+      Content-Type: application/json
+      Date: Sat, 07 Dec 2013 00:24:25 GMT
+      Server: Apache
+      Vary: Accept-Encoding
+    body: '{"amount":100,"max_qty":0,"setup_fee":0,"interval":{"unit":"MONTH","length":1},"status":"ACTIVE","description":"Plano de 1 ciclo","name":"Plano de 1 ciclo","billing_cycles":1,"code":"plano04"}'

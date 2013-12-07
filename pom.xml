@@ -29,5 +29,20 @@
 	  <artifactId>betamax</artifactId>
 	  <version>1.1.2</version>
 	</dependency>
+	
+	<dependency>
+		<groupId>commons-httpclient</groupId>
+		<artifactId>commons-httpclient</artifactId>
+		<version>3.1</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>org.codehaus.groovy</groupId>
+		<artifactId>groovy-all</artifactId>
+		<scope>test</scope>
+		<version>2.2.1</version>
+	</dependency>
+            
+            
   </dependencies>
 </project>

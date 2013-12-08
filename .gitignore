@@ -2,5 +2,7 @@ target/
 .DS_Store
 .metadata/
 RemoteSystemsTempFiles/
-classpath*
+.classpath*
 .settings/
+.project*
+bin/

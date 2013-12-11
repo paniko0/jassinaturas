@@ -19,3 +19,25 @@ interactions:
       Server: Apache
       Vary: Accept-Encoding
     body: '{"amount":100,"max_qty":0,"setup_fee":0,"interval":{"unit":"MONTH","length":1},"status":"ACTIVE","description":"Plano de 1 ciclo","name":"Plano de 1 ciclo","billing_cycles":1,"code":"plano04"}'
+- recorded: 2013-12-11T00:15:20.034Z
+  request:
+    method: POST
+    uri: https://sandbox.moip.com.br/assinaturas/v1/plans/plano04
+    headers:
+      Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+      Authorization: Basic U0dQQTBLMFI3TzBJVkxSUE9WTEpES0FXWUJPMURaRjM6UVVKRVNHTTlKVTE3NU9HWFJGUkpJWU0wU0lGT01JRlVZQ0JXSDlXQQ==
+      Connection: keep-alive
+      Content-Length: '33'
+      Content-Type: application/x-www-form-urlencoded
+      Host: sandbox.moip.com.br
+      User-Agent: Java/1.7.0_45
+    body: 'Authorization: Basic MTIzOmFiYw=='
+  response:
+    status: 405
+    headers:
+      Allow: GET, OPTIONS, HEAD, PUT
+      Content-Type: text/plain; charset=UTF-8
+      Date: Wed, 11 Dec 2013 00:15:14 GMT
+      Server: Apache
+      Vary: Accept-Encoding
+    body: ''

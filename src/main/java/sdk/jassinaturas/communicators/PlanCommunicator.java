@@ -8,6 +8,6 @@ import feign.RequestLine;
 
 public interface PlanCommunicator {
 	@RequestLine("GET /plans/{code}")
-	@Headers(value = "Authorization: Basic U0dQQTBLMFI3TzBJVkxSUE9WTEpES0FXWUJPMURaRjM6UVVKRVNHTTlKVTE3NU9HWFJGUkpJWU0wU0lGT01JRlVZQ0JXSDlXQQ==")
+	@Headers("Authorization: Basic U0dQQTBLMFI3TzBJVkxSUE9WTEpES0FXWUJPMURaRjM6UVVKRVNHTTlKVTE3NU9HWFJGUkpJWU0wU0lGT01JRlVZQ0JXSDlXQQ==")
 	Plan show(@Named("code") String code);
 }

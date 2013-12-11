@@ -1,21 +1,10 @@
 package sdk.jassinaturas.clients;
 
-import java.io.IOException;
-
-import org.apache.commons.httpclient.DefaultHttpMethodRetryHandler;
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.HttpException;
-import org.apache.commons.httpclient.HttpStatus;
-import org.apache.commons.httpclient.methods.GetMethod;
-import org.apache.commons.httpclient.params.HttpMethodParams;
-
+import sdk.jassinaturas.clients.attributes.Authentication;
 import sdk.jassinaturas.clients.attributes.Interval;
 import sdk.jassinaturas.clients.attributes.PlanStatus;
 import sdk.jassinaturas.clients.attributes.Trial;
-import sdk.jassinaturas.communicators.Communicator;
 import sdk.jassinaturas.communicators.PlanCommunicator;
-import feign.Feign;
-import feign.gson.GsonDecoder;
 
 public class Plan {
 
@@ -30,10 +19,15 @@ public class Plan {
 	private int billingCycles;
 	private Trial trial;
 	
-	private static Communicator<PlanCommunicator> communicator = new Communicator<>();
+	private PlanCommunicator planCommunicator;
+	private Authentication authentication;
 
-	public static Plan show(final String code) {
-		PlanCommunicator planCommunicator = communicator.build(PlanCommunicator.class);
+	public Plan(PlanCommunicator planCommunicator, Authentication authentication) {
+		this.planCommunicator = planCommunicator;
+		this.authentication = authentication;
+	}
+
+	public Plan show(final String code) {
 		Plan plan = planCommunicator.show(code);
 		return plan;
 	}

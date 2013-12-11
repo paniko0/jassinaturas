@@ -3,10 +3,14 @@ package sdk.jassinaturas.clients;
 import org.junit.Rule;
 import org.junit.Test;
 
+import sdk.jassinaturas.Assinaturas;
+import sdk.jassinaturas.clients.attributes.Authentication;
 import co.freeside.betamax.Betamax;
 import co.freeside.betamax.Recorder;
 
 public class PlanTest {
+	
+	private Assinaturas assinaturas = new Assinaturas(new Authentication("123", "abc"));
 
 	@Rule
 	public Recorder recorder = new Recorder();
@@ -29,6 +33,6 @@ public class PlanTest {
 	@Betamax(tape = "GET_SINGLE_PLAN")
 	@Test
 	public void shouldShowAPlan() {
-		Plan.show("plano04");
+		assinaturas.plan().show("plano04");
 	}
 }

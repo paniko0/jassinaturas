@@ -7,8 +7,7 @@ import sdk.jassinaturas.communicators.PlanCommunicator;
 
 public class Assinaturas {
 	
-	private Authentication authentication;
-	
+	private Authentication authentication;	
 	
 	public Assinaturas(Authentication authentication) {
 		this.authentication = authentication;
@@ -16,7 +15,7 @@ public class Assinaturas {
 
 	public Plan plan(){
 		Communicator communicator = new Communicator();
-		PlanCommunicator planCommunicator = communicator.build(PlanCommunicator.class);
-		return new Plan(planCommunicator, authentication);
+		PlanCommunicator planCommunicator = communicator.build(PlanCommunicator.class, authentication);
+		return new Plan(planCommunicator);
 	}
 }

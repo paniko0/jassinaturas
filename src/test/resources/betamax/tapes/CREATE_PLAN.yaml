@@ -1,0 +1,25 @@
+!tape
+name: CREATE_PLAN
+interactions:
+- recorded: 2014-01-03T18:52:00.826Z
+  request:
+    method: POST
+    uri: https://sandbox.moip.com.br/assinaturas/v1/plans
+    headers:
+      Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+      Authorization: Basic U0dQQTBLMFI3TzBJVkxSUE9WTEpES0FXWUJPMURaRjM6UVVKRVNHTTlKVTE3NU9HWFJGUkpJWU0wU0lGT01JRlVZQ0JXSDlXQQ==
+      Connection: keep-alive
+      Content-Length: '228'
+      Content-Type: application/json
+      Host: sandbox.moip.com.br
+      User-Agent: Java/1.7.0_45
+    body: '{"code":"plan001","name":"Plano de Teste","description":"Plano de Teste","amount":1000,"setup_fee":100,"max_qty":10,"status":"ACTIVE","interval":{"unit":"MONTH","length":10},"billing_cycles":1,"trial":{"days":10,"enabled":true}}'
+  response:
+    status: 201
+    headers:
+      Content-Type: application/json
+      Date: Fri, 03 Jan 2014 18:52:00 GMT
+      Location: https://sandbox.moip.com.br/assinaturas/v1/plans/plan001
+      Server: Apache
+      Vary: Accept-Encoding
+    body: '{"message":"Plano criado com sucesso"}'

@@ -1,6 +1,9 @@
 package sdk.jassinaturas.clients;
 
-import sdk.jassinaturas.clients.attributes.Authentication;
+import java.util.List;
+
+import sdk.jassinaturas.clients.attributes.Alerts;
+import sdk.jassinaturas.clients.attributes.Errors;
 import sdk.jassinaturas.clients.attributes.Interval;
 import sdk.jassinaturas.clients.attributes.PlanStatus;
 import sdk.jassinaturas.clients.attributes.Trial;
@@ -13,23 +16,82 @@ public class Plan {
 	private String description;
 	private int amount;
 	private int setupFee;
-	private int maxQuantity;
-	private PlanStatus planStatus;
+	private int maxQty;
+	private PlanStatus status;
 	private Interval interval;
 	private int billingCycles;
 	private Trial trial;
 	
+	private String message;
+	private List<Alerts> alerts;
+	private List<Errors> errors;
+	
 	private PlanCommunicator planCommunicator;
-	private Authentication authentication;
+	
+	public Plan() {}
 
-	public Plan(PlanCommunicator planCommunicator, Authentication authentication) {
+	public Plan(PlanCommunicator planCommunicator) {
 		this.planCommunicator = planCommunicator;
-		this.authentication = authentication;
 	}
 
 	public Plan show(final String code) {
 		Plan plan = planCommunicator.show(code);
 		return plan;
+	}
+	
+	public Plan create(final Plan toBeCreated) {
+		Plan plan = planCommunicator.create(toBeCreated);
+		return plan;
+	}
+	
+	public Plan withCode(String code) {
+		this.code = code;
+		return this;
+	}
+	
+	public Plan withName(String name) {
+		this.name = name;
+		return this;
+	}
+	
+	public Plan withDescription(String description) {
+		this.description = description;
+		return this;
+	}
+	
+	public Plan withAmount(int amount) {
+		this.amount = amount;
+		return this;
+	}
+	
+	public Plan withSetupFee(int setupFee) {
+		this.setupFee = setupFee;
+		return this;
+	}
+	
+	public Plan withMaxQty(int maxQty) {
+		this.maxQty = maxQty;
+		return this;
+	}
+	
+	public Plan withPlanStatus(PlanStatus planStatus) {
+		this.status = planStatus;
+		return this;
+	}
+	
+	public Plan withInterval(Interval interval) {
+		this.interval = interval;
+		return this;
+	}
+	
+	public Plan withBillingCycles(int billingCycles) {
+		this.billingCycles = billingCycles;
+		return this;
+	}
+	
+	public Plan withTrial(Trial trial) {
+		this.trial = trial;
+		return this;
 	}
 
 	public String getCode() {
@@ -53,11 +115,11 @@ public class Plan {
 	}
 
 	public int getMaxQuantity() {
-		return maxQuantity;
+		return maxQty;
 	}
 
-	public PlanStatus getPlanStatus() {
-		return planStatus;
+	public PlanStatus getStatus() {
+		return status;
 	}
 
 	public Interval getInterval() {
@@ -71,12 +133,32 @@ public class Plan {
 	public Trial getTrial() {
 		return trial;
 	}
+	
+	public List<Alerts> getAlerts() {
+		return alerts;
+	}
+	
+	public String getMessage() {
+		return message;
+	}
+	
+	public List<Errors> getErrors() {
+		return errors;
+	}
+	
+	public boolean hasErrors() {
+		return errors != null && errors.size() > 0;
+	}
+	
+	public boolean hasAlerts() {
+		return alerts != null && alerts.size() > 0;
+	}
 
 	@Override
 	public String toString() {
 		return "Plan [code=" + code + ", name=" + name + ", description="
 				+ description + ", amount=" + amount + ", setupFee=" + setupFee
-				+ ", maxQuantity=" + maxQuantity + ", planStatus=" + planStatus
+				+ ", maxQuantity=" + maxQty + ", planStatus=" + status
 				+ ", interval=" + interval + ", billingCycles=" + billingCycles
 				+ ", trial=" + trial + "]";
 	}

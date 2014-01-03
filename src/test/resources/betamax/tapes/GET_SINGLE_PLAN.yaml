@@ -1,10 +1,10 @@
 !tape
 name: GET_SINGLE_PLAN
 interactions:
-- recorded: 2013-12-07T00:24:25.788Z
+- recorded: 2014-01-03T19:09:50.237Z
   request:
     method: GET
-    uri: https://sandbox.moip.com.br/assinaturas/v1/plans/plano04
+    uri: https://sandbox.moip.com.br/assinaturas/v1/plans/plan001
     headers:
       Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
       Authorization: Basic U0dQQTBLMFI3TzBJVkxSUE9WTEpES0FXWUJPMURaRjM6UVVKRVNHTTlKVTE3NU9HWFJGUkpJWU0wU0lGT01JRlVZQ0JXSDlXQQ==
@@ -15,29 +15,7 @@ interactions:
     status: 200
     headers:
       Content-Type: application/json
-      Date: Sat, 07 Dec 2013 00:24:25 GMT
+      Date: Fri, 03 Jan 2014 19:09:49 GMT
       Server: Apache
       Vary: Accept-Encoding
-    body: '{"amount":100,"max_qty":0,"setup_fee":0,"interval":{"unit":"MONTH","length":1},"status":"ACTIVE","description":"Plano de 1 ciclo","name":"Plano de 1 ciclo","billing_cycles":1,"code":"plano04"}'
-- recorded: 2013-12-11T00:15:20.034Z
-  request:
-    method: POST
-    uri: https://sandbox.moip.com.br/assinaturas/v1/plans/plano04
-    headers:
-      Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
-      Authorization: Basic U0dQQTBLMFI3TzBJVkxSUE9WTEpES0FXWUJPMURaRjM6UVVKRVNHTTlKVTE3NU9HWFJGUkpJWU0wU0lGT01JRlVZQ0JXSDlXQQ==
-      Connection: keep-alive
-      Content-Length: '33'
-      Content-Type: application/x-www-form-urlencoded
-      Host: sandbox.moip.com.br
-      User-Agent: Java/1.7.0_45
-    body: 'Authorization: Basic MTIzOmFiYw=='
-  response:
-    status: 405
-    headers:
-      Allow: GET, OPTIONS, HEAD, PUT
-      Content-Type: text/plain; charset=UTF-8
-      Date: Wed, 11 Dec 2013 00:15:14 GMT
-      Server: Apache
-      Vary: Accept-Encoding
-    body: ''
+    body: '{"amount":1000,"max_qty":10,"setup_fee":100,"interval":{"unit":"MONTH","length":10},"status":"ACTIVE","description":"Plano de Teste","name":"Plano de Teste","billing_cycles":1,"code":"plan001","trial":{"enabled":true,"days":10}}'

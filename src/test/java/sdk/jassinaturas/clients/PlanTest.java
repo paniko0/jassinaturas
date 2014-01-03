@@ -1,23 +1,53 @@
 package sdk.jassinaturas.clients;
 
+import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 
 import sdk.jassinaturas.Assinaturas;
 import sdk.jassinaturas.clients.attributes.Authentication;
+import sdk.jassinaturas.clients.attributes.Interval;
+import sdk.jassinaturas.clients.attributes.PlanStatus;
+import sdk.jassinaturas.clients.attributes.Trial;
+import sdk.jassinaturas.clients.attributes.Unit;
 import co.freeside.betamax.Betamax;
+import co.freeside.betamax.MatchRule;
 import co.freeside.betamax.Recorder;
 
 public class PlanTest {
 	
-	private Assinaturas assinaturas = new Assinaturas(new Authentication("123", "abc"));
+//	private Assinaturas assinaturas = new Assinaturas(new Authentication("123", "abc"));
+	private Assinaturas assinaturas = new Assinaturas(new Authentication("SGPA0K0R7O0IVLRPOVLJDKAWYBO1DZF3", "QUJESGM9JU175OGXRFRJIYM0SIFOMIFUYCBWH9WA"));
 
 	@Rule
 	public Recorder recorder = new Recorder();
 
+	@Betamax(tape = "CREATE_PLAN", match = { MatchRule.body, MatchRule.method, MatchRule.headers } )
 	@Test
 	public void shouldCreateANewPlan() {
-
+		Plan toCreate = new Plan();
+		toCreate
+				.withCode("plan001")
+				.withDescription("Plano de Teste")
+				.withName("Plano de Teste")
+				.withAmount(1000)
+				.withSetupFee(100)
+				.withBillingCycles(1)
+				.withPlanStatus(PlanStatus.ACTIVE)
+				.withMaxQty(10)
+				.withInterval(new Interval()
+									.withLength(10)
+									.withUnit(Unit.MONTH))
+				.withTrial(new Trial()
+									.withDays(10)
+									.enabled());
+		
+		
+		Plan created = assinaturas.plan().create(toCreate);
+		
+		Assert.assertEquals("Plano criado com sucesso", created.getMessage());
+		Assert.assertFalse(created.hasAlerts());
+		Assert.assertFalse(created.hasErrors());
 	}
 
 	@Test
@@ -33,6 +63,19 @@ public class PlanTest {
 	@Betamax(tape = "GET_SINGLE_PLAN")
 	@Test
 	public void shouldShowAPlan() {
-		assinaturas.plan().show("plano04");
+		Plan plan = assinaturas.plan().show("plan001");
+		
+		Assert.assertEquals("plan001", plan.getCode());
+		Assert.assertEquals("Plano de Teste", plan.getDescription());
+		Assert.assertEquals("Plano de Teste", plan.getName());
+		Assert.assertEquals(1000, plan.getAmount());
+		Assert.assertEquals(100, plan.getSetupFee());
+		Assert.assertEquals(1, plan.getBillingCycles());
+		Assert.assertEquals(PlanStatus.ACTIVE, plan.getStatus());
+		Assert.assertEquals(10, plan.getMaxQuantity());
+		Assert.assertEquals(10, plan.getInterval().getLength());
+		Assert.assertEquals(Unit.MONTH, plan.getInterval().getUnit());
+		Assert.assertTrue(plan.getTrial().isEnabled());
+		Assert.assertEquals(10, plan.getTrial().getDays());
 	}
 }

@@ -1,5 +1,7 @@
 package sdk.jassinaturas.clients.attributes;
 
+import feign.auth.BasicAuthRequestInterceptor;
+
 public class Authentication {
 	private String token;
 	private String secret;

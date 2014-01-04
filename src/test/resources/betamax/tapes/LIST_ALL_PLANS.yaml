@@ -1,0 +1,28 @@
+!tape
+name: LIST_ALL_PLANS
+interactions:
+- recorded: 2014-01-04T01:40:33.336Z
+  request:
+    method: GET
+    uri: https://sandbox.moip.com.br/assinaturas/v1/plans
+    headers:
+      Accept: application/json
+      Accept-Charset: utf-8
+      Accept-Encoding: utf-8
+      Authorization: Basic U0dQQTBLMFI3TzBJVkxSUE9WTEpES0FXWUJPMURaRjM6UVVKRVNHTTlKVTE3NU9HWFJGUkpJWU0wU0lGT01JRlVZQ0JXSDlXQQ==
+      Connection: keep-alive
+      Content-Type: application/json; charset=utf-8
+      Host: sandbox.moip.com.br
+      User-Agent: Java/1.7.0_45
+  response:
+    status: 200
+    headers:
+      Content-Type: application/json
+      Date: Sat, 04 Jan 2014 01:40:35 GMT
+      Server: Apache
+      Vary: Accept-Encoding
+    body: '{"plans":[{"amount":1000,"max_qty":0,"setup_fee":100,"interval":{"unit":"MONTH","length":10},"status":"ACTIVE","description":"Plano de Teste","name":"Plano de Teste","billing_cycles":1,"code":"plan002","trial":{"enabled":true,"days":10}},{"amount":10000,"max_qty":100,"setup_fee":1000,"interval":{"unit":"DAY","length":100},"status":"INACTIVE","description":"Plano
+      de Teste Atualizado","name":"Plano de Teste Atualizado","billing_cycles":10,"code":"plan001","trial":{"enabled":false,"days":5}},{"amount":1000,"max_qty":0,"setup_fee":0,"interval":{"unit":"MONTH","length":10},"status":"ACTIVE","description":"Plano de
+      Teste","name":"Plano de Teste","billing_cycles":0,"code":"plan01","trial":{"enabled":true,"days":10}},{"amount":100,"max_qty":0,"setup_fee":0,"interval":{"unit":"MONTH","length":1},"status":"ACTIVE","description":"Plano de 1 ciclo","name":"Plano de 1 ciclo","billing_cycles":1,"code":"plano04"},{"amount":100,"max_qty":0,"setup_fee":0,"interval":{"unit":"MONTH","length":1},"status":"INACTIVE","description":"Plano
+      sem limite","name":"Plano sem limite","billing_cycles":0,"code":"PlanoInfinito"},{"amount":100,"max_qty":0,"setup_fee":0,"interval":{"unit":"MONTH","length":1},"status":"ACTIVE","description":"1 mês - R$1,00","name":"1 mês - R$1,00","billing_cycles":0,"code":"plano02"},{"amount":100,"max_qty":0,"setup_fee":1,"interval":{"unit":"MONTH","length":1},"status":"ACTIVE","description":"Plano
+      de R$1,00","name":"Plano de R$1,00","billing_cycles":0,"code":"plano01"}]}'

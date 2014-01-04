@@ -10,6 +10,8 @@ import sdk.jassinaturas.clients.attributes.Trial;
 import sdk.jassinaturas.communicators.PlanCommunicator;
 
 public class Plan {
+	
+	private List<Plan> plans;
 
 	private String code;
 	private String name;
@@ -41,6 +43,16 @@ public class Plan {
 	
 	public Plan create(final Plan toBeCreated) {
 		Plan plan = planCommunicator.create(toBeCreated);
+		return plan;
+	}
+	
+	public List<Plan> list() {
+		Plan plans = planCommunicator.list();
+		return plans.getPlans();
+	}
+	
+	public Plan update(Plan toBeUpdated) {
+		Plan plan = planCommunicator.update(toBeUpdated.getCode(), toBeUpdated);
 		return plan;
 	}
 	
@@ -153,6 +165,10 @@ public class Plan {
 	public boolean hasAlerts() {
 		return alerts != null && alerts.size() > 0;
 	}
+	
+	public List<Plan> getPlans() {
+		return plans;
+	}
 
 	@Override
 	public String toString() {
@@ -162,5 +178,4 @@ public class Plan {
 				+ ", interval=" + interval + ", billingCycles=" + billingCycles
 				+ ", trial=" + trial + "]";
 	}
-
 }

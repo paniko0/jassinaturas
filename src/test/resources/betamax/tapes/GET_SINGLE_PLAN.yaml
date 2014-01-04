@@ -1,7 +1,7 @@
 !tape
 name: GET_SINGLE_PLAN
 interactions:
-- recorded: 2014-01-03T19:09:50.237Z
+- recorded: 2014-01-04T01:39:56.808Z
   request:
     method: GET
     uri: https://sandbox.moip.com.br/assinaturas/v1/plans/plan001
@@ -15,7 +15,7 @@ interactions:
     status: 200
     headers:
       Content-Type: application/json
-      Date: Fri, 03 Jan 2014 19:09:49 GMT
+      Date: Sat, 04 Jan 2014 01:39:59 GMT
       Server: Apache
       Vary: Accept-Encoding
-    body: '{"amount":1000,"max_qty":10,"setup_fee":100,"interval":{"unit":"MONTH","length":10},"status":"ACTIVE","description":"Plano de Teste","name":"Plano de Teste","billing_cycles":1,"code":"plan001","trial":{"enabled":true,"days":10}}'
+    body: '{"amount":10000,"max_qty":100,"setup_fee":1000,"interval":{"unit":"DAY","length":100},"status":"INACTIVE","description":"Plano de Teste Atualizado","name":"Plano de Teste Atualizado","billing_cycles":10,"code":"plan001","trial":{"enabled":false,"days":5}}'

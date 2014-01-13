@@ -10,172 +10,182 @@ import sdk.jassinaturas.clients.attributes.Trial;
 import sdk.jassinaturas.communicators.PlanCommunicator;
 
 public class Plan {
-	
-	private List<Plan> plans;
 
-	private String code;
-	private String name;
-	private String description;
-	private int amount;
-	private int setupFee;
-	private int maxQty;
-	private PlanStatus status;
-	private Interval interval;
-	private int billingCycles;
-	private Trial trial;
-	
-	private String message;
-	private List<Alerts> alerts;
-	private List<Errors> errors;
-	
-	private PlanCommunicator planCommunicator;
-	
-	public Plan() {}
+    private List<Alerts> alerts;
 
-	public Plan(PlanCommunicator planCommunicator) {
-		this.planCommunicator = planCommunicator;
-	}
+    private int amount;
+    private int billingCycles;
+    private String code;
+    private String description;
+    private List<Errors> errors;
+    private Interval interval;
+    private int maxQty;
+    private String message;
+    private String name;
+    private PlanCommunicator planCommunicator;
 
-	public Plan show(final String code) {
-		Plan plan = planCommunicator.show(code);
-		return plan;
-	}
-	
-	public Plan create(final Plan toBeCreated) {
-		Plan plan = planCommunicator.create(toBeCreated);
-		return plan;
-	}
-	
-	public List<Plan> list() {
-		Plan plans = planCommunicator.list();
-		return plans.getPlans();
-	}
-	
-	public Plan update(Plan toBeUpdated) {
-		Plan plan = planCommunicator.update(toBeUpdated.getCode(), toBeUpdated);
-		return plan;
-	}
-	
-	public Plan withCode(String code) {
-		this.code = code;
-		return this;
-	}
-	
-	public Plan withName(String name) {
-		this.name = name;
-		return this;
-	}
-	
-	public Plan withDescription(String description) {
-		this.description = description;
-		return this;
-	}
-	
-	public Plan withAmount(int amount) {
-		this.amount = amount;
-		return this;
-	}
-	
-	public Plan withSetupFee(int setupFee) {
-		this.setupFee = setupFee;
-		return this;
-	}
-	
-	public Plan withMaxQty(int maxQty) {
-		this.maxQty = maxQty;
-		return this;
-	}
-	
-	public Plan withPlanStatus(PlanStatus planStatus) {
-		this.status = planStatus;
-		return this;
-	}
-	
-	public Plan withInterval(Interval interval) {
-		this.interval = interval;
-		return this;
-	}
-	
-	public Plan withBillingCycles(int billingCycles) {
-		this.billingCycles = billingCycles;
-		return this;
-	}
-	
-	public Plan withTrial(Trial trial) {
-		this.trial = trial;
-		return this;
-	}
+    private List<Plan> plans;
+    private int setupFee;
+    private PlanStatus status;
 
-	public String getCode() {
-		return code;
-	}
+    private Trial trial;
 
-	public String getName() {
-		return name;
-	}
+    public Plan() {
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public Plan(final PlanCommunicator planCommunicator) {
+        this.planCommunicator = planCommunicator;
+    }
 
-	public int getAmount() {
-		return amount;
-	}
+    public Plan active(final Plan toActivate) {
+        Plan plan = planCommunicator.activate(toActivate.getCode());
+        return plan;
+    }
 
-	public int getSetupFee() {
-		return setupFee;
-	}
+    public Plan create(final Plan toBeCreated) {
+        Plan plan = planCommunicator.create(toBeCreated);
+        return plan;
+    }
 
-	public int getMaxQuantity() {
-		return maxQty;
-	}
+    public List<Alerts> getAlerts() {
+        return alerts;
+    }
 
-	public PlanStatus getStatus() {
-		return status;
-	}
+    public int getAmount() {
+        return amount;
+    }
 
-	public Interval getInterval() {
-		return interval;
-	}
+    public int getBillingCycles() {
+        return billingCycles;
+    }
 
-	public int getBillingCycles() {
-		return billingCycles;
-	}
+    public String getCode() {
+        return code;
+    }
 
-	public Trial getTrial() {
-		return trial;
-	}
-	
-	public List<Alerts> getAlerts() {
-		return alerts;
-	}
-	
-	public String getMessage() {
-		return message;
-	}
-	
-	public List<Errors> getErrors() {
-		return errors;
-	}
-	
-	public boolean hasErrors() {
-		return errors != null && errors.size() > 0;
-	}
-	
-	public boolean hasAlerts() {
-		return alerts != null && alerts.size() > 0;
-	}
-	
-	public List<Plan> getPlans() {
-		return plans;
-	}
+    public String getDescription() {
+        return description;
+    }
 
-	@Override
-	public String toString() {
-		return "Plan [code=" + code + ", name=" + name + ", description="
-				+ description + ", amount=" + amount + ", setupFee=" + setupFee
-				+ ", maxQuantity=" + maxQty + ", planStatus=" + status
-				+ ", interval=" + interval + ", billingCycles=" + billingCycles
-				+ ", trial=" + trial + "]";
-	}
+    public List<Errors> getErrors() {
+        return errors;
+    }
+
+    public Interval getInterval() {
+        return interval;
+    }
+
+    public int getMaxQuantity() {
+        return maxQty;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public List<Plan> getPlans() {
+        return plans;
+    }
+
+    public int getSetupFee() {
+        return setupFee;
+    }
+
+    public PlanStatus getStatus() {
+        return status;
+    }
+
+    public Trial getTrial() {
+        return trial;
+    }
+
+    public boolean hasAlerts() {
+        return alerts != null && alerts.size() > 0;
+    }
+
+    public boolean hasErrors() {
+        return errors != null && errors.size() > 0;
+    }
+
+    public Plan inactive(final Plan toInactivate) {
+        Plan plan = planCommunicator.inactivate(toInactivate.getCode());
+        return plan;
+    }
+
+    public List<Plan> list() {
+        Plan plans = planCommunicator.list();
+        return plans.getPlans();
+    }
+
+    public Plan show(final String code) {
+        Plan plan = planCommunicator.show(code);
+        return plan;
+    }
+
+    @Override
+    public String toString() {
+        return "Plan [code=" + code + ", name=" + name + ", description=" + description + ", amount=" + amount
+                + ", setupFee=" + setupFee + ", maxQuantity=" + maxQty + ", planStatus=" + status + ", interval="
+                + interval + ", billingCycles=" + billingCycles + ", trial=" + trial + "]";
+    }
+
+    public Plan update(final Plan toBeUpdated) {
+        Plan plan = planCommunicator.update(toBeUpdated.getCode(), toBeUpdated);
+        return plan;
+    }
+
+    public Plan withAmount(final int amount) {
+        this.amount = amount;
+        return this;
+    }
+
+    public Plan withBillingCycles(final int billingCycles) {
+        this.billingCycles = billingCycles;
+        return this;
+    }
+
+    public Plan withCode(final String code) {
+        this.code = code;
+        return this;
+    }
+
+    public Plan withDescription(final String description) {
+        this.description = description;
+        return this;
+    }
+
+    public Plan withInterval(final Interval interval) {
+        this.interval = interval;
+        return this;
+    }
+
+    public Plan withMaxQty(final int maxQty) {
+        this.maxQty = maxQty;
+        return this;
+    }
+
+    public Plan withName(final String name) {
+        this.name = name;
+        return this;
+    }
+
+    public Plan withPlanStatus(final PlanStatus planStatus) {
+        this.status = planStatus;
+        return this;
+    }
+
+    public Plan withSetupFee(final int setupFee) {
+        this.setupFee = setupFee;
+        return this;
+    }
+
+    public Plan withTrial(final Trial trial) {
+        this.trial = trial;
+        return this;
+    }
+
 }

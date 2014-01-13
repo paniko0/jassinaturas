@@ -1,34 +1,33 @@
 package sdk.jassinaturas.clients.attributes;
 
-import feign.auth.BasicAuthRequestInterceptor;
 
 public class Authentication {
-	private String token;
-	private String secret;
-	
-	public Authentication(String token, String secret) {
-		this.token = token;
-		this.secret = secret;
-	}
-	
-	public String getToken() {
-		return token;
-	}
-	
-	public void setToken(String token) {
-		this.token = token;
-	}
-	
-	public String getSecret() {
-		return secret;
-	}
-	
-	public void setSecret(String secret) {
-		this.secret = secret;
-	}
+    private String secret;
+    private String token;
 
-	@Override
-	public String toString() {
-		return "Authentication [token=" + token + ", secret=" + secret + "]";
-	}
+    public Authentication(final String token, final String secret) {
+        this.token = token;
+        this.secret = secret;
+    }
+
+    public String getSecret() {
+        return secret;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setSecret(final String secret) {
+        this.secret = secret;
+    }
+
+    public void setToken(final String token) {
+        this.token = token;
+    }
+
+    @Override
+    public String toString() {
+        return "Authentication [token=" + token + ", secret=" + secret + "]";
+    }
 }

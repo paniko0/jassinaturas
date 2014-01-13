@@ -14,7 +14,7 @@ interactions:
       Content-Type: application/json; charset=utf-8
       Host: sandbox.moip.com.br
       User-Agent: Java/1.7.0_45
-    body: '{"code":"plan001","name":"Plano de Teste","description":"Plano de Teste","amount":1000,"setup_fee":100,"max_qty":10,"status":"ACTIVE","interval":{"unit":"MONTH","length":10},"billing_cycles":1,"trial":{"days":10,"enabled":true}}'
+    body: '{"amount":1000,"billing_cycles":1,"code":"plan001","description":"Plano de Teste","interval":{"unit":"MONTH","length":10},"max_qty":10,"name":"Plano de Teste","setup_fee":100,"status":"ACTIVE","trial":{"days":10,"enabled":true}}'
   response:
     status: 201
     headers:

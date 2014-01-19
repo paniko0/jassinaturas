@@ -1,0 +1,27 @@
+!tape
+name: LIST_ALL_CUSTOMERS
+interactions:
+- recorded: 2014-01-18T21:52:20.144Z
+  request:
+    method: GET
+    uri: https://sandbox.moip.com.br/assinaturas/v1/customers
+    headers:
+      Accept: application/json
+      Accept-Charset: utf-8
+      Accept-Encoding: utf-8
+      Authorization: Basic U0dQQTBLMFI3TzBJVkxSUE9WTEpES0FXWUJPMURaRjM6UVVKRVNHTTlKVTE3NU9HWFJGUkpJWU0wU0lGT01JRlVZQ0JXSDlXQQ==
+      Connection: keep-alive
+      Content-Type: application/json; charset=utf-8
+      Host: sandbox.moip.com.br
+      User-Agent: Java/1.7.0_45
+  response:
+    status: 200
+    headers:
+      Content-Type: application/json
+      Date: Sat, 18 Jan 2014 21:52:19 GMT
+      Server: Apache
+      Vary: Accept-Encoding
+    body: '{"customers":[{"birthdate_month":"01","phone_area_code":"11","phone_number":"912341234","birthdate_day":"18","email":"teste@teste.com","birthdate_year":"2014","cpf":"12312312312","code":"customer0001","fullname":"Danillo Souza"},{"birthdate_month":"04","phone_area_code":"11","phone_number":"34343434","birthdate_day":"26","email":"nome+assinaturas@exemplo.com.br","birthdate_year":"1980","cpf":"22222222222","code":"cliente05","fullname":"Nome
+      Sobrenome"},{"birthdate_month":"11","phone_area_code":"11","phone_number":"974961912","birthdate_day":"11","email":"danillo.fs+assinaturas@gmail.com","birthdate_year":"1989","cpf":"12312312312","code":"cliente04","fullname":"Danillo Souza"},{"birthdate_month":"11","phone_area_code":"11","phone_number":"974961912","birthdate_day":"11","email":"danillo.fs+assinaturas@gmail.com","birthdate_year":"1989","cpf":"12312312312","code":"cliente03","fullname":"Danillo
+      Souza"},{"birthdate_month":"12","phone_area_code":"11","phone_number":"88886666","birthdate_day":"12","email":"dluis@dluis.com","birthdate_year":"1985","cpf":"22222222222","code":"david-luis-da-silva","fullname":"David Luis da Silva"},{"birthdate_month":"12","phone_area_code":"11","phone_number":"88886666","birthdate_day":"12","email":"dluis@dluis.com","birthdate_year":"1985","cpf":"22222222222","code":"david-luis-da-silva4","fullname":"David
+      Luis da Silva4"},{"birthdate_month":"04","phone_area_code":"11","phone_number":"55223366","birthdate_day":"26","email":"nome@exemplo.com.br","birthdate_year":"1986","cpf":"22222222222","code":"cliente2","fullname":"autorizar"},{"birthdate_month":"11","phone_area_code":"11","phone_number":"111111111","birthdate_day":"11","email":"teste@teste.com","birthdate_year":"1985","cpf":"11111111111","code":"cartao","fullname":"autorizar"},{"birthdate_month":"10","phone_area_code":"11","phone_number":"974961912","birthdate_day":"13","email":"danillo.fs@gmail.com","birthdate_year":"1989","cpf":"11111111111","code":"cliente01","fullname":"autorizar"}]}'

@@ -1,0 +1,22 @@
+!tape
+name: GET_SINGLE_CUSTOMER
+interactions:
+- recorded: 2014-01-19T17:19:26.332Z
+  request:
+    method: GET
+    uri: https://sandbox.moip.com.br/assinaturas/v1/customers/customer000000001
+    headers:
+      Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+      Authorization: Basic U0dQQTBLMFI3TzBJVkxSUE9WTEpES0FXWUJPMURaRjM6UVVKRVNHTTlKVTE3NU9HWFJGUkpJWU0wU0lGT01JRlVZQ0JXSDlXQQ==
+      Connection: keep-alive
+      Host: sandbox.moip.com.br
+      User-Agent: Java/1.7.0_45
+  response:
+    status: 200
+    headers:
+      Content-Type: application/json
+      Date: Sun, 19 Jan 2014 17:19:23 GMT
+      Server: Apache
+      Vary: Accept-Encoding
+    body: '{"phone_area_code":"11","birthdate_month":"10","phone_number":"912341234","birthdate_day":13,"code":"customer000000001","billing_info":{"credit_cards":[{"holder_name":"Danillo Souza","first_six_digits":"411111","expiration_month":"10","brand":"VISA","expiration_year":"18","vault":"teste-teste00-1teste-t35t3-139015","last_four_digits":"1111"}]},"creation_date":"19/01/2014","email":"teste@teste.com","address":{"complement":"Apto","zipcode":"10012345","street":"9
+      de Julho","state":"SP","number":"1000","district":"Centro","country":"BRA","city":"São Paulo"},"birthdate_year":1989,"creation_time":"15:16:19","cpf":"12312312312","fullname":"Danillo Souza"}'

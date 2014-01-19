@@ -1,0 +1,26 @@
+!tape
+name: UPDATE_CREDITCARD
+interactions:
+- recorded: 2014-01-19T17:40:28.561Z
+  request:
+    method: PUT
+    uri: https://sandbox.moip.com.br/assinaturas/v1/customers/customer0001_toBeUpdated/billing_infos
+    headers:
+      Accept: application/json
+      Accept-Charset: utf-8
+      Accept-Encoding: utf-8
+      Authorization: Basic U0dQQTBLMFI3TzBJVkxSUE9WTEpES0FXWUJPMURaRjM6UVVKRVNHTTlKVTE3NU9HWFJGUkpJWU0wU0lGT01JRlVZQ0JXSDlXQQ==
+      Connection: keep-alive
+      Content-Length: '122'
+      Content-Type: application/json; charset=utf-8
+      Host: sandbox.moip.com.br
+      User-Agent: Java/1.7.0_45
+    body: '{"credit_card":{"expiration_month":"10","expiration_year":"18","holder_name":"Danillo Souza","number":"4111111111111111"}}'
+  response:
+    status: 200
+    headers:
+      Content-Type: application/json
+      Date: Sun, 19 Jan 2014 17:40:26 GMT
+      Server: Apache
+      Vary: Accept-Encoding
+    body: '{"message":"Dados alterados com sucesso"}'

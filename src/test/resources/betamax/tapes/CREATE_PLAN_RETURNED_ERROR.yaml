@@ -1,0 +1,25 @@
+!tape
+name: CREATE_PLAN_RETURNED_ERROR
+interactions:
+- recorded: 2014-01-19T18:00:32.866Z
+  request:
+    method: POST
+    uri: https://sandbox.moip.com.br/assinaturas/v1/plans
+    headers:
+      Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+      Accept-Encoding: utf-8
+      Authorization: Basic U0dQQTBLMFI3TzBJVkxSUE9WTEpES0FXWUJPMURaRjM6UVVKRVNHTTlKVTE3NU9HWFJGUkpJWU0wU0lGT01JRlVZQ0JXSDlXQQ==
+      Connection: keep-alive
+      Content-Length: '228'
+      Content-Type: application/json; charset=utf-8
+      Host: sandbox.moip.com.br
+      User-Agent: Java/1.7.0_45
+    body: '{"amount":1000,"billing_cycles":1,"code":"plan001","description":"Plano de Teste","interval":{"unit":"MONTH","length":10},"max_qty":10,"name":"Plano de Teste","setup_fee":100,"status":"ACTIVE","trial":{"days":10,"enabled":true}}'
+  response:
+    status: 400
+    headers:
+      Content-Type: application/json
+      Date: Sun, 19 Jan 2014 18:00:30 GMT
+      Server: Apache
+      Vary: Accept-Encoding
+    body: '{"message":"Erro na requisição","errors":[{"description":"Código do plano já utilizado. Escolha outro código","code":"MA6"}]}'

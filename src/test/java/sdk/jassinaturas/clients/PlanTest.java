@@ -20,8 +20,6 @@ import co.freeside.betamax.Recorder;
 
 public class PlanTest {
 
-    // private Assinaturas assinaturas = new Assinaturas(new
-    // Authentication("123", "abc"));
     private final Assinaturas assinaturas = new Assinaturas(new Authentication("SGPA0K0R7O0IVLRPOVLJDKAWYBO1DZF3",
             "QUJESGM9JU175OGXRFRJIYM0SIFOMIFUYCBWH9WA"));
 
@@ -74,6 +72,25 @@ public class PlanTest {
     public void shouldListAllPlans() {
         List<Plan> plans = assinaturas.plan().list();
         assertEquals(7, plans.size());
+    }
+
+    @Betamax(tape = "CREATE_PLAN_RETURNED_ERROR")
+    @Test
+    public void shouldReturnErrors() {
+        Plan toCreate = new Plan();
+        toCreate.withCode("plan001").withDescription("Plano de Teste").withName("Plano de Teste").withAmount(1000)
+                .withSetupFee(100).withBillingCycles(1).withPlanStatus(PlanStatus.ACTIVE).withMaxQty(10)
+                .withInterval(new Interval().withLength(10).withUnit(Unit.MONTH))
+                .withTrial(new Trial().withDays(10).enabled());
+
+        Plan created = assinaturas.plan().create(toCreate);
+
+        // assertEquals("Erro na requisição", created.getMessage());
+        // assertEquals("Código do plano já utilizado. Escolha outro código",
+        // created.getErrors().get(0).getDescription());
+        // assertEquals("MA6", created.getErrors().get(0).getCode());
+        // assertFalse(created.hasAlerts());
+        // assertTrue(created.hasErrors());
     }
 
     @Betamax(tape = "GET_SINGLE_PLAN", match = { MatchRule.method, MatchRule.headers })

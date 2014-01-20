@@ -8,6 +8,8 @@ import sdk.jassinaturas.clients.attributes.Interval;
 import sdk.jassinaturas.clients.attributes.PlanStatus;
 import sdk.jassinaturas.clients.attributes.Trial;
 import sdk.jassinaturas.communicators.PlanCommunicator;
+import sdk.jassinaturas.exceptions.ApiResponseErrorException;
+import sdk.jassinaturas.serializers.GsonDeserializer;
 
 public class Plan {
 
@@ -43,8 +45,14 @@ public class Plan {
     }
 
     public Plan create(final Plan toBeCreated) {
-        Plan plan = planCommunicator.create(toBeCreated);
-        return plan;
+        try {
+            Plan plan = planCommunicator.create(toBeCreated);
+            return plan;
+        } catch (ApiResponseErrorException e) {
+            GsonDeserializer gson = new GsonDeserializer();
+            return gson.deserialize(e.getMessage(), Plan.class);
+        }
+
     }
 
     public List<Alerts> getAlerts() {

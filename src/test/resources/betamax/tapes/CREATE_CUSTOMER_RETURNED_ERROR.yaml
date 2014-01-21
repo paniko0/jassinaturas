@@ -1,0 +1,27 @@
+!tape
+name: CREATE_CUSTOMER_RETURNED_ERROR
+interactions:
+- recorded: 2014-01-21T22:53:35.632Z
+  request:
+    method: POST
+    uri: https://sandbox.moip.com.br/assinaturas/v1/customers?new_vault=false
+    headers:
+      Accept: application/json
+      Accept-Charset: utf-8
+      Accept-Encoding: utf-8
+      Authorization: Basic U0dQQTBLMFI3TzBJVkxSUE9WTEpES0FXWUJPMURaRjM6UVVKRVNHTTlKVTE3NU9HWFJGUkpJWU0wU0lGT01JRlVZQ0JXSDlXQQ==
+      Connection: keep-alive
+      Content-Length: '387'
+      Content-Type: application/json; charset=utf-8
+      Host: sandbox.moip.com.br
+      User-Agent: Java/1.7.0_45
+    body: '{"address":{"city":"São Paulo","complement":"Apto","country":"BRA","district":"Centro","number":"1000","state":"SP","street":"9 de Julho","zipcode":"10012345"},"birthdate_day":13,"birthdate_month":10,"birthdate_year":1989,"code":"customer000000001_no_creditCard","cpf":"12312312312","email":"teste@teste.com","fullname":"Danillo
+      Souza","phone_area_code":"11","phone_number":"912341234"}'
+  response:
+    status: 400
+    headers:
+      Content-Type: application/json
+      Date: Tue, 21 Jan 2014 22:53:35 GMT
+      Server: Apache
+      Vary: Accept-Encoding
+    body: '{"message":"Erro na requisição","errors":[{"description":"Código do cliente já utilizado. Escolha outro código.","code":"MA33"}]}'

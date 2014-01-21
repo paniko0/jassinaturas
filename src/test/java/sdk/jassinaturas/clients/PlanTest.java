@@ -2,6 +2,7 @@ package sdk.jassinaturas.clients;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
@@ -85,12 +86,11 @@ public class PlanTest {
 
         Plan created = assinaturas.plan().create(toCreate);
 
-        // assertEquals("Erro na requisição", created.getMessage());
-        // assertEquals("Código do plano já utilizado. Escolha outro código",
-        // created.getErrors().get(0).getDescription());
-        // assertEquals("MA6", created.getErrors().get(0).getCode());
-        // assertFalse(created.hasAlerts());
-        // assertTrue(created.hasErrors());
+        assertEquals("Erro na requisição", created.getMessage());
+        assertEquals("Código do plano já utilizado. Escolha outro código", created.getErrors().get(0).getDescription());
+        assertEquals("MA6", created.getErrors().get(0).getCode());
+        assertFalse(created.hasAlerts());
+        assertTrue(created.hasErrors());
     }
 
     @Betamax(tape = "GET_SINGLE_PLAN", match = { MatchRule.method, MatchRule.headers })

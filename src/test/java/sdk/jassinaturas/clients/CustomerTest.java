@@ -2,6 +2,7 @@ package sdk.jassinaturas.clients;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -93,6 +94,32 @@ public class CustomerTest {
         assertEquals("12312312312", customers.get(0).getCpf());
         assertEquals("customer0001", customers.get(0).getCode());
         assertEquals("Danillo Souza", customers.get(0).getFullname());
+    }
+
+    @Betamax(tape = "CREATE_CUSTOMER_RETURNED_ERROR")
+    @Test
+    public void shouldReturnErrors() {
+        Customer toCreate = new Customer();
+        toCreate.withCode("customer000000001_no_creditCard")
+                .withBirthdate(new GregorianCalendar(1989, GregorianCalendar.OCTOBER, 13))
+                .withCpf("12312312312")
+                .withEmail("teste@teste.com")
+                .withFullname("Danillo Souza")
+                .withPhoneAreaCode("11")
+                .withPhoneNumber("912341234")
+                .withAddress(
+                        new Address().withCity("São Paulo").withComplement("Apto").withCountry(Country.BRA)
+                                .withDistrict("Centro").withNumber("1000").withState(State.SP).withStreet("9 de Julho")
+                                .withZipcode("10012345"));
+
+        Customer created = assinaturas.customer().create(toCreate);
+
+        assertEquals("Erro na requisição", created.getMessage());
+        assertEquals("Código do cliente já utilizado. Escolha outro código.", created.getErrors().get(0)
+                .getDescription());
+        assertEquals("MA33", created.getErrors().get(0).getCode());
+        assertFalse(created.hasAlerts());
+        assertTrue(created.hasErrors());
     }
 
     @Betamax(tape = "GET_SINGLE_CUSTOMER", match = { MatchRule.method, MatchRule.headers })

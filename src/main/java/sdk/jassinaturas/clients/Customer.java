@@ -8,6 +8,8 @@ import sdk.jassinaturas.clients.attributes.Alerts;
 import sdk.jassinaturas.clients.attributes.BillingInfo;
 import sdk.jassinaturas.clients.attributes.Errors;
 import sdk.jassinaturas.communicators.CustomerCommunicator;
+import sdk.jassinaturas.exceptions.ApiResponseErrorException;
+import sdk.jassinaturas.serializers.GsonDeserializer;
 
 public class Customer {
 
@@ -38,14 +40,18 @@ public class Customer {
     }
 
     public Customer create(final Customer toBeCreated) {
-        Customer customer = null;
-        if (shouldCreateVault(toBeCreated)) {
-            customer = customerCommunicator.createWithCreditCard(toBeCreated);
-        } else {
-            customer = customerCommunicator.createWithoutCreditCard(toBeCreated);
+        try {
+            Customer customer = null;
+            if (shouldCreateVault(toBeCreated)) {
+                customer = customerCommunicator.createWithCreditCard(toBeCreated);
+            } else {
+                customer = customerCommunicator.createWithoutCreditCard(toBeCreated);
+            }
+            return customer;
+        } catch (ApiResponseErrorException e) {
+            GsonDeserializer gson = new GsonDeserializer();
+            return gson.deserialize(e.getMessage(), Customer.class);
         }
-
-        return customer;
     }
 
     public Address getAddress() {

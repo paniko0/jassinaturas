@@ -1,0 +1,29 @@
+!tape
+name: CREATE_SUBSCRIPTION
+interactions:
+- recorded: 2014-01-22T01:00:28.859Z
+  request:
+    method: POST
+    uri: https://sandbox.moip.com.br/assinaturas/v1/subscriptions?new_customer=true
+    headers:
+      Accept: application/json
+      Accept-Charset: utf-8
+      Accept-Encoding: utf-8
+      Authorization: Basic U0dQQTBLMFI3TzBJVkxSUE9WTEpES0FXWUJPMURaRjM6UVVKRVNHTTlKVTE3NU9HWFJGUkpJWU0wU0lGT01JRlVZQ0JXSDlXQQ==
+      Connection: keep-alive
+      Content-Length: '687'
+      Content-Type: application/json; charset=utf-8
+      Host: sandbox.moip.com.br
+      User-Agent: Java/1.7.0_45
+    body: '{"amount":100,"code":"subscription_with_new_customer_00001","customer":{"address":{"city":"São Paulo","complement":"Apto","country":"BRA","district":"Centro","number":"1000","state":"SP","street":"9 de Julho","zipcode":"10012345"},"billing_info":{"credit_card":{"expiration_month":"10","expiration_year":"18","holder_name":"Danillo
+      Souza","number":"4111111111111111"}},"birthdate_day":13,"birthdate_month":10,"birthdate_year":1989,"code":"customer_created_with_subscription_0001","cpf":"12312312312","email":"teste@teste.com","fullname":"Danillo Souza","phone_area_code":"11","phone_number":"912341234"},"plan":{"amount":0,"billing_cycles":0,"code":"plan001","max_qty":0,"setup_fee":0}}'
+  response:
+    status: 201
+    headers:
+      Content-Type: application/json
+      Date: Wed, 22 Jan 2014 01:00:28 GMT
+      Location: https://sandbox.moip.com.br/assinaturas/v1/subscriptions/subscription_with_new_customer_00001
+      Server: Apache
+      Vary: Accept-Encoding
+    body: '{"amount":100,"message":"Assinatura criada com sucesso","errors":[],"plan":{"name":"Plano de Teste Atualizado","code":"plan001"},"status":"ACTIVE","invoice":{"amount":1100,"id":12872,"status":{"description":"Atrasada","code":5}},"alerts":[],"next_invoice_date":{"month":5,"year":2014,"day":1},"code":"subscription_with_new_customer_00001","customer":{"email":"teste@teste.com","code":"customer_created_with_subscription_0001","fullname":"Danillo
+      Souza"}}'

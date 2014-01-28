@@ -6,9 +6,12 @@ interactions:
     method: GET
     uri: https://sandbox.moip.com.br/assinaturas/v1/plans/plan001
     headers:
-      Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+      Accept: application/json
+      Accept-Charset: utf-8
+      Accept-Encoding: utf-8
       Authorization: Basic U0dQQTBLMFI3TzBJVkxSUE9WTEpES0FXWUJPMURaRjM6UVVKRVNHTTlKVTE3NU9HWFJGUkpJWU0wU0lGT01JRlVZQ0JXSDlXQQ==
       Connection: keep-alive
+      Content-Type: application/json; charset=utf-8
       Host: sandbox.moip.com.br
       User-Agent: Java/1.7.0_45
   response:

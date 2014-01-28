@@ -23,7 +23,7 @@ import co.freeside.betamax.Betamax;
 import co.freeside.betamax.MatchRule;
 import co.freeside.betamax.Recorder;
 
-public class CustomerTest {
+public class CustomerClientTest {
 
     private final Assinaturas assinaturas = new Assinaturas(new Authentication("SGPA0K0R7O0IVLRPOVLJDKAWYBO1DZF3",
             "QUJESGM9JU175OGXRFRJIYM0SIFOMIFUYCBWH9WA"));

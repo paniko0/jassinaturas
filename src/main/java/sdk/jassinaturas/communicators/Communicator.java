@@ -2,6 +2,7 @@ package sdk.jassinaturas.communicators;
 
 import sdk.jassinaturas.clients.attributes.Authentication;
 import sdk.jassinaturas.feign.BasicAuthRequestInterceptor;
+import sdk.jassinaturas.feign.FixedHeadersInterceptor;
 
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
@@ -22,6 +23,7 @@ public class Communicator {
                 .errorDecoder(new ErrorHandler())
                 .requestInterceptor(
                         new BasicAuthRequestInterceptor(authentication.getToken(), authentication.getSecret()))
+                .requestInterceptor(new FixedHeadersInterceptor())
                 .target(clazz, "https://sandbox.moip.com.br/assinaturas/v1");
     }
 }

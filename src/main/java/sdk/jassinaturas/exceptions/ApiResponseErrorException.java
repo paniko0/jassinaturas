@@ -1,11 +1,19 @@
 package sdk.jassinaturas.exceptions;
 
+import sdk.jassinaturas.communicators.ApiResponseError;
+
 public class ApiResponseErrorException extends RuntimeException {
 
     private static final long serialVersionUID = -5037934610970014201L;
 
+    private ApiResponseError apiResponseError;
+
     public ApiResponseErrorException() {
         super();
+    }
+
+    public ApiResponseErrorException(final ApiResponseError responseError) {
+        this.apiResponseError = responseError;
     }
 
     public ApiResponseErrorException(final String message) {
@@ -23,6 +31,10 @@ public class ApiResponseErrorException extends RuntimeException {
 
     public ApiResponseErrorException(final Throwable cause) {
         super(cause);
+    }
+
+    public ApiResponseError getApiResponseError() {
+        return apiResponseError;
     }
 
 }

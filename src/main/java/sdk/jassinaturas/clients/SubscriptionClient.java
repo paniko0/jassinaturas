@@ -2,8 +2,6 @@ package sdk.jassinaturas.clients;
 
 import sdk.jassinaturas.clients.attributes.Subscription;
 import sdk.jassinaturas.communicators.SubscriptionCommunicator;
-import sdk.jassinaturas.exceptions.ApiResponseErrorException;
-import sdk.jassinaturas.serializers.GsonDeserializer;
 
 public class SubscriptionClient {
 
@@ -14,18 +12,14 @@ public class SubscriptionClient {
     }
 
     public Subscription create(final Subscription toBeCreated) {
-        try {
-            Subscription subscription = null;
-            if (shouldCreateCustomer(toBeCreated)) {
-                subscription = subscriptionCommunicator.createWithCustomer(toBeCreated);
-                return subscription;
-            } else {
-                subscription = subscriptionCommunicator.createWithoutCustomer(toBeCreated);
-                return subscription;
-            }
-        } catch (ApiResponseErrorException e) {
-            GsonDeserializer gson = new GsonDeserializer();
-            return gson.deserialize(e.getMessage(), Subscription.class);
+
+        Subscription subscription = null;
+        if (shouldCreateCustomer(toBeCreated)) {
+            subscription = subscriptionCommunicator.createWithCustomer(toBeCreated);
+            return subscription;
+        } else {
+            subscription = subscriptionCommunicator.createWithoutCustomer(toBeCreated);
+            return subscription;
         }
 
     }

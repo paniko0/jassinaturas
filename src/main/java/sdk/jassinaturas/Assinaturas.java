@@ -1,7 +1,7 @@
 package sdk.jassinaturas;
 
-import sdk.jassinaturas.clients.Customer;
-import sdk.jassinaturas.clients.Plan;
+import sdk.jassinaturas.clients.CustomerClient;
+import sdk.jassinaturas.clients.PlanClient;
 import sdk.jassinaturas.clients.SubscriptionClient;
 import sdk.jassinaturas.clients.attributes.Authentication;
 import sdk.jassinaturas.communicators.Communicator;
@@ -17,16 +17,16 @@ public class Assinaturas {
         this.authentication = authentication;
     }
 
-    public Customer customer() {
+    public CustomerClient customer() {
         Communicator communicator = new Communicator();
         CustomerCommunicator customerCommunicator = communicator.build(CustomerCommunicator.class, authentication);
-        return new Customer(customerCommunicator);
+        return new CustomerClient(customerCommunicator);
     }
 
-    public Plan plan() {
+    public PlanClient plan() {
         Communicator communicator = new Communicator();
         PlanCommunicator planCommunicator = communicator.build(PlanCommunicator.class, authentication);
-        return new Plan(planCommunicator);
+        return new PlanClient(planCommunicator);
     }
 
     public SubscriptionClient subscription() {

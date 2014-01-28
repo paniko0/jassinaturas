@@ -2,9 +2,6 @@ package sdk.jassinaturas.clients.attributes;
 
 import java.util.List;
 
-import sdk.jassinaturas.clients.Customer;
-import sdk.jassinaturas.clients.Plan;
-
 public class Subscription {
     private List<Alerts> alerts;
     private int amount;
@@ -63,7 +60,7 @@ public class Subscription {
     }
 
     public boolean hasAlerts() {
-        return alerts != null && alerts.size() > 0;
+        return this.alerts != null && this.alerts.size() > 0;
     }
 
     public boolean hasErrors() {

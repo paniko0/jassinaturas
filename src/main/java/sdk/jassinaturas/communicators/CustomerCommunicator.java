@@ -2,8 +2,8 @@ package sdk.jassinaturas.communicators;
 
 import javax.inject.Named;
 
-import sdk.jassinaturas.clients.Customer;
 import sdk.jassinaturas.clients.attributes.BillingInfo;
+import sdk.jassinaturas.clients.attributes.Customer;
 import feign.Headers;
 import feign.RequestLine;
 

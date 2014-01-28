@@ -2,7 +2,7 @@ package sdk.jassinaturas.communicators;
 
 import javax.inject.Named;
 
-import sdk.jassinaturas.clients.Plan;
+import sdk.jassinaturas.clients.attributes.Plan;
 import feign.Headers;
 import feign.RequestLine;
 

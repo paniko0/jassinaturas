@@ -2,19 +2,21 @@ package sdk.jassinaturas.clients;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
+import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 
 import sdk.jassinaturas.Assinaturas;
 import sdk.jassinaturas.clients.attributes.Authentication;
 import sdk.jassinaturas.clients.attributes.Interval;
+import sdk.jassinaturas.clients.attributes.Plan;
 import sdk.jassinaturas.clients.attributes.PlanStatus;
 import sdk.jassinaturas.clients.attributes.Trial;
 import sdk.jassinaturas.clients.attributes.Unit;
+import sdk.jassinaturas.exceptions.ApiResponseErrorException;
 import co.freeside.betamax.Betamax;
 import co.freeside.betamax.MatchRule;
 import co.freeside.betamax.Recorder;
@@ -52,7 +54,6 @@ public class PlanTest {
 
         assertEquals("Plano criado com sucesso", created.getMessage());
         assertFalse(created.hasAlerts());
-        assertFalse(created.hasErrors());
     }
 
     @Betamax(tape = "INACTIVATE_PLAN", match = { MatchRule.method, MatchRule.headers })
@@ -84,13 +85,15 @@ public class PlanTest {
                 .withInterval(new Interval().withLength(10).withUnit(Unit.MONTH))
                 .withTrial(new Trial().withDays(10).enabled());
 
-        Plan created = assinaturas.plan().create(toCreate);
-
-        assertEquals("Erro na requisição", created.getMessage());
-        assertEquals("Código do plano já utilizado. Escolha outro código", created.getErrors().get(0).getDescription());
-        assertEquals("MA6", created.getErrors().get(0).getCode());
-        assertFalse(created.hasAlerts());
-        assertTrue(created.hasErrors());
+        try {
+            Plan created = assinaturas.plan().create(toCreate);
+            Assert.fail("Should return error");
+        } catch (ApiResponseErrorException e) {
+            assertEquals("Erro na requisição", e.getApiResponseError().getMessage());
+            assertEquals("Código do plano já utilizado. Escolha outro código",
+                    e.getApiResponseError().getErrors().get(0).getDescription());
+            assertEquals("MA6", e.getApiResponseError().getErrors().get(0).getCode());
+        }
     }
 
     @Betamax(tape = "GET_SINGLE_PLAN", match = { MatchRule.method, MatchRule.headers })

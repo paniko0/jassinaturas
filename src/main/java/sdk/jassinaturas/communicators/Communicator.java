@@ -19,7 +19,7 @@ public class Communicator {
                 .builder()
                 .decoder(new GsonDecoder(gson))
                 .encoder(new GsonEncoder(gson))
-                .errorDecoder(new ErrorHandling())
+                .errorDecoder(new ErrorHandler())
                 .requestInterceptor(
                         new BasicAuthRequestInterceptor(authentication.getToken(), authentication.getSecret()))
                 .target(clazz, "https://sandbox.moip.com.br/assinaturas/v1");

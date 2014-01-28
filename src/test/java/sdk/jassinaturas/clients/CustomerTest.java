@@ -2,7 +2,7 @@ package sdk.jassinaturas.clients;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -16,7 +16,9 @@ import sdk.jassinaturas.clients.attributes.Authentication;
 import sdk.jassinaturas.clients.attributes.BillingInfo;
 import sdk.jassinaturas.clients.attributes.Country;
 import sdk.jassinaturas.clients.attributes.CreditCard;
+import sdk.jassinaturas.clients.attributes.Customer;
 import sdk.jassinaturas.clients.attributes.State;
+import sdk.jassinaturas.exceptions.ApiResponseErrorException;
 import co.freeside.betamax.Betamax;
 import co.freeside.betamax.MatchRule;
 import co.freeside.betamax.Recorder;
@@ -53,7 +55,6 @@ public class CustomerTest {
 
         assertEquals("Cliente criado com sucesso", created.getMessage());
         assertFalse(created.hasAlerts());
-        assertFalse(created.hasErrors());
     }
 
     @Betamax(tape = "CREATE_CUSTOMER_WITHOUT_CREDITCARD",
@@ -77,7 +78,6 @@ public class CustomerTest {
 
         assertEquals("Cliente criado com sucesso", created.getMessage());
         assertFalse(created.hasAlerts());
-        assertFalse(created.hasErrors());
     }
 
     @Betamax(tape = "LIST_ALL_CUSTOMERS", match = { MatchRule.method, MatchRule.headers })
@@ -112,14 +112,16 @@ public class CustomerTest {
                                 .withDistrict("Centro").withNumber("1000").withState(State.SP).withStreet("9 de Julho")
                                 .withZipcode("10012345"));
 
-        Customer created = assinaturas.customer().create(toCreate);
+        try {
+            Customer created = assinaturas.customer().create(toCreate);
+            fail("Should return error");
+        } catch (ApiResponseErrorException e) {
+            assertEquals("Erro na requisição", e.getApiResponseError().getMessage());
+            assertEquals("Código do cliente já utilizado. Escolha outro código.", e.getApiResponseError().getErrors()
+                    .get(0).getDescription());
+            assertEquals("MA33", e.getApiResponseError().getErrors().get(0).getCode());
+        }
 
-        assertEquals("Erro na requisição", created.getMessage());
-        assertEquals("Código do cliente já utilizado. Escolha outro código.", created.getErrors().get(0)
-                .getDescription());
-        assertEquals("MA33", created.getErrors().get(0).getCode());
-        assertFalse(created.hasAlerts());
-        assertTrue(created.hasErrors());
     }
 
     @Betamax(tape = "GET_SINGLE_CUSTOMER", match = { MatchRule.method, MatchRule.headers })
@@ -166,7 +168,6 @@ public class CustomerTest {
 
         assertEquals("Dados alterados com sucesso", updated.getMessage());
         assertFalse(updated.hasAlerts());
-        assertFalse(updated.hasErrors());
 
     }
 

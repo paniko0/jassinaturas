@@ -2,6 +2,7 @@ package sdk.jassinaturas.clients;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.fail;
 
 import java.util.GregorianCalendar;
 
@@ -14,9 +15,12 @@ import sdk.jassinaturas.clients.attributes.Authentication;
 import sdk.jassinaturas.clients.attributes.BillingInfo;
 import sdk.jassinaturas.clients.attributes.Country;
 import sdk.jassinaturas.clients.attributes.CreditCard;
+import sdk.jassinaturas.clients.attributes.Customer;
+import sdk.jassinaturas.clients.attributes.Plan;
 import sdk.jassinaturas.clients.attributes.State;
 import sdk.jassinaturas.clients.attributes.Subscription;
 import sdk.jassinaturas.clients.attributes.SubscriptionStatus;
+import sdk.jassinaturas.exceptions.ApiResponseErrorException;
 import co.freeside.betamax.Betamax;
 import co.freeside.betamax.MatchRule;
 import co.freeside.betamax.Recorder;
@@ -117,11 +121,14 @@ public class SubscriptionClientTest {
         toBeCreated.withCode("subscription00001").withAmount(100)
                 .withCustomer(new Customer().withCode("customer000000001")).withPlan(new Plan().withCode("plan001"));
 
-        Subscription created = assinaturas.subscription().create(toBeCreated);
-
-        assertEquals("Erro na requisição", created.getMessage());
-        assertEquals("Código da assinatura já utilizado. Escolha outro código", created.getErrors().get(0)
-                .getDescription());
-        assertEquals("MA92", created.getErrors().get(0).getCode());
+        try {
+            Subscription created = assinaturas.subscription().create(toBeCreated);
+            fail("Should return ApiResponseError");
+        } catch (ApiResponseErrorException e) {
+            assertEquals("Erro na requisição", e.getApiResponseError().getMessage());
+            assertEquals("Código da assinatura já utilizado. Escolha outro código", e.getApiResponseError().getErrors()
+                    .get(0).getDescription());
+            assertEquals("MA92", e.getApiResponseError().getErrors().get(0).getCode());
+        }
     }
 }

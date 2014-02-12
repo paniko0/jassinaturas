@@ -1,0 +1,25 @@
+!tape
+name: GET_SINGLE_SUBSCRIPTION
+interactions:
+- recorded: 2014-02-11T23:08:51.524Z
+  request:
+    method: GET
+    uri: https://sandbox.moip.com.br/assinaturas/v1/subscriptions/subscription00001
+    headers:
+      Accept: application/json
+      Accept-Charset: utf-8
+      Accept-Encoding: utf-8
+      Authorization: Basic U0dQQTBLMFI3TzBJVkxSUE9WTEpES0FXWUJPMURaRjM6UVVKRVNHTTlKVTE3NU9HWFJGUkpJWU0wU0lGT01JRlVZQ0JXSDlXQQ==
+      Connection: keep-alive
+      Content-Type: application/json; charset=utf-8
+      Host: sandbox.moip.com.br
+      User-Agent: Java/1.7.0_45
+  response:
+    status: 200
+    headers:
+      Content-Type: application/json
+      Date: Tue, 11 Feb 2014 23:08:51 GMT
+      Server: Apache
+      Vary: Accept-Encoding
+    body: '{"creation_date":{"minute":0,"second":40,"month":1,"year":2014,"hour":23,"day":21},"amount":100,"plan":{"name":"Plano de Teste Atualizado","code":"plan001"},"status":"OVERDUE","expiration_date":{"month":10,"year":2016,"day":17},"next_invoice_date":{"month":5,"year":2014,"day":1},"code":"subscription00001","customer":{"email":"teste@teste.com","code":"customer000000001","fullname":"Danillo
+      Souza"}}'

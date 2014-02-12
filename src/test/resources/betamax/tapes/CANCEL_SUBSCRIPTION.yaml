@@ -1,0 +1,24 @@
+!tape
+name: CANCEL_SUBSCRIPTION
+interactions:
+- recorded: 2014-02-12T00:00:54.798Z
+  request:
+    method: PUT
+    uri: https://sandbox.moip.com.br/assinaturas/v1/subscriptions/assinatura13/cancel
+    headers:
+      Accept: application/json
+      Accept-Charset: utf-8
+      Accept-Encoding: utf-8
+      Authorization: Basic U0dQQTBLMFI3TzBJVkxSUE9WTEpES0FXWUJPMURaRjM6UVVKRVNHTTlKVTE3NU9HWFJGUkpJWU0wU0lGT01JRlVZQ0JXSDlXQQ==
+      Connection: keep-alive
+      Content-Type: application/json; charset=utf-8
+      Host: sandbox.moip.com.br
+      User-Agent: Java/1.7.0_45
+  response:
+    status: 200
+    headers:
+      Content-Type: text/plain; charset=UTF-8
+      Date: Wed, 12 Feb 2014 00:00:54 GMT
+      Server: Apache
+      Vary: Accept-Encoding
+    body: ''

@@ -33,7 +33,7 @@ public class PlanClientTest {
     @Test
     public void shouldActivateAPlan() {
         Plan toActivate = new Plan();
-        toActivate.withCode("plan001");
+        toActivate.withCode("plan01");
 
         Plan plan = assinaturas.plan().active(toActivate);
 

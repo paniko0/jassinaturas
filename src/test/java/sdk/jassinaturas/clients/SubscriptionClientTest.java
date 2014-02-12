@@ -141,7 +141,7 @@ public class SubscriptionClientTest {
         assertEquals(created.getCustomer().getFullname(), "Danillo Souza");
     }
 
-    @Betamax(tape = "LIST_ALL_SUBSCRIPTIONS")
+    @Betamax(tape = "LIST_ALL_SUBSCRIPTIONS", match = { MatchRule.method, MatchRule.headers, MatchRule.uri })
     @Test
     public void shouldListAllSubscriptions() {
 
@@ -167,7 +167,7 @@ public class SubscriptionClientTest {
         }
     }
 
-    @Betamax(tape = "GET_SINGLE_SUBSCRIPTION")
+    @Betamax(tape = "GET_SINGLE_SUBSCRIPTION", match = { MatchRule.method, MatchRule.headers, MatchRule.uri })
     @Test
     public void shouldShowASubscription() {
 

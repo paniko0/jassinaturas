@@ -1,6 +1,5 @@
 package sdk.jassinaturas.clients.attributes;
 
-
 public class CreationDate {
     private int day;
     private int hour;

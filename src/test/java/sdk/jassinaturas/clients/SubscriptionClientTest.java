@@ -18,6 +18,7 @@ import sdk.jassinaturas.clients.attributes.BillingInfo;
 import sdk.jassinaturas.clients.attributes.Country;
 import sdk.jassinaturas.clients.attributes.CreditCard;
 import sdk.jassinaturas.clients.attributes.Customer;
+import sdk.jassinaturas.clients.attributes.Invoice;
 import sdk.jassinaturas.clients.attributes.NextInvoiceDate;
 import sdk.jassinaturas.clients.attributes.Plan;
 import sdk.jassinaturas.clients.attributes.State;
@@ -167,13 +168,36 @@ public class SubscriptionClientTest {
         }
     }
 
+    @Betamax(tape = "GET_INVOICES_FROM_SUBSCRIPTION", match = { MatchRule.method, MatchRule.headers, MatchRule.uri })
+    @Test
+    public void shouldReturnInvoicesFromSubscription() {
+        List<Invoice> invoices = assinaturas.subscription().invoices("subscription00001");
+        Invoice invoice = invoices.get(0);
+
+        assertEquals(0, invoice.getCreationDate().get(Calendar.MINUTE));
+        assertEquals(40, invoice.getCreationDate().get(Calendar.SECOND));
+        assertEquals(Calendar.JANUARY, invoice.getCreationDate().get(Calendar.MONTH));
+        assertEquals(2014, invoice.getCreationDate().get(Calendar.YEAR));
+        assertEquals(23, invoice.getCreationDate().get(Calendar.HOUR_OF_DAY));
+        assertEquals(21, invoice.getCreationDate().get(Calendar.DAY_OF_MONTH));
+
+        assertEquals(1100, invoice.getAmount());
+        assertEquals("subscription00001", invoice.getSubscriptionCode());
+        assertEquals(1, invoice.getOccurrence());
+        assertEquals(12873, invoice.getId());
+
+        assertEquals("Atrasada", invoice.getStatus().getDescription());
+        assertEquals(5, invoice.getStatus().getCode());
+
+    }
+
     @Betamax(tape = "GET_SINGLE_SUBSCRIPTION", match = { MatchRule.method, MatchRule.headers, MatchRule.uri })
     @Test
     public void shouldShowASubscription() {
 
         Subscription subscription = assinaturas.subscription().show("subscription00001");
 
-        assertEquals(0, subscription.getCreationDate().get(Calendar.MONTH));
+        assertEquals(0, subscription.getCreationDate().get(Calendar.MINUTE));
         assertEquals(40, subscription.getCreationDate().get(Calendar.SECOND));
         assertEquals(Calendar.JANUARY, subscription.getCreationDate().get(Calendar.MONTH));
         assertEquals(2014, subscription.getCreationDate().get(Calendar.YEAR));

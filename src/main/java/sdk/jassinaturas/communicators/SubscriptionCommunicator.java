@@ -19,6 +19,9 @@ public interface SubscriptionCommunicator {
     @RequestLine("POST /subscriptions?new_customer=false")
     Subscription createWithoutCustomer(Subscription subscription);
 
+    @RequestLine("GET /subscriptions/{code}/invoices")
+    Subscription invoices(@Named("code") String subscriptionCode);
+
     @RequestLine("GET /subscriptions")
     Subscription list();
 

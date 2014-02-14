@@ -2,6 +2,7 @@ package sdk.jassinaturas.clients;
 
 import java.util.List;
 
+import sdk.jassinaturas.clients.attributes.Invoice;
 import sdk.jassinaturas.clients.attributes.Subscription;
 import sdk.jassinaturas.communicators.SubscriptionCommunicator;
 
@@ -34,6 +35,11 @@ public class SubscriptionClient {
             return subscription;
         }
 
+    }
+
+    public List<Invoice> invoices(final String subscriptionCode) {
+        Subscription subscription = subscriptionCommunicator.invoices(subscriptionCode);
+        return subscription.getInvoices();
     }
 
     public List<Subscription> list() {

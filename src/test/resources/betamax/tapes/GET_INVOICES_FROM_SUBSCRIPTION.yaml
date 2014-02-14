@@ -1,0 +1,24 @@
+!tape
+name: GET_INVOICES_FROM_SUBSCRIPTION
+interactions:
+- recorded: 2014-02-14T00:10:07.856Z
+  request:
+    method: GET
+    uri: https://sandbox.moip.com.br/assinaturas/v1/subscriptions/subscription00001/invoices
+    headers:
+      Accept: application/json
+      Accept-Charset: utf-8
+      Accept-Encoding: utf-8
+      Authorization: Basic U0dQQTBLMFI3TzBJVkxSUE9WTEpES0FXWUJPMURaRjM6UVVKRVNHTTlKVTE3NU9HWFJGUkpJWU0wU0lGT01JRlVZQ0JXSDlXQQ==
+      Connection: keep-alive
+      Content-Type: application/json; charset=utf-8
+      Host: sandbox.moip.com.br
+      User-Agent: Java/1.7.0_45
+  response:
+    status: 200
+    headers:
+      Content-Type: application/json
+      Date: Fri, 14 Feb 2014 00:10:07 GMT
+      Server: Apache
+      Vary: Accept-Encoding
+    body: '{"invoices":[{"amount":1100,"creation_date":{"minute":0,"second":40,"month":1,"year":2014,"hour":23,"day":21},"id":12873,"status":{"description":"Atrasada","code":5},"subscription_code":"subscription00001","occurrence":1}]}'

@@ -1,0 +1,25 @@
+!tape
+name: GET_SINGLE_INVOICE
+interactions:
+- recorded: 2014-02-15T22:21:19.730Z
+  request:
+    method: GET
+    uri: https://sandbox.moip.com.br/assinaturas/v1/invoices/12872
+    headers:
+      Accept: application/json
+      Accept-Charset: utf-8
+      Accept-Encoding: utf-8
+      Authorization: Basic U0dQQTBLMFI3TzBJVkxSUE9WTEpES0FXWUJPMURaRjM6UVVKRVNHTTlKVTE3NU9HWFJGUkpJWU0wU0lGT01JRlVZQ0JXSDlXQQ==
+      Connection: keep-alive
+      Content-Type: application/json; charset=utf-8
+      Host: sandbox.moip.com.br
+      User-Agent: Java/1.7.0_45
+  response:
+    status: 200
+    headers:
+      Content-Type: application/json
+      Date: Sat, 15 Feb 2014 22:21:19 GMT
+      Server: Apache
+      Vary: Accept-Encoding
+    body: '{"amount":1100,"creation_date":{"minute":0,"second":28,"month":1,"year":2014,"hour":23,"day":21},"id":12872,"plan":{"name":"Plano de Teste Atualizado","code":"plan001"},"items":[{"amount":100,"type":"Valor da assinatura"},{"amount":1000,"type":"Taxa
+      de contratação"}],"status":{"description":"Atrasada","code":5},"subscription_code":"subscription_with_new_customer_00001","occurrence":1,"customer":{"code":"customer_created_with_subscription_0001","fullname":"Danillo Souza"}}'

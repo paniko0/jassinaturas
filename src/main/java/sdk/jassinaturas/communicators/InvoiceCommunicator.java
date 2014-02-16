@@ -7,6 +7,9 @@ import feign.RequestLine;
 
 public interface InvoiceCommunicator {
 
+    @RequestLine("GET /invoices/{id}/payments")
+    Invoice payments(@Named("id") int id);
+
     @RequestLine("GET /invoices/{id}")
     Invoice show(@Named("id") int id);
 }

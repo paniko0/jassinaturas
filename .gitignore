@@ -6,3 +6,7 @@ RemoteSystemsTempFiles/
 .settings/
 .project*
 bin/
+classes/
+test-classes/
+maven-archiver/
+surefire-reports/

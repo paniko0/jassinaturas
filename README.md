@@ -13,6 +13,29 @@ API documentation is available at: http://moiplabs.github.io/assinaturas-docs/ap
 Still working on it
 ====================
 
+# Using
+====================
+
+```java
+	Plan toCreate = new Plan();
+	toCreate
+		.withCode("plan001")
+		.withDescription("Plano de Teste")
+		.withName("Plano de Teste")
+		.withAmount(1000)
+        .withSetupFee(100)
+        .withBillingCycles(1)
+        .withPlanStatus(PlanStatus.ACTIVE)
+        .withMaxQty(10)
+        .withInterval(new Interval()
+        				.withLength(10)
+        				.withUnit(Unit.MONTH))
+        .withTrial(new Trial()
+        				.withDays(10)
+        				.enabled());
+```
+
+
 Thanks
 ====================
 

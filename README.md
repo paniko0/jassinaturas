@@ -20,3 +20,7 @@ Rodrigo Saito - @rodrigosaito
 
 Contributing
 ====================
+
+== Copyright
+
+Copyright (c) 2014 Danillo Souza. Distributed under the MIT license. See LICENSE for details.

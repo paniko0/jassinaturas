@@ -14,7 +14,14 @@ Still working on it
 ====================
 
 # Using
-====================
+
+```java
+	Assinaturas assinaturas = new Assinaturas(new Authentication("YOUR_TOKEN", "YOUR_SECRET"));
+```
+
+### Plans
+
+Creating a new plan:
 
 ```java
 	Plan toCreate = new Plan();
@@ -35,6 +42,11 @@ Still working on it
         				.enabled());
 ```
 
+After that you have to call following function:
+
+```java
+	Plan created = assinaturas.plan().create(toCreate);
+```
 
 Thanks
 ====================

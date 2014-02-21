@@ -29,7 +29,7 @@ public class PlanClientTest {
     @Rule
     public Recorder recorder = new Recorder();
 
-    @Betamax(tape = "ACTIVATE_PLAN", match = { MatchRule.method, MatchRule.headers })
+    @Betamax(tape = "ACTIVATE_PLAN", match = { MatchRule.method, MatchRule.headers, MatchRule.uri })
     @Test
     public void shouldActivateAPlan() {
         Plan toActivate = new Plan();
@@ -41,7 +41,7 @@ public class PlanClientTest {
         // So, I didn't do any assert
     }
 
-    @Betamax(tape = "CREATE_PLAN", match = { MatchRule.body, MatchRule.method, MatchRule.headers })
+    @Betamax(tape = "CREATE_PLAN", match = { MatchRule.body, MatchRule.method, MatchRule.headers, MatchRule.uri })
     @Test
     public void shouldCreateANewPlan() {
         Plan toCreate = new Plan();
@@ -56,20 +56,20 @@ public class PlanClientTest {
         assertFalse(created.hasAlerts());
     }
 
-    @Betamax(tape = "INACTIVATE_PLAN", match = { MatchRule.method, MatchRule.headers })
+    @Betamax(tape = "INACTIVATE_PLAN", match = { MatchRule.method, MatchRule.headers, MatchRule.uri })
     @Test
     public void shouldInactivateAPlan() {
-        Plan toActivate = new Plan();
-        toActivate.withCode("plan001");
+        Plan toInactivate = new Plan();
+        toInactivate.withCode("plan001");
 
-        Plan plan = assinaturas.plan().active(toActivate);
+        Plan plan = assinaturas.plan().inactive(toInactivate);
 
         // There isn't any response from Moip Assinaturas when plan is
         // inactivated
         // So, I didn't do any assert
     }
 
-    @Betamax(tape = "LIST_ALL_PLANS", match = { MatchRule.method, MatchRule.headers })
+    @Betamax(tape = "LIST_ALL_PLANS", match = { MatchRule.method, MatchRule.headers, MatchRule.uri })
     @Test
     public void shouldListAllPlans() {
         List<Plan> plans = assinaturas.plan().list();
@@ -96,7 +96,7 @@ public class PlanClientTest {
         }
     }
 
-    @Betamax(tape = "GET_SINGLE_PLAN", match = { MatchRule.method, MatchRule.headers })
+    @Betamax(tape = "GET_SINGLE_PLAN", match = { MatchRule.method, MatchRule.headers, MatchRule.uri })
     @Test
     public void shouldShowAPlan() {
         Plan plan = assinaturas.plan().show("plan001");
@@ -115,7 +115,7 @@ public class PlanClientTest {
         assertEquals(5, plan.getTrial().getDays());
     }
 
-    @Betamax(tape = "UPDATE_PLAN", match = { MatchRule.body, MatchRule.method, MatchRule.headers })
+    @Betamax(tape = "UPDATE_PLAN", match = { MatchRule.body, MatchRule.method, MatchRule.headers, MatchRule.uri })
     @Test
     public void shouldUpdateAPlan() {
         Plan toUpdate = new Plan();

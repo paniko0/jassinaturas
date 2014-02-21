@@ -4,7 +4,7 @@ interactions:
 - recorded: 2014-01-13T01:07:28.261Z
   request:
     method: PUT
-    uri: https://sandbox.moip.com.br/assinaturas/v1/plans/plan001/activate
+    uri: https://sandbox.moip.com.br/assinaturas/v1/plans/plan001/inactivate
     headers:
       Accept: application/json
       Accept-Charset: utf-8

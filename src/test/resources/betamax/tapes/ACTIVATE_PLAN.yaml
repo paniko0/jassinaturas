@@ -1,10 +1,10 @@
 !tape
 name: ACTIVATE_PLAN
 interactions:
-- recorded: 2014-01-13T01:07:29.595Z
+- recorded: 2014-02-21T00:19:43.750Z
   request:
     method: PUT
-    uri: https://sandbox.moip.com.br/assinaturas/v1/plans/plan001/activate
+    uri: https://sandbox.moip.com.br/assinaturas/v1/plans/plan01/activate
     headers:
       Accept: application/json
       Accept-Charset: utf-8
@@ -18,7 +18,7 @@ interactions:
     status: 200
     headers:
       Content-Type: text/plain; charset=UTF-8
-      Date: Mon, 13 Jan 2014 01:07:29 GMT
+      Date: Fri, 21 Feb 2014 00:19:42 GMT
       Server: Apache
       Vary: Accept-Encoding
     body: ''

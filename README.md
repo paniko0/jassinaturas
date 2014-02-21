@@ -28,9 +28,9 @@ Creating a new plan:
 ```java
 	Plan toCreate = new Plan();
 	toCreate
-		.withCode("plan001")
-		.withDescription("Plano de Teste")
-		.withName("Plano de Teste")
+		.withCode("YOR_PLAN_CODE")
+		.withDescription("YOUR_PLAN_DESCRIPTION")
+		.withName("YOUR_PLAN_NAME")
 		.withAmount(1000)
         .withSetupFee(100)
         .withBillingCycles(1)
@@ -68,9 +68,9 @@ To update a plan, you should inform your new plan params, creating a new object 
 
 ```java
 	Plan toUpdate = new Plan();
-    toUpdate.withCode("plan001")
-    		.withDescription("Plano de Teste Atualizado")
-    		.withName("Plano de Teste Atualizado")
+    toUpdate.withCode("PLAN_CODE_TO_UPDATE")
+    		.withDescription("PLAN_NEW_DESCRIPTION")
+    		.withName("PLAN_NEW_NAME")
             .withAmount(10000)
             .withSetupFee(1000)
             .withBillingCycles(10)

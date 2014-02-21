@@ -15,6 +15,8 @@ Still working on it
 
 # Using
 
+First of all, you'll have to instanciate a new Assinaturas passing your credentials and whitch environment you want to connect.
+
 ```java
 	Assinaturas assinaturas = new Assinaturas(new Authentication("YOUR_TOKEN", "YOUR_SECRET"));
 ```
@@ -42,11 +44,64 @@ Creating a new plan:
         				.enabled());
 ```
 
-After that you have to call following function:
+After that you have to call following method:
 
 ```java
 	Plan created = assinaturas.plan().create(toCreate);
 ```
+
+Listing all plans:
+
+```java
+	List<Plan> plans = assinaturas.plan().list();
+```
+
+Getting a single plan:
+
+```java
+	Plan plan = assinaturas.plan().show("YOUR_PLAN_CODE");
+```
+
+Updating a plan:
+
+To update a plan, you should inform your new plan params, creating a new object of Plan and passing it to update method
+
+```java
+	Plan toUpdate = new Plan();
+    toUpdate.withCode("plan001")
+    		.withDescription("Plano de Teste Atualizado")
+    		.withName("Plano de Teste Atualizado")
+            .withAmount(10000)
+            .withSetupFee(1000)
+            .withBillingCycles(10)
+            .withPlanStatus(PlanStatus.INACTIVE)
+            .withMaxQty(100)
+            .withInterval(new Interval()
+            				.withLength(100)
+            				.withUnit(Unit.DAY))
+            .withTrial(new Trial()
+            				.withDays(5)
+            				.disabled());
+```
+
+After informing what you want to update, just call the following method:
+
+```java
+    Plan plan = assinaturas.plan().update(toUpdate);
+```
+
+Activating a plan:
+
+```java
+	Plan plan = assinaturas.plan().active("YOUR_PLAN_CODE");
+```
+
+Inactivating a plan:
+
+```java
+	Plan plan = assinaturas.plan().inactive(toInactivate);
+```
+
 
 Thanks
 ====================

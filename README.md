@@ -15,7 +15,7 @@ Still working on it
 
 # Using
 
-First of all, you'll have to instanciate a new Assinaturas passing your credentials and whitch environment you want to connect.
+First of all, you'll have to instanciate a new Assinaturas passing your credentials and the environment you want to connect.
 
 ```java
 	Assinaturas assinaturas = new Assinaturas(new Authentication("YOUR_TOKEN", "YOUR_SECRET"));

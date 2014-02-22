@@ -32,10 +32,8 @@ public class PlanClientTest {
     @Betamax(tape = "ACTIVATE_PLAN", match = { MatchRule.method, MatchRule.headers, MatchRule.uri })
     @Test
     public void shouldActivateAPlan() {
-        Plan toActivate = new Plan();
-        toActivate.withCode("plan01");
 
-        Plan plan = assinaturas.plan().active(toActivate);
+        Plan plan = assinaturas.plan().active("plan01");
 
         // There isn't any response from Moip Assinaturas when plan is activated
         // So, I didn't do any assert
@@ -59,10 +57,8 @@ public class PlanClientTest {
     @Betamax(tape = "INACTIVATE_PLAN", match = { MatchRule.method, MatchRule.headers, MatchRule.uri })
     @Test
     public void shouldInactivateAPlan() {
-        Plan toInactivate = new Plan();
-        toInactivate.withCode("plan001");
 
-        Plan plan = assinaturas.plan().inactive(toInactivate);
+        Plan plan = assinaturas.plan().inactive("plan001");
 
         // There isn't any response from Moip Assinaturas when plan is
         // inactivated

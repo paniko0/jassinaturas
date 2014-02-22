@@ -16,8 +16,8 @@ public class PlanClient {
         this.planCommunicator = planCommunicator;
     }
 
-    public Plan active(final Plan toActivate) {
-        Plan plan = planCommunicator.activate(toActivate.getCode());
+    public Plan active(final String code) {
+        Plan plan = planCommunicator.activate(code);
         return plan;
     }
 
@@ -27,8 +27,8 @@ public class PlanClient {
 
     }
 
-    public Plan inactive(final Plan toInactivate) {
-        Plan plan = planCommunicator.inactivate(toInactivate.getCode());
+    public Plan inactive(final String code) {
+        Plan plan = planCommunicator.inactivate(code);
         return plan;
     }
 

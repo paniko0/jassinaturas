@@ -13,7 +13,6 @@
   </properties>
   
   <build>
-  	<directory>.</directory>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>

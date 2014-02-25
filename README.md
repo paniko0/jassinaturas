@@ -37,11 +37,11 @@ Creating a new plan:
         .withPlanStatus(PlanStatus.ACTIVE)
         .withMaxQty(10)
         .withInterval(new Interval()
-        				.withLength(10)
-        				.withUnit(Unit.MONTH))
+			.withLength(10)
+			.withUnit(Unit.MONTH))
         .withTrial(new Trial()
-        				.withDays(10)
-        				.enabled());
+			.withDays(10)
+			.enabled());
 ```
 
 After that you have to call following method:
@@ -77,11 +77,11 @@ To update a plan, you should inform your new plan params, creating a new object 
         .withPlanStatus(PlanStatus.INACTIVE)
         .withMaxQty(100)
         .withInterval(new Interval()
-        				.withLength(100)
-        				.withUnit(Unit.DAY))
+        	.withLength(100)
+        	.withUnit(Unit.DAY))
         .withTrial(new Trial()
-        				.withDays(5)
-        				.disabled());
+        	.withDays(5)
+        	.disabled());
 ```
 
 After informing what you want to update, just call the following method:
@@ -123,34 +123,35 @@ Creating a new subscription
                 .withPhoneAreaCode("CUSTOMER_PHONE_AREA_CODE")
                 .withPhoneNumber("CUSTOMER_PHONE_NUMBER")
                 .withAddress(
-                        new Address()
-                        	.withCity("São Paulo")
-                        	.withComplement("Apto")
-                            .withCountry(Country.BRA)
-                            .withDistrict("Centro")
-                            .withNumber("1000")
-                            .withState(State.SP)
-                            .withStreet("Some Street")
-                            .withZipcode("00000-000"))
+                    new Address()
+                        .withCity("São Paulo")
+                        .withComplement("Apto")
+                        .withCountry(Country.BRA)
+                        .withDistrict("Centro")
+                        .withNumber("1000")
+                        .withState(State.SP)
+                        .withStreet("Some Street")
+                        .withZipcode("00000-000"))
                 .withBillingInfo(
-                        new BillingInfo()
-                        	.withCreditCard(new CreditCard()
-						                        	.withExpirationMonth("10")
-						                            .withExpirationYear("18")
-						                            .withHolderName("Some Name")
-						                            .withNumber("4111111111111111"))));
+                    new BillingInfo()
+                    	.withCreditCard(new CreditCard()
+					                        	.withExpirationMonth("10")
+					                            .withExpirationYear("18")
+					                            .withHolderName("Some Name")
+					                            .withNumber("4111111111111111"))));
 ```
 
 You can also create a subscription just informing an already created customer:
 
 ```java
 	Subscription toBeCreated = new Subscription();
-    toBeCreated.withCode("SUBSCRIPTION_CODE")
-    			.withAmount(100)
-                .withCustomer(new Customer()
-                			.withCode("YOUR_CUSTOMER_CODE"))
-                .withPlan(new Plan()
-                			.withCode("YOUR_PLAN_CODE"));
+    toBeCreated
+        .withCode("SUBSCRIPTION_CODE")
+		.withAmount(100)
+        .withCustomer(new Customer()
+			.withCode("YOUR_CUSTOMER_CODE"))
+        .withPlan(new Plan()
+			.withCode("YOUR_PLAN_CODE"));
 ```
 
 Then you'll need to call the following method:
@@ -166,12 +167,12 @@ Updating a subscription
     toUpdate
     	.withCode("SUBSCRIPTION_CODE")
     	.withPlan(new Plan()
-    				.withCode("plano01"))
+			.withCode("plano01"))
     	.withAmount(990)
         .withNextInvoiceDate(new NextInvoiceDate()
-       				.withDay(20)
-       				.withMonth(Calendar.OCTOBER)
-       				.withYear(2015));
+			.withDay(20)
+			.withMonth(Calendar.OCTOBER)
+			.withYear(2015));
 ```
 
 Then call the following method:

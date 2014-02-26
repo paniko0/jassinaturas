@@ -1,12 +1,11 @@
 jassinaturas Client Library for Java
 ============================================
 
-Client library to integrates Moip Assinaturas on Java.
+Client library to integrate Moip Assinaturas in Java.
 
 Moip Assinaturas is a Moip's project that makes recurrence charges. It allows to create plans, customers, subscriptions and so on.
 
 API documentation is available at: http://moiplabs.github.io/assinaturas-docs/api.html
-
 
  - Author: Danillo Souza
 
@@ -216,6 +215,134 @@ Listing invoices from a subscription:
 ```java
 	List<Invoice> invoices = assinaturas.subscription().invoices("SUBSCRIPTION_CODE");
 ```
+
+### Customers
+
+Creating a new customer:
+
+```java
+    Customer toCreate = new Customer();
+    toCreate.withCode("CUSTOMER_CODE")
+        .withBirthdate(new GregorianCalendar(1989, GregorianCalendar.OCTOBER, 13))
+        .withCpf("CUSTOMER_CPF")
+        .withEmail("CUSTOMER_EMAIL")
+        .withFullname("CUSTOMER_NAME")
+        .withPhoneAreaCode("CUSTOMER_PHONE_AREA_CODE")
+        .withPhoneNumber("CUSTOMER_PHONE_NUMBER")
+        .withAddress(
+            new Address()
+                .withCity("CUSTOMER_CITY")
+                .withComplement("CUSTOMER_COMPLEMENT")
+                .withCountry(Country.BRA)
+                .withDistrict("CUSTOMER_DISTRICT")
+                .withNumber("CUSTOMER_ADDRESS_NUMBER")
+                .withState(State.SP)
+                .withStreet("CUSTOMER_STREET")
+                .withZipcode("CUSTOMER_ZIPCODE"))
+        .withBillingInfo(
+            new BillingInfo()
+                .withCreditCard(
+                    new CreditCard()
+                        .withExpirationMonth("10")
+                        .withExpirationYear("18")
+                        .withHolderName("CARD_HOLDER_NAME")
+                        .withNumber("4111111111111111")));
+```
+
+You can also create a customer without credit card information:
+
+```java
+    Customer toCreate = new Customer();
+    toCreate.withCode("CUSTOMER_CODE")
+        .withBirthdate(new GregorianCalendar(1989, GregorianCalendar.OCTOBER, 13))
+        .withCpf("CUSTOMER_CPF")
+        .withEmail("CUSTOMER_EMAIL")
+        .withFullname("CUSTOMER_NAME")
+        .withPhoneAreaCode("CUSTOMER_PHONE_AREA_CODE")
+        .withPhoneNumber("CUSTOMER_PHONE_NUMBER")
+        .withAddress(
+            new Address()
+                .withCity("CUSTOMER_CITY")
+                .withComplement("CUSTOMER_COMPLEMENT")
+                .withCountry(Country.BRA)
+                .withDistrict("CUSTOMER_DISTRICT")
+                .withNumber("CUSTOMER_ADDRESS_NUMBER")
+                .withState(State.SP)
+                .withStreet("CUSTOMER_STREET")
+                .withZipcode("CUSTOMER_ZIPCODE"));
+```
+
+After creating the customer object, you'll have to call the following method:
+
+```java
+    Customer created = assinaturas.customer().create(toCreate);
+```
+
+Updating a customer:
+
+```java
+    Customer toUpdate = new Customer();
+    toUpdate
+        .withCode("CUSTOMER_CODE")
+        .withBirthdate(new GregorianCalendar(1989, GregorianCalendar.OCTOBER, 13))
+        .withCpf("CUSTOMER_CPF")
+        .withEmail("NEW_EMAIL")
+        .withFullname("CUSTOMER_NAME")
+        .withPhoneAreaCode("PHONE_AREA_CODE")
+        .withPhoneNumber("PHONE_NUMBER")
+        .withAddress(
+            new Address()
+                .withStreet("CUSTOMER_STREET_NAME")
+                .withCity("CUSTOMER_CITY")
+                .withComplement("CUSTOMER_COMPLEMENT_IF_EXISTS")
+                .withCountry(Country.BRA)
+                .withDistrict("CUSTOMER_DISTRICT")
+                .withNumber("CUSTOMER_STREET_NUMBER")
+                .withState(State.SP)
+                .withZipcode("CUSTOMER_ZIP_CODE"));
+```
+
+After that just call the method:
+
+```java
+    Customer created = assinaturas.customer().update(toUpdate);
+```
+
+Updating only credit card vault:
+
+```java
+    Customer toUpdate = new Customer();
+    toUpdate
+        .withCode("CUSTOMER_CODE")
+        .withBillingInfo(
+            new BillingInfo()
+                .withCreditCard(
+                    new CreditCard()
+                        .withExpirationMonth("10")
+                        .withExpirationYear("18")
+                        .withHolderName("CARD_HOLDER_NAME")
+                        .withNumber("4111111111111111")));
+```
+
+After that just call the method:
+
+```java
+    Customer updated = assinaturas.customer().updateVault(toUpdate);
+```
+
+Listing all customers:
+
+```java
+    List<Customer> customers = assinaturas.customer().list();
+```
+
+Showing a single customer:
+
+```java
+    Customer customer = assinaturas.customer().show("CUSTOMER_CODE");
+```
+
+
 
 Thanks
 ====================

@@ -110,8 +110,9 @@ Creating a new subscription
     toBeCreated
         .withCode("YOUR_SUBSCRIPTION_CODE")
         .withAmount(100)
-        .withPlan(new Plan()
-        			.withCode("YOUR_PLAN_CODE"))
+        .withPlan(
+            new Plan()
+    			.withCode("YOUR_PLAN_CODE"))
         .withCustomer(
             new Customer()
                 .withCode("YOUR_CUSTOMER_CODE")
@@ -134,10 +135,10 @@ Creating a new subscription
                 .withBillingInfo(
                     new BillingInfo()
                     	.withCreditCard(new CreditCard()
-					                        	.withExpirationMonth("10")
-					                            .withExpirationYear("18")
-					                            .withHolderName("Some Name")
-					                            .withNumber("4111111111111111"))));
+                        	.withExpirationMonth("10")
+                            .withExpirationYear("18")
+                            .withHolderName("Some Name")
+                            .withNumber("4111111111111111"))));
 ```
 
 You can also create a subscription just informing an already created customer:
@@ -341,8 +342,6 @@ Showing a single customer:
 ```java
     Customer customer = assinaturas.customer().show("CUSTOMER_CODE");
 ```
-
-
 
 Thanks
 ====================

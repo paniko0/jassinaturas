@@ -116,7 +116,11 @@ Creating a new subscription
         .withCustomer(
             new Customer()
                 .withCode("YOUR_CUSTOMER_CODE")
-                .withBirthdate(new GregorianCalendar(1989, GregorianCalendar.OCTOBER, 13))
+                .withBirthdate(
+                    new Birthdate()
+                        .withDay(13)
+                        .withMonth(Month.OCTOBER)
+                        .withYear(1989))
                 .withCpf("CPF_NUMBER")
                 .withEmail("some@email.com")
                 .withFullname("CUSTOMER_NAME")
@@ -224,7 +228,11 @@ Creating a new customer:
 ```java
     Customer toCreate = new Customer();
     toCreate.withCode("CUSTOMER_CODE")
-        .withBirthdate(new GregorianCalendar(1989, GregorianCalendar.OCTOBER, 13))
+        .withBirthdate(
+            new Birthdate()
+                .withDay(13)
+                .withMonth(Month.OCTOBER)
+                .withYear(1989))
         .withCpf("CUSTOMER_CPF")
         .withEmail("CUSTOMER_EMAIL")
         .withFullname("CUSTOMER_NAME")
@@ -255,7 +263,11 @@ You can also create a customer without credit card information:
 ```java
     Customer toCreate = new Customer();
     toCreate.withCode("CUSTOMER_CODE")
-        .withBirthdate(new GregorianCalendar(1989, GregorianCalendar.OCTOBER, 13))
+        .withBirthdate(
+            new Birthdate()
+                .withDay(13)
+                .withMonth(Month.OCTOBER)
+                .withYear(1989))
         .withCpf("CUSTOMER_CPF")
         .withEmail("CUSTOMER_EMAIL")
         .withFullname("CUSTOMER_NAME")
@@ -285,7 +297,11 @@ Updating a customer:
     Customer toUpdate = new Customer();
     toUpdate
         .withCode("CUSTOMER_CODE")
-        .withBirthdate(new GregorianCalendar(1989, GregorianCalendar.OCTOBER, 13))
+        .withBirthdate(
+            new Birthdate()
+                .withDay(13)
+                .withMonth(Month.OCTOBER)
+                .withYear(1989))
         .withCpf("CUSTOMER_CPF")
         .withEmail("NEW_EMAIL")
         .withFullname("CUSTOMER_NAME")

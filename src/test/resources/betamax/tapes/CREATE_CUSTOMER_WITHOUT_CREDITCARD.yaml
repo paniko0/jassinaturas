@@ -15,8 +15,8 @@ interactions:
       Content-Type: application/json; charset=utf-8
       Host: sandbox.moip.com.br
       User-Agent: Java/1.7.0_45
-    body: '{"address":{"city":"São Paulo","complement":"Apto","country":"BRA","district":"Centro","number":"1000","state":"SP","street":"9 de Julho","zipcode":"10012345"},"birthdate_day":13,"birthdate_month":10,"birthdate_year":1989,"code":"customer000000001_no_creditCard","cpf":"12312312312","email":"teste@teste.com","fullname":"Danillo
-      Souza","phone_area_code":"11","phone_number":"912341234"}'
+    body: '{"address":{"city":"São Paulo","complement":"Apto","country":"BRA","district":"Centro","number":"1000","state":"SP","street":"9 de Julho","zipcode":"10012345"},"code":"customer000000001_no_creditCard","cpf":"12312312312","email":"teste@teste.com","fullname":"Danillo
+      Souza","phone_area_code":"11","phone_number":"912341234","birthdate_day":13,"birthdate_month":10,"birthdate_year":1989}'
   response:
     status: 201
     headers:

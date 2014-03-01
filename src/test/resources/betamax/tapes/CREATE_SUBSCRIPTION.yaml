@@ -16,7 +16,7 @@ interactions:
       Host: sandbox.moip.com.br
       User-Agent: Java/1.7.0_45
     body: '{"amount":100,"code":"subscription_with_new_customer_00001","customer":{"address":{"city":"São Paulo","complement":"Apto","country":"BRA","district":"Centro","number":"1000","state":"SP","street":"9 de Julho","zipcode":"10012345"},"billing_info":{"credit_card":{"expiration_month":"10","expiration_year":"18","holder_name":"Danillo
-      Souza","number":"4111111111111111"}},"birthdate_day":13,"birthdate_month":10,"birthdate_year":1989,"code":"customer_created_with_subscription_0001","cpf":"12312312312","email":"teste@teste.com","fullname":"Danillo Souza","phone_area_code":"11","phone_number":"912341234"},"plan":{"amount":0,"billing_cycles":0,"code":"plan001","max_qty":0,"setup_fee":0}}'
+      Souza","number":"4111111111111111"}},"code":"customer_created_with_subscription_0001","cpf":"12312312312","email":"teste@teste.com","fullname":"Danillo Souza","phone_area_code":"11","phone_number":"912341234","birthdate_day":13,"birthdate_month":10,"birthdate_year":1989},"plan":{"amount":0,"billing_cycles":0,"code":"plan001","max_qty":0,"setup_fee":0}}'
   response:
     status: 201
     headers:

@@ -1,26 +1,24 @@
 package sdk.jassinaturas.clients.attributes;
 
-import java.util.Calendar;
 import java.util.List;
-
-import sdk.jassinaturas.communicators.CustomerCommunicator;
 
 public class Customer {
     private Address address;
     private List<Alerts> alerts;
     private BillingInfo billingInfo;
-    private int birthdateDay;
-    private int birthdateMonth;
-    private int birthdateYear;
+    private Birthdate birthdate;
     private String code;
     private String cpf;
-    private CustomerCommunicator customerCommunicator;
     private List<Customer> customers;
     private String email;
     private String fullname;
     private String message;
     private String phoneAreaCode;
     private String phoneNumber;
+
+    private int birthdateDay;
+    private int birthdateMonth;
+    private int birthdateYear;
 
     public Address getAddress() {
         return address;
@@ -34,16 +32,12 @@ public class Customer {
         return billingInfo;
     }
 
-    public int getBirthdateDay() {
-        return birthdateDay;
-    }
-
-    public int getBirthdateMonth() {
-        return birthdateMonth;
-    }
-
-    public int getBirthdateYear() {
-        return birthdateYear;
+    public Birthdate getBirthdate() {
+        Birthdate birthdate = new Birthdate();
+        birthdate.withDay(birthdateDay);
+        birthdate.withMonth(Month.getMonth(birthdateMonth));
+        birthdate.withYear(birthdateYear);
+        return birthdate;
     }
 
     public String getCode() {
@@ -78,10 +72,6 @@ public class Customer {
         return phoneNumber;
     }
 
-    public boolean hasAlerts() {
-        return alerts != null && alerts.size() > 0;
-    }
-
     public Customer withAddress(final Address address) {
         this.address = address;
         return this;
@@ -92,10 +82,10 @@ public class Customer {
         return this;
     }
 
-    public Customer withBirthdate(final Calendar birthdate) {
-        this.birthdateDay = birthdate.get(Calendar.DAY_OF_MONTH);
-        this.birthdateMonth = birthdate.get(Calendar.MONTH) + 1;
-        this.birthdateYear = birthdate.get(Calendar.YEAR);
+    public Customer withBirthdate(final Birthdate birthdate) {
+        this.birthdateDay = birthdate.getBirthdateDay();
+        this.birthdateMonth = birthdate.getBirthdateMonth();
+        this.birthdateYear = birthdate.getBirthdateYear();
         return this;
     }
 

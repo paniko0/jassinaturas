@@ -5,7 +5,6 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.fail;
 
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.junit.Rule;
@@ -15,10 +14,12 @@ import sdk.jassinaturas.Assinaturas;
 import sdk.jassinaturas.clients.attributes.Address;
 import sdk.jassinaturas.clients.attributes.Authentication;
 import sdk.jassinaturas.clients.attributes.BillingInfo;
+import sdk.jassinaturas.clients.attributes.Birthdate;
 import sdk.jassinaturas.clients.attributes.Country;
 import sdk.jassinaturas.clients.attributes.CreditCard;
 import sdk.jassinaturas.clients.attributes.Customer;
 import sdk.jassinaturas.clients.attributes.Invoice;
+import sdk.jassinaturas.clients.attributes.Month;
 import sdk.jassinaturas.clients.attributes.NextInvoiceDate;
 import sdk.jassinaturas.clients.attributes.Plan;
 import sdk.jassinaturas.clients.attributes.State;
@@ -73,7 +74,7 @@ public class SubscriptionClientTest {
                 .withCustomer(
                         new Customer()
                                 .withCode("customer_created_with_subscription_0001")
-                                .withBirthdate(new GregorianCalendar(1989, GregorianCalendar.OCTOBER, 13))
+                                .withBirthdate(new Birthdate().withDay(13).withMonth(Month.OCTOBER).withYear(1989))
                                 .withCpf("12312312312")
                                 .withEmail("teste@teste.com")
                                 .withFullname("Danillo Souza")

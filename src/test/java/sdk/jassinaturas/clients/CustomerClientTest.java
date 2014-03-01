@@ -1,10 +1,8 @@
 package sdk.jassinaturas.clients;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.fail;
 
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.junit.Rule;
@@ -14,9 +12,11 @@ import sdk.jassinaturas.Assinaturas;
 import sdk.jassinaturas.clients.attributes.Address;
 import sdk.jassinaturas.clients.attributes.Authentication;
 import sdk.jassinaturas.clients.attributes.BillingInfo;
+import sdk.jassinaturas.clients.attributes.Birthdate;
 import sdk.jassinaturas.clients.attributes.Country;
 import sdk.jassinaturas.clients.attributes.CreditCard;
 import sdk.jassinaturas.clients.attributes.Customer;
+import sdk.jassinaturas.clients.attributes.Month;
 import sdk.jassinaturas.clients.attributes.State;
 import sdk.jassinaturas.exceptions.ApiResponseErrorException;
 import co.freeside.betamax.Betamax;
@@ -36,7 +36,7 @@ public class CustomerClientTest {
     public void shouldCreateANewCustomer() {
         Customer toCreate = new Customer();
         toCreate.withCode("customer000000001")
-                .withBirthdate(new GregorianCalendar(1989, GregorianCalendar.OCTOBER, 13))
+                .withBirthdate(new Birthdate().withDay(13).withMonth(Month.OCTOBER).withYear(1989))
                 .withCpf("12312312312")
                 .withEmail("teste@teste.com")
                 .withFullname("Danillo Souza")
@@ -54,7 +54,6 @@ public class CustomerClientTest {
         Customer created = assinaturas.customers().create(toCreate);
 
         assertEquals("Cliente criado com sucesso", created.getMessage());
-        assertFalse(created.hasAlerts());
     }
 
     @Betamax(tape = "CREATE_CUSTOMER_WITHOUT_CREDITCARD",
@@ -63,7 +62,7 @@ public class CustomerClientTest {
     public void shouldCreateANewCustomerWithoutCreditCard() {
         Customer toCreate = new Customer();
         toCreate.withCode("customer000000001_no_creditCard")
-                .withBirthdate(new GregorianCalendar(1989, GregorianCalendar.OCTOBER, 13))
+                .withBirthdate(new Birthdate().withDay(13).withMonth(Month.OCTOBER).withYear(1989))
                 .withCpf("12312312312")
                 .withEmail("teste@teste.com")
                 .withFullname("Danillo Souza")
@@ -77,7 +76,6 @@ public class CustomerClientTest {
         Customer created = assinaturas.customers().create(toCreate);
 
         assertEquals("Cliente criado com sucesso", created.getMessage());
-        assertFalse(created.hasAlerts());
     }
 
     @Betamax(tape = "LIST_ALL_CUSTOMERS", match = { MatchRule.method, MatchRule.headers })
@@ -85,9 +83,9 @@ public class CustomerClientTest {
     public void shouldListAllCustomers() {
         List<Customer> customers = assinaturas.customers().list();
         assertEquals(9, customers.size());
-        assertEquals(1, customers.get(0).getBirthdateMonth());
-        assertEquals(18, customers.get(0).getBirthdateDay());
-        assertEquals(2014, customers.get(0).getBirthdateYear());
+        assertEquals(1, customers.get(0).getBirthdate().getBirthdateMonth());
+        assertEquals(18, customers.get(0).getBirthdate().getBirthdateDay());
+        assertEquals(2014, customers.get(0).getBirthdate().getBirthdateYear());
         assertEquals("11", customers.get(0).getPhoneAreaCode());
         assertEquals("912341234", customers.get(0).getPhoneNumber());
         assertEquals("teste@teste.com", customers.get(0).getEmail());
@@ -101,7 +99,7 @@ public class CustomerClientTest {
     public void shouldReturnErrors() {
         Customer toCreate = new Customer();
         toCreate.withCode("customer000000001_no_creditCard")
-                .withBirthdate(new GregorianCalendar(1989, GregorianCalendar.OCTOBER, 13))
+                .withBirthdate(new Birthdate().withDay(13).withMonth(Month.OCTOBER).withYear(1989))
                 .withCpf("12312312312")
                 .withEmail("teste@teste.com")
                 .withFullname("Danillo Souza")
@@ -135,9 +133,9 @@ public class CustomerClientTest {
         assertEquals("12312312312", customer.getCpf());
         assertEquals("11", customer.getPhoneAreaCode());
         assertEquals("912341234", customer.getPhoneNumber());
-        assertEquals(10, customer.getBirthdateMonth());
-        assertEquals(13, customer.getBirthdateDay());
-        assertEquals(1989, customer.getBirthdateYear());
+        assertEquals(10, customer.getBirthdate().getBirthdateMonth());
+        assertEquals(13, customer.getBirthdate().getBirthdateDay());
+        assertEquals(1989, customer.getBirthdate().getBirthdateYear());
         assertEquals("9 de Julho", customer.getAddress().getStreet());
         assertEquals("1000", customer.getAddress().getNumber());
         assertEquals("Apto", customer.getAddress().getComplement());
@@ -167,7 +165,6 @@ public class CustomerClientTest {
         Customer updated = assinaturas.customers().updateVault(toUpdate);
 
         assertEquals("Dados alterados com sucesso", updated.getMessage());
-        assertFalse(updated.hasAlerts());
 
     }
 
@@ -176,7 +173,7 @@ public class CustomerClientTest {
     public void shouldUpdateACustomer() {
         Customer toUpdate = new Customer();
         toUpdate.withCode("customer0001_toBeUpdated")
-                .withBirthdate(new GregorianCalendar(1989, GregorianCalendar.OCTOBER, 13))
+                .withBirthdate(new Birthdate().withDay(13).withMonth(Month.OCTOBER).withYear(1989))
                 .withCpf("32132132132")
                 .withEmail("etset@etset.com")
                 .withFullname("Souza Danillo")

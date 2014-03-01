@@ -15,7 +15,7 @@ interactions:
       Content-Type: application/json; charset=utf-8
       Host: sandbox.moip.com.br
       User-Agent: Java/1.7.0_45
-    body: '{"amount":100,"code":"subscription00001","customer":{"birthdate_day":0,"birthdate_month":0,"birthdate_year":0,"code":"customer000000001"},"plan":{"amount":0,"billing_cycles":0,"code":"plan001","max_qty":0,"setup_fee":0}}'
+    body: '{"amount":100,"code":"subscription00001","customer":{"code":"customer000000001","birthdate_day":0,"birthdate_month":0,"birthdate_year":0},"plan":{"amount":0,"billing_cycles":0,"code":"plan001","max_qty":0,"setup_fee":0}}'
   response:
     status: 201
     headers:

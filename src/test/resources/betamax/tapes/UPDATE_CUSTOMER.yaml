@@ -1,7 +1,7 @@
 !tape
 name: UPDATE_CUSTOMER
 interactions:
-- recorded: 2014-01-19T17:27:24.802Z
+- recorded: 2014-03-01T23:43:33.868Z
   request:
     method: PUT
     uri: https://sandbox.moip.com.br/assinaturas/v1/customers/customer0001_toBeUpdated
@@ -15,13 +15,13 @@ interactions:
       Content-Type: application/json; charset=utf-8
       Host: sandbox.moip.com.br
       User-Agent: Java/1.7.0_45
-    body: '{"address":{"city":"São Paulo","complement":"Apto","country":"BRA","district":"Centro","number":"1000","state":"SP","street":"9 de Julho","zipcode":"10012345"},"birthdate_day":13,"birthdate_month":10,"birthdate_year":1989,"code":"customer0001_toBeUpdated","cpf":"32132132132","email":"etset@etset.com","fullname":"Souza
-      Danillo","phone_area_code":"11","phone_number":"912341234"}'
+    body: '{"address":{"city":"São Paulo","complement":"Apto","country":"BRA","district":"Centro","number":"1000","state":"SP","street":"9 de Julho","zipcode":"10012345"},"code":"customer0001_toBeUpdated","cpf":"32132132132","email":"etset@etset.com","fullname":"Souza
+      Danillo","phone_area_code":"11","phone_number":"912341234","birthdate_day":13,"birthdate_month":10,"birthdate_year":1989}'
   response:
     status: 200
     headers:
       Content-Type: text/plain; charset=UTF-8
-      Date: Sun, 19 Jan 2014 17:27:22 GMT
+      Date: Sat, 01 Mar 2014 23:43:36 GMT
       Server: Apache
       Vary: Accept-Encoding
     body: ''

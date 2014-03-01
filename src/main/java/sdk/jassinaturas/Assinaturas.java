@@ -19,25 +19,25 @@ public class Assinaturas {
         this.authentication = authentication;
     }
 
-    public CustomerClient customer() {
+    public CustomerClient customers() {
         Communicator communicator = new Communicator();
         CustomerCommunicator customerCommunicator = communicator.build(CustomerCommunicator.class, authentication);
         return new CustomerClient(customerCommunicator);
     }
 
-    public InvoiceClient invoice() {
+    public InvoiceClient invoices() {
         Communicator communicator = new Communicator();
         InvoiceCommunicator invoiceCommunicator = communicator.build(InvoiceCommunicator.class, authentication);
         return new InvoiceClient(invoiceCommunicator);
     }
 
-    public PlanClient plan() {
+    public PlanClient plans() {
         Communicator communicator = new Communicator();
         PlanCommunicator planCommunicator = communicator.build(PlanCommunicator.class, authentication);
         return new PlanClient(planCommunicator);
     }
 
-    public SubscriptionClient subscription() {
+    public SubscriptionClient subscriptions() {
         Communicator communicator = new Communicator();
         SubscriptionCommunicator subscriptionCommunicator = communicator.build(SubscriptionCommunicator.class,
                 authentication);

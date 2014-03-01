@@ -51,7 +51,7 @@ public class CustomerClientTest {
                                 .withExpirationYear("18").withHolderName("Danillo Souza")
                                 .withNumber("4111111111111111")));
 
-        Customer created = assinaturas.customer().create(toCreate);
+        Customer created = assinaturas.customers().create(toCreate);
 
         assertEquals("Cliente criado com sucesso", created.getMessage());
         assertFalse(created.hasAlerts());
@@ -74,7 +74,7 @@ public class CustomerClientTest {
                                 .withDistrict("Centro").withNumber("1000").withState(State.SP).withStreet("9 de Julho")
                                 .withZipcode("10012345"));
 
-        Customer created = assinaturas.customer().create(toCreate);
+        Customer created = assinaturas.customers().create(toCreate);
 
         assertEquals("Cliente criado com sucesso", created.getMessage());
         assertFalse(created.hasAlerts());
@@ -83,7 +83,7 @@ public class CustomerClientTest {
     @Betamax(tape = "LIST_ALL_CUSTOMERS", match = { MatchRule.method, MatchRule.headers })
     @Test
     public void shouldListAllCustomers() {
-        List<Customer> customers = assinaturas.customer().list();
+        List<Customer> customers = assinaturas.customers().list();
         assertEquals(9, customers.size());
         assertEquals(1, customers.get(0).getBirthdateMonth());
         assertEquals(18, customers.get(0).getBirthdateDay());
@@ -113,7 +113,7 @@ public class CustomerClientTest {
                                 .withZipcode("10012345"));
 
         try {
-            Customer created = assinaturas.customer().create(toCreate);
+            Customer created = assinaturas.customers().create(toCreate);
             fail("Should return error");
         } catch (ApiResponseErrorException e) {
             assertEquals("Erro na requisição", e.getApiResponseError().getMessage());
@@ -127,7 +127,7 @@ public class CustomerClientTest {
     @Betamax(tape = "GET_SINGLE_CUSTOMER", match = { MatchRule.method, MatchRule.headers })
     @Test
     public void shouldShowACustomer() {
-        Customer customer = assinaturas.customer().show("customer000000001");
+        Customer customer = assinaturas.customers().show("customer000000001");
 
         assertEquals("customer000000001", customer.getCode());
         assertEquals("Danillo Souza", customer.getFullname());
@@ -164,7 +164,7 @@ public class CustomerClientTest {
                 new BillingInfo().withCreditCard(new CreditCard().withExpirationMonth("10").withExpirationYear("18")
                         .withHolderName("Danillo Souza").withNumber("4111111111111111")));
 
-        Customer updated = assinaturas.customer().updateVault(toUpdate);
+        Customer updated = assinaturas.customers().updateVault(toUpdate);
 
         assertEquals("Dados alterados com sucesso", updated.getMessage());
         assertFalse(updated.hasAlerts());
@@ -187,7 +187,7 @@ public class CustomerClientTest {
                                 .withDistrict("Centro").withNumber("1000").withState(State.SP).withStreet("9 de Julho")
                                 .withZipcode("10012345"));
 
-        Customer created = assinaturas.customer().update(toUpdate);
+        Customer created = assinaturas.customers().update(toUpdate);
 
         // There isn't any response from Moip Assinaturas when plan is activated
         // So, I didn't do any assert

@@ -41,7 +41,7 @@ public class SubscriptionClientTest {
     @Test
     public void shouldActivateASubscription() {
 
-        Subscription subscription = assinaturas.subscription().activate("assinatura06");
+        Subscription subscription = assinaturas.subscriptions().activate("assinatura06");
 
         // There isn't any response from Moip Assinaturas when subscription is
         // activated
@@ -53,7 +53,7 @@ public class SubscriptionClientTest {
     @Test
     public void shouldCancelASubscription() {
 
-        Subscription subscription = assinaturas.subscription().cancel("assinatura13");
+        Subscription subscription = assinaturas.subscriptions().cancel("assinatura13");
 
         // There isn't any response from Moip Assinaturas when subscription is
         // canceled
@@ -88,7 +88,7 @@ public class SubscriptionClientTest {
                                                 .withExpirationYear("18").withHolderName("Danillo Souza")
                                                 .withNumber("4111111111111111"))));
 
-        Subscription created = assinaturas.subscription().create(toBeCreated);
+        Subscription created = assinaturas.subscriptions().create(toBeCreated);
 
         assertEquals("Assinatura criada com sucesso", created.getMessage());
         assertFalse(created.hasAlerts());
@@ -119,7 +119,7 @@ public class SubscriptionClientTest {
         toBeCreated.withCode("subscription00001").withAmount(100)
                 .withCustomer(new Customer().withCode("customer000000001")).withPlan(new Plan().withCode("plan001"));
 
-        Subscription created = assinaturas.subscription().create(toBeCreated);
+        Subscription created = assinaturas.subscriptions().create(toBeCreated);
 
         assertEquals("Assinatura criada com sucesso", created.getMessage());
         assertFalse(created.hasAlerts());
@@ -146,7 +146,7 @@ public class SubscriptionClientTest {
     @Test
     public void shouldListAllSubscriptions() {
 
-        List<Subscription> subscriptions = assinaturas.subscription().list();
+        List<Subscription> subscriptions = assinaturas.subscriptions().list();
         assertEquals(60, subscriptions.size());
     }
 
@@ -158,7 +158,7 @@ public class SubscriptionClientTest {
                 .withCustomer(new Customer().withCode("customer000000001")).withPlan(new Plan().withCode("plan001"));
 
         try {
-            Subscription created = assinaturas.subscription().create(toBeCreated);
+            Subscription created = assinaturas.subscriptions().create(toBeCreated);
             fail("Should return ApiResponseError");
         } catch (ApiResponseErrorException e) {
             assertEquals("Erro na requisição", e.getApiResponseError().getMessage());
@@ -171,7 +171,7 @@ public class SubscriptionClientTest {
     @Betamax(tape = "GET_INVOICES_FROM_SUBSCRIPTION", match = { MatchRule.method, MatchRule.headers, MatchRule.uri })
     @Test
     public void shouldReturnInvoicesFromSubscription() {
-        List<Invoice> invoices = assinaturas.subscription().invoices("subscription00001");
+        List<Invoice> invoices = assinaturas.subscriptions().invoices("subscription00001");
         Invoice invoice = invoices.get(0);
 
         assertEquals(0, invoice.getCreationDate().get(Calendar.MINUTE));
@@ -195,7 +195,7 @@ public class SubscriptionClientTest {
     @Test
     public void shouldShowASubscription() {
 
-        Subscription subscription = assinaturas.subscription().show("subscription00001");
+        Subscription subscription = assinaturas.subscriptions().show("subscription00001");
 
         assertEquals(0, subscription.getCreationDate().get(Calendar.MINUTE));
         assertEquals(40, subscription.getCreationDate().get(Calendar.SECOND));
@@ -228,7 +228,7 @@ public class SubscriptionClientTest {
     @Test
     public void shouldSuspendASubscription() {
 
-        Subscription subscription = assinaturas.subscription().suspend("assinatura07");
+        Subscription subscription = assinaturas.subscriptions().suspend("assinatura07");
 
         // There isn't any response from Moip Assinaturas when subscription is
         // suspended
@@ -244,7 +244,7 @@ public class SubscriptionClientTest {
         toUpdate.withCode("assinatura46").withPlan(new Plan().withCode("plano01")).withAmount(990)
                 .withNextInvoiceDate(new NextInvoiceDate().withDay(20).withMonth(Calendar.OCTOBER).withYear(2015));
 
-        Subscription subscription = assinaturas.subscription().update(toUpdate);
+        Subscription subscription = assinaturas.subscriptions().update(toUpdate);
 
         // There isn't any response from Moip Assinaturas when subscription is
         // updated

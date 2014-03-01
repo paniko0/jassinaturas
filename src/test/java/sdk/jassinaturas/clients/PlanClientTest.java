@@ -33,7 +33,7 @@ public class PlanClientTest {
     @Test
     public void shouldActivateAPlan() {
 
-        Plan plan = assinaturas.plan().active("plan01");
+        Plan plan = assinaturas.plans().active("plan01");
 
         // There isn't any response from Moip Assinaturas when plan is activated
         // So, I didn't do any assert
@@ -48,7 +48,7 @@ public class PlanClientTest {
                 .withInterval(new Interval().withLength(10).withUnit(Unit.MONTH))
                 .withTrial(new Trial().withDays(10).enabled());
 
-        Plan created = assinaturas.plan().create(toCreate);
+        Plan created = assinaturas.plans().create(toCreate);
 
         assertEquals("Plano criado com sucesso", created.getMessage());
         assertFalse(created.hasAlerts());
@@ -58,7 +58,7 @@ public class PlanClientTest {
     @Test
     public void shouldInactivateAPlan() {
 
-        Plan plan = assinaturas.plan().inactive("plan001");
+        Plan plan = assinaturas.plans().inactive("plan001");
 
         // There isn't any response from Moip Assinaturas when plan is
         // inactivated
@@ -68,7 +68,7 @@ public class PlanClientTest {
     @Betamax(tape = "LIST_ALL_PLANS", match = { MatchRule.method, MatchRule.headers, MatchRule.uri })
     @Test
     public void shouldListAllPlans() {
-        List<Plan> plans = assinaturas.plan().list();
+        List<Plan> plans = assinaturas.plans().list();
         assertEquals(7, plans.size());
     }
 
@@ -82,7 +82,7 @@ public class PlanClientTest {
                 .withTrial(new Trial().withDays(10).enabled());
 
         try {
-            Plan created = assinaturas.plan().create(toCreate);
+            Plan created = assinaturas.plans().create(toCreate);
             Assert.fail("Should return error");
         } catch (ApiResponseErrorException e) {
             assertEquals("Erro na requisição", e.getApiResponseError().getMessage());
@@ -95,7 +95,7 @@ public class PlanClientTest {
     @Betamax(tape = "GET_SINGLE_PLAN", match = { MatchRule.method, MatchRule.headers, MatchRule.uri })
     @Test
     public void shouldShowAPlan() {
-        Plan plan = assinaturas.plan().show("plan001");
+        Plan plan = assinaturas.plans().show("plan001");
 
         assertEquals("plan001", plan.getCode());
         assertEquals("Plano de Teste Atualizado", plan.getDescription());
@@ -120,7 +120,7 @@ public class PlanClientTest {
                 .withMaxQty(100).withInterval(new Interval().withLength(100).withUnit(Unit.DAY))
                 .withTrial(new Trial().withDays(5).disabled());
 
-        Plan plan = assinaturas.plan().update(toUpdate);
+        Plan plan = assinaturas.plans().update(toUpdate);
 
         // There isn't any response from Moip Assinaturas when plan is updated
         // So, I didn't do any assert

@@ -27,7 +27,7 @@ public class InvoiceClientTest {
     @Betamax(tape = "GET_PAYMENTS_FROM_INVOICE", match = { MatchRule.method, MatchRule.headers, MatchRule.uri })
     @Test
     public void shouldGetPaymentsFromAInvoice() {
-        List<Payment> payments = assinaturas.invoice().payments(12872);
+        List<Payment> payments = assinaturas.invoices().payments(12872);
         Payment payment = payments.get(0);
 
         assertEquals(14811, payment.getId());
@@ -57,7 +57,7 @@ public class InvoiceClientTest {
     @Betamax(tape = "GET_SINGLE_INVOICE", match = { MatchRule.method, MatchRule.headers, MatchRule.uri })
     @Test
     public void shouldShowAInvoice() {
-        Invoice invoice = assinaturas.invoice().show(12872);
+        Invoice invoice = assinaturas.invoices().show(12872);
 
         assertEquals(0, invoice.getCreationDate().get(Calendar.MINUTE));
         assertEquals(28, invoice.getCreationDate().get(Calendar.SECOND));

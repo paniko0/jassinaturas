@@ -12,6 +12,10 @@ API documentation is available at: http://moiplabs.github.io/assinaturas-docs/ap
 Still working on it
 ====================
 
+# Dependencies
+
+- Feign Client - 6.0.1
+
 # Using
 
 First of all, you'll have to instanciate a new Assinaturas passing your credentials and the environment you want to connect.

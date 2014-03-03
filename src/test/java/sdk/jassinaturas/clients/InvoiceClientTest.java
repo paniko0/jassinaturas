@@ -12,6 +12,7 @@ import sdk.jassinaturas.clients.attributes.Authentication;
 import sdk.jassinaturas.clients.attributes.Invoice;
 import sdk.jassinaturas.clients.attributes.Month;
 import sdk.jassinaturas.clients.attributes.Payment;
+import sdk.jassinaturas.communicators.SandboxCommunicator;
 import co.freeside.betamax.Betamax;
 import co.freeside.betamax.MatchRule;
 import co.freeside.betamax.Recorder;
@@ -19,7 +20,7 @@ import co.freeside.betamax.Recorder;
 public class InvoiceClientTest {
 
     private final Assinaturas assinaturas = new Assinaturas(new Authentication("SGPA0K0R7O0IVLRPOVLJDKAWYBO1DZF3",
-            "QUJESGM9JU175OGXRFRJIYM0SIFOMIFUYCBWH9WA"));
+            "QUJESGM9JU175OGXRFRJIYM0SIFOMIFUYCBWH9WA"), new SandboxCommunicator());
 
     @Rule
     public Recorder recorder = new Recorder();

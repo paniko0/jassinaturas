@@ -14,31 +14,29 @@ import sdk.jassinaturas.communicators.SubscriptionCommunicator;
 public class Assinaturas {
 
     private final Authentication authentication;
+    private final Communicator communicator;
 
-    public Assinaturas(final Authentication authentication) {
+    public Assinaturas(final Authentication authentication, final Communicator communicator) {
         this.authentication = authentication;
+        this.communicator = communicator;
     }
 
     public CustomerClient customers() {
-        Communicator communicator = new Communicator();
         CustomerCommunicator customerCommunicator = communicator.build(CustomerCommunicator.class, authentication);
         return new CustomerClient(customerCommunicator);
     }
 
     public InvoiceClient invoices() {
-        Communicator communicator = new Communicator();
         InvoiceCommunicator invoiceCommunicator = communicator.build(InvoiceCommunicator.class, authentication);
         return new InvoiceClient(invoiceCommunicator);
     }
 
     public PlanClient plans() {
-        Communicator communicator = new Communicator();
         PlanCommunicator planCommunicator = communicator.build(PlanCommunicator.class, authentication);
         return new PlanClient(planCommunicator);
     }
 
     public SubscriptionClient subscriptions() {
-        Communicator communicator = new Communicator();
         SubscriptionCommunicator subscriptionCommunicator = communicator.build(SubscriptionCommunicator.class,
                 authentication);
         return new SubscriptionClient(subscriptionCommunicator);

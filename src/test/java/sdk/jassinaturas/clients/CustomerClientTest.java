@@ -18,6 +18,7 @@ import sdk.jassinaturas.clients.attributes.CreditCard;
 import sdk.jassinaturas.clients.attributes.Customer;
 import sdk.jassinaturas.clients.attributes.Month;
 import sdk.jassinaturas.clients.attributes.State;
+import sdk.jassinaturas.communicators.ProductionCommunicator;
 import sdk.jassinaturas.communicators.SandboxCommunicator;
 import sdk.jassinaturas.exceptions.ApiResponseErrorException;
 import co.freeside.betamax.Betamax;
@@ -189,6 +190,46 @@ public class CustomerClientTest {
 
         // There isn't any response from Moip Assinaturas when plan is activated
         // So, I didn't do any assert
+
+    }
+
+    @Betamax(tape = "CREATE_CUSTOMER_PRODUCTION", match = { MatchRule.body, MatchRule.method, MatchRule.headers,
+            MatchRule.uri })
+    @Test
+    public void shouldUseProductionEnvironmentToCreateACustomer() {
+        Assinaturas assinaturas = new Assinaturas(new Authentication("SGPA0K0R7O0IVLRPOVLJDKAWYBO1DZF3",
+                "QUJESGM9JU175OGXRFRJIYM0SIFOMIFUYCBWH9WA"), new ProductionCommunicator());
+
+        Customer toCreate = new Customer();
+        toCreate.withCode("customer_jassinaturas_production_01")
+                .withBirthdate(new Birthdate().withDay(13).withMonth(Month.OCTOBER).withYear(1989))
+                .withCpf("12312312312")
+                .withEmail("teste@teste.com")
+                .withFullname("Danillo Souza")
+                .withPhoneAreaCode("11")
+                .withPhoneNumber("912341234")
+                .withAddress(
+                        new Address().withCity("São Paulo").withComplement("Apto").withCountry(Country.BRA)
+                                .withDistrict("Centro").withNumber("1000").withState(State.SP).withStreet("9 de Julho")
+                                .withZipcode("10012345"))
+                .withBillingInfo(
+                        new BillingInfo().withCreditCard(new CreditCard().withExpirationMonth("10")
+                                .withExpirationYear("18").withHolderName("Danillo Souza")
+                                .withNumber("4111111111111111")));
+
+        Customer created = assinaturas.customers().create(toCreate);
+
+        assertEquals("Cliente criado com sucesso", created.getMessage());
+    }
+
+    @Betamax(tape = "GET_SINGLE_CUSTOMER", match = { MatchRule.method, MatchRule.headers })
+    @Test
+    public void shouldGetResultFromToString() {
+        String customer = assinaturas.customers().show("customer000000001").toString();
+
+        assertEquals(
+                "Customer [address=Address [city=São Paulo, complement=Apto, country=BRA, district=Centro, number=1000, state=SP, street=9 de Julho, zipcode=10012345], billingInfo=BillingInfo [creditCard=null, creditCards=[CreditCard [brand=VISA, expirationMonth=10, expirationYear=18, firstSixDigits=411111, holderName=Danillo Souza, lastFourDigits=1111, number=null, vault=teste-teste00-1teste-t35t3-139015]]], birthdate=null, code=customer000000001, cpf=12312312312, customers=null, email=teste@teste.com, fullname=Danillo Souza, message=null, phoneAreaCode=11, phoneNumber=912341234, birthdateDay=13, birthdateMonth=10, birthdateYear=1989]",
+                customer);
 
     }
 }

@@ -85,4 +85,15 @@ public class InvoiceClientTest {
         assertEquals("Danillo Souza", invoice.getCustomer().getFullname());
         assertEquals("customer_created_with_subscription_0001", invoice.getCustomer().getCode());
     }
+
+    @Betamax(tape = "GET_SINGLE_INVOICE", match = { MatchRule.method, MatchRule.headers, MatchRule.uri })
+    @Test
+    public void shouldGetResultFromToString() {
+        String invoice = assinaturas.invoices().show(12872).toString();
+
+        assertEquals(
+                "Invoice [amount=1100, creationDate=CreationDate [day=21, hour=23, minute=0, month=1, second=28, year=2014], customer=Customer [address=null, billingInfo=null, birthdate=null, code=customer_created_with_subscription_0001, cpf=null, customers=null, email=null, fullname=Danillo Souza, message=null, phoneAreaCode=null, phoneNumber=null, birthdateDay=0, birthdateMonth=0, birthdateYear=0], id=12872, items=[Item [amount=100, type=Valor da assinatura], Item [amount=1000, type=Taxa de contratação]], occurrence=1, payments=null, plan=Plan [alerts=null, amount=0, billingCycles=0, code=plan001, description=null, interval=null, maxQty=0, message=null, name=Plano de Teste Atualizado, plans=null, setupFee=0, status=null, trial=null], status=InvoiceStatus [code=5, description=Atrasada], subscriptionCode=subscription_with_new_customer_00001]",
+                invoice);
+
+    }
 }

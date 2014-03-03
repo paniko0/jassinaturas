@@ -16,6 +16,7 @@ import sdk.jassinaturas.clients.attributes.Plan;
 import sdk.jassinaturas.clients.attributes.PlanStatus;
 import sdk.jassinaturas.clients.attributes.Trial;
 import sdk.jassinaturas.clients.attributes.Unit;
+import sdk.jassinaturas.communicators.ProductionCommunicator;
 import sdk.jassinaturas.communicators.SandboxCommunicator;
 import sdk.jassinaturas.exceptions.ApiResponseErrorException;
 import co.freeside.betamax.Betamax;
@@ -125,5 +126,34 @@ public class PlanClientTest {
         // There isn't any response from Moip Assinaturas when plan is updated
         // So, I didn't do any assert
 
+    }
+
+    @Betamax(tape = "CREATE_PLAN_PRODUCTION", match = { MatchRule.body, MatchRule.method, MatchRule.headers,
+            MatchRule.uri })
+    @Test
+    public void shouldCreateANewPlanInProductionEnvironment() {
+        Assinaturas assinaturas = new Assinaturas(new Authentication("SGPA0K0R7O0IVLRPOVLJDKAWYBO1DZF3",
+                "QUJESGM9JU175OGXRFRJIYM0SIFOMIFUYCBWH9WA"), new ProductionCommunicator());
+
+        Plan toCreate = new Plan();
+        toCreate.withCode("plan_jassinaturas_production_01").withDescription("Plano de Teste")
+                .withName("Plano de Teste").withAmount(1000).withSetupFee(100).withBillingCycles(1)
+                .withPlanStatus(PlanStatus.ACTIVE).withMaxQty(10)
+                .withInterval(new Interval().withLength(10).withUnit(Unit.MONTH))
+                .withTrial(new Trial().withDays(10).enabled());
+
+        Plan created = assinaturas.plans().create(toCreate);
+
+        assertEquals("Plano criado com sucesso", created.getMessage());
+    }
+
+    @Betamax(tape = "GET_SINGLE_PLAN", match = { MatchRule.method, MatchRule.headers, MatchRule.uri })
+    @Test
+    public void shouldGetResultFromToString() {
+        String plan = assinaturas.plans().show("plan001").toString();
+
+        assertEquals(
+                "Plan [alerts=null, amount=10000, billingCycles=10, code=plan001, description=Plano de Teste Atualizado, interval=Interval [unit=DAY, length=100], maxQty=100, message=null, name=Plano de Teste Atualizado, plans=null, setupFee=1000, status=INACTIVE, trial=Trial [days=5, enabled=false]]",
+                plan);
     }
 }

@@ -31,4 +31,9 @@ public class Trial {
         return enabled;
     }
 
+    @Override
+    public String toString() {
+        return "Trial [days=" + days + ", enabled=" + enabled + "]";
+    }
+
 }

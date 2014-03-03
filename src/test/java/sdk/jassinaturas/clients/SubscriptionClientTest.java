@@ -248,4 +248,14 @@ public class SubscriptionClientTest {
         // So, I didn't do any assert
 
     }
+
+    @Betamax(tape = "GET_SINGLE_SUBSCRIPTION", match = { MatchRule.method, MatchRule.headers, MatchRule.uri })
+    @Test
+    public void shouldGetResultFromToString() {
+        String subscription = assinaturas.subscriptions().show("subscription00001").toString();
+
+        assertEquals(
+                "Subscription [amount=100, code=subscription00001, creationDate=CreationDate [day=21, hour=23, minute=0, month=1, second=40, year=2014], customer=Customer [address=null, billingInfo=null, birthdate=null, code=customer000000001, cpf=null, customers=null, email=teste@teste.com, fullname=Danillo Souza, message=null, phoneAreaCode=null, phoneNumber=null, birthdateDay=0, birthdateMonth=0, birthdateYear=0], expirationDate=ExpirationDate [day=17, month=OCTOBER, year=2016], invoice=null, invoices=null, message=null, nextInvoiceDate=NextInvoiceDate [day=1, month=5, year=2014], plan=Plan [alerts=null, amount=0, billingCycles=0, code=plan001, description=null, interval=null, maxQty=0, message=null, name=Plano de Teste Atualizado, plans=null, setupFee=0, status=null, trial=null], status=OVERDUE, subscriptions=null]",
+                subscription);
+    }
 }

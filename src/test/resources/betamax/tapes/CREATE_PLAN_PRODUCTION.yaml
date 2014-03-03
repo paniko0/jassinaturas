@@ -1,0 +1,29 @@
+!tape
+name: CREATE_PLAN_PRODUCTION
+interactions:
+- recorded: 2014-03-03T22:03:48.085Z
+  request:
+    method: POST
+    uri: https://api.moip.com.br/assinaturas/v1/plans
+    headers:
+      Accept: application/json
+      Accept-Charset: utf-8
+      Accept-Encoding: utf-8
+      Authorization: Basic U0dQQTBLMFI3TzBJVkxSUE9WTEpES0FXWUJPMURaRjM6UVVKRVNHTTlKVTE3NU9HWFJGUkpJWU0wU0lGT01JRlVZQ0JXSDlXQQ==
+      Connection: keep-alive
+      Content-Length: '252'
+      Content-Type: application/json; charset=utf-8
+      Host: api.moip.com.br
+      User-Agent: Java/1.7.0_45
+    body: '{"amount":1000,"billing_cycles":1,"code":"plan_jassinaturas_production_01","description":"Plano de Teste","interval":{"unit":"MONTH","length":10},"max_qty":10,"name":"Plano de Teste","setup_fee":100,"status":"ACTIVE","trial":{"days":10,"enabled":true}}'
+  response:
+    status: 201
+    headers:
+      Content-Type: application/json
+      Date: Mon, 03 Mar 2014 22:04:02 GMT
+      Server: nginx/1.5.10
+      Status: 201 Created
+      X-Content-Type-Options: nosniff
+      location: https://assinaturas/assinaturas/v1/plans/plan_jassinaturas_production_01
+      vary: Accept-Encoding
+    body: '{"message":"Plano criado com sucesso"}'

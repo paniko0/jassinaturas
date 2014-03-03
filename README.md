@@ -21,7 +21,7 @@ Still working on it
 First of all, you'll have to instanciate a new Assinaturas passing your credentials and the environment you want to connect.
 
 ```java
-	Assinaturas assinaturas = new Assinaturas(new Authentication("YOUR_TOKEN", "YOUR_SECRET"));
+	Assinaturas assinaturas = new Assinaturas(new Authentication("YOUR_TOKEN", "YOUR_SECRET"), new (SandboxCommunicator|ProductionCommunicator)());
 ```
 
 ### Plans
@@ -366,8 +366,9 @@ Showing a single customer:
 Thanks
 ====================
 
-Rodrigo Saito - @rodrigosaito
-Breno Oliveira - @brenohdo
+Rodrigo Saito - @rodrigosaito\n
+Breno Oliveira - @brenohdo\n
+Fernando Petroni
 
 Contributing
 ====================

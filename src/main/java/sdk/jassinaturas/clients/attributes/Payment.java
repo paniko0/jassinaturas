@@ -1,6 +1,5 @@
 package sdk.jassinaturas.clients.attributes;
 
-import java.util.GregorianCalendar;
 
 public class Payment {
     private CreationDate creationDate;
@@ -9,9 +8,8 @@ public class Payment {
     private PaymentMethod paymentMethod;
     private PaymentStatus status;
 
-    public GregorianCalendar getCreationDate() {
-        return new GregorianCalendar(this.creationDate.getYear(), creationDate.getMonth() - 1, creationDate.getDay(),
-                creationDate.getHour(), creationDate.getMinute(), creationDate.getSecond());
+    public CreationDate getCreationDate() {
+        return creationDate;
     }
 
     public int getId() {

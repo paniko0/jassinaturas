@@ -19,4 +19,9 @@ public class BillingInfo {
         return this;
     }
 
+    @Override
+    public String toString() {
+        return "BillingInfo [creditCard=" + creditCard + ", creditCards=" + creditCards + "]";
+    }
+
 }

@@ -4,12 +4,10 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 public class Subscription {
-    private List<Alerts> alerts;
     private int amount;
     private String code;
     private CreationDate creationDate;
     private Customer customer;
-    private List<Errors> errors;
     private ExpirationDate expirationDate;
     private Invoice invoice;
     private List<Invoice> invoices;
@@ -19,10 +17,6 @@ public class Subscription {
     private SubscriptionStatus status;
     private List<Subscription> subscriptions;
 
-    public List<Alerts> getAlerts() {
-        return alerts;
-    }
-
     public int getAmount() {
         return amount;
     }
@@ -31,21 +25,16 @@ public class Subscription {
         return code;
     }
 
-    public GregorianCalendar getCreationDate() {
-        return new GregorianCalendar(creationDate.getYear(), creationDate.getMonth() - 1, creationDate.getDay(),
-                creationDate.getHour(), creationDate.getMinute(), creationDate.getSecond());
+    public CreationDate getCreationDate() {
+        return creationDate;
     }
 
     public Customer getCustomer() {
         return customer;
     }
 
-    public List<Errors> getErrors() {
-        return errors;
-    }
-
-    public GregorianCalendar getExpirationDate() {
-        return new GregorianCalendar(expirationDate.getYear(), expirationDate.getMonth() - 1, expirationDate.getDay());
+    public ExpirationDate getExpirationDate() {
+        return expirationDate;
     }
 
     public Invoice getInvoice() {
@@ -78,14 +67,6 @@ public class Subscription {
         return this.subscriptions;
     }
 
-    public boolean hasAlerts() {
-        return this.alerts != null && this.alerts.size() > 0;
-    }
-
-    public boolean hasErrors() {
-        return errors != null && errors.size() > 0;
-    }
-
     public Subscription withAmount(final int amount) {
         this.amount = amount;
         return this;
@@ -109,6 +90,14 @@ public class Subscription {
     public Subscription withPlan(final Plan plan) {
         this.plan = plan;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return "Subscription [amount=" + amount + ", code=" + code + ", creationDate=" + creationDate + ", customer="
+                + customer + ", expirationDate=" + expirationDate + ", invoice=" + invoice + ", invoices=" + invoices
+                + ", message=" + message + ", nextInvoiceDate=" + nextInvoiceDate + ", plan=" + plan + ", status="
+                + status + ", subscriptions=" + subscriptions + "]";
     }
 
 }

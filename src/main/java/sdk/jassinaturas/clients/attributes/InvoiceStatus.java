@@ -11,4 +11,10 @@ public class InvoiceStatus {
     public String getDescription() {
         return description;
     }
+
+    @Override
+    public String toString() {
+        return "InvoiceStatus [code=" + code + ", description=" + description + "]";
+    }
+
 }

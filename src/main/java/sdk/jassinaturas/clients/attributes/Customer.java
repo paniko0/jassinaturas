@@ -4,7 +4,6 @@ import java.util.List;
 
 public class Customer {
     private Address address;
-    private List<Alerts> alerts;
     private BillingInfo billingInfo;
     private Birthdate birthdate;
     private String code;
@@ -22,10 +21,6 @@ public class Customer {
 
     public Address getAddress() {
         return address;
-    }
-
-    public List<Alerts> getAlerts() {
-        return alerts;
     }
 
     public BillingInfo getBillingInfo() {
@@ -118,4 +113,14 @@ public class Customer {
         this.phoneNumber = phoneNumber;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "Customer [address=" + address + ", billingInfo=" + billingInfo + ", birthdate=" + birthdate + ", code="
+                + code + ", cpf=" + cpf + ", customers=" + customers + ", email=" + email + ", fullname=" + fullname
+                + ", message=" + message + ", phoneAreaCode=" + phoneAreaCode + ", phoneNumber=" + phoneNumber
+                + ", birthdateDay=" + birthdateDay + ", birthdateMonth=" + birthdateMonth + ", birthdateYear="
+                + birthdateYear + "]";
+    }
+
 }

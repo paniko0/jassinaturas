@@ -12,4 +12,9 @@ public class PaymentStatus {
         return description;
     }
 
+    @Override
+    public String toString() {
+        return "PaymentStatus [code=" + code + ", description=" + description + "]";
+    }
+
 }

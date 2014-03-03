@@ -2,7 +2,6 @@ package sdk.jassinaturas.clients;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.Calendar;
 import java.util.List;
 
 import org.junit.Rule;
@@ -11,6 +10,7 @@ import org.junit.Test;
 import sdk.jassinaturas.Assinaturas;
 import sdk.jassinaturas.clients.attributes.Authentication;
 import sdk.jassinaturas.clients.attributes.Invoice;
+import sdk.jassinaturas.clients.attributes.Month;
 import sdk.jassinaturas.clients.attributes.Payment;
 import co.freeside.betamax.Betamax;
 import co.freeside.betamax.MatchRule;
@@ -36,12 +36,12 @@ public class InvoiceClientTest {
         assertEquals("Cancelado", payment.getStatus().getDescription());
         assertEquals(5, payment.getStatus().getCode());
 
-        assertEquals(0, payment.getCreationDate().get(Calendar.MINUTE));
-        assertEquals(28, payment.getCreationDate().get(Calendar.SECOND));
-        assertEquals(Calendar.JANUARY, payment.getCreationDate().get(Calendar.MONTH));
-        assertEquals(2014, payment.getCreationDate().get(Calendar.YEAR));
-        assertEquals(23, payment.getCreationDate().get(Calendar.HOUR_OF_DAY));
-        assertEquals(21, payment.getCreationDate().get(Calendar.DAY_OF_MONTH));
+        assertEquals(0, payment.getCreationDate().getMinute());
+        assertEquals(28, payment.getCreationDate().getSecond());
+        assertEquals(Month.JANUARY, payment.getCreationDate().getMonth());
+        assertEquals(2014, payment.getCreationDate().getYear());
+        assertEquals(23, payment.getCreationDate().getHour());
+        assertEquals(21, payment.getCreationDate().getDay());
 
         assertEquals("Cartão de Crédito", payment.getPaymentMethod().getDescription());
         assertEquals(1, payment.getPaymentMethod().getCode());
@@ -59,12 +59,12 @@ public class InvoiceClientTest {
     public void shouldShowAInvoice() {
         Invoice invoice = assinaturas.invoices().show(12872);
 
-        assertEquals(0, invoice.getCreationDate().get(Calendar.MINUTE));
-        assertEquals(28, invoice.getCreationDate().get(Calendar.SECOND));
-        assertEquals(Calendar.JANUARY, invoice.getCreationDate().get(Calendar.MONTH));
-        assertEquals(2014, invoice.getCreationDate().get(Calendar.YEAR));
-        assertEquals(23, invoice.getCreationDate().get(Calendar.HOUR_OF_DAY));
-        assertEquals(21, invoice.getCreationDate().get(Calendar.DAY_OF_MONTH));
+        assertEquals(0, invoice.getCreationDate().getMinute());
+        assertEquals(28, invoice.getCreationDate().getSecond());
+        assertEquals(Month.JANUARY, invoice.getCreationDate().getMonth());
+        assertEquals(2014, invoice.getCreationDate().getYear());
+        assertEquals(23, invoice.getCreationDate().getHour());
+        assertEquals(21, invoice.getCreationDate().getDay());
 
         assertEquals(1100, invoice.getAmount());
         assertEquals("subscription_with_new_customer_00001", invoice.getSubscriptionCode());

@@ -12,4 +12,9 @@ public class Item {
         return type;
     }
 
+    @Override
+    public String toString() {
+        return "Item [amount=" + amount + ", type=" + type + "]";
+    }
+
 }

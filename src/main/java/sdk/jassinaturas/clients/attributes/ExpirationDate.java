@@ -9,24 +9,32 @@ public class ExpirationDate {
         return day;
     }
 
-    public int getMonth() {
-        return month;
+    public Month getMonth() {
+        return Month.getMonth(month);
     }
 
     public int getYear() {
         return year;
     }
 
-    public void setDay(final int day) {
+    public ExpirationDate withDay(final int day) {
         this.day = day;
+        return this;
     }
 
-    public void setMonth(final int month) {
-        this.month = month;
+    public ExpirationDate withMonth(final Month month) {
+        this.month = month.getNumeric();
+        return this;
     }
 
-    public void setYear(final int year) {
+    public ExpirationDate withYear(final int year) {
         this.year = year;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return "ExpirationDate [day=" + day + ", month=" + Month.getMonth(month) + ", year=" + year + "]";
     }
 
 }

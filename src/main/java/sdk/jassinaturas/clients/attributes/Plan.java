@@ -69,10 +69,6 @@ public class Plan {
         return trial;
     }
 
-    public boolean hasAlerts() {
-        return this.alerts != null && this.alerts.size() > 0;
-    }
-
     public Plan withAmount(final int amount) {
         this.amount = amount;
         return this;
@@ -122,4 +118,13 @@ public class Plan {
         this.trial = trial;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "Plan [alerts=" + alerts + ", amount=" + amount + ", billingCycles=" + billingCycles + ", code=" + code
+                + ", description=" + description + ", interval=" + interval + ", maxQty=" + maxQty + ", message="
+                + message + ", name=" + name + ", plans=" + plans + ", setupFee=" + setupFee + ", status=" + status
+                + ", trial=" + trial + "]";
+    }
+
 }

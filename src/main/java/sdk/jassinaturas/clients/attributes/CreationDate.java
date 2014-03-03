@@ -20,8 +20,8 @@ public class CreationDate {
         return minute;
     }
 
-    public int getMonth() {
-        return month;
+    public Month getMonth() {
+        return Month.getMonth(month);
     }
 
     public int getSecond() {
@@ -32,28 +32,10 @@ public class CreationDate {
         return year;
     }
 
-    public void setDay(final int day) {
-        this.day = day;
-    }
-
-    public void setHour(final int hour) {
-        this.hour = hour;
-    }
-
-    public void setMinute(final int minute) {
-        this.minute = minute;
-    }
-
-    public void setMonth(final int month) {
-        this.month = month;
-    }
-
-    public void setSecond(final int second) {
-        this.second = second;
-    }
-
-    public void setYear(final int year) {
-        this.year = year;
+    @Override
+    public String toString() {
+        return "CreationDate [day=" + day + ", hour=" + hour + ", minute=" + minute + ", month=" + month + ", second="
+                + second + ", year=" + year + "]";
     }
 
 }

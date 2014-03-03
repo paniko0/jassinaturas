@@ -1,7 +1,5 @@
 package sdk.jassinaturas.clients.attributes;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 public class Invoice {
@@ -21,9 +19,8 @@ public class Invoice {
         return amount;
     }
 
-    public Calendar getCreationDate() {
-        return new GregorianCalendar(creationDate.getYear(), creationDate.getMonth() - 1, creationDate.getDay(),
-                creationDate.getHour(), creationDate.getMinute(), creationDate.getSecond());
+    public CreationDate getCreationDate() {
+        return creationDate;
     }
 
     public Customer getCustomer() {
@@ -56,6 +53,13 @@ public class Invoice {
 
     public String getSubscriptionCode() {
         return subscriptionCode;
+    }
+
+    @Override
+    public String toString() {
+        return "Invoice [amount=" + amount + ", creationDate=" + creationDate + ", customer=" + customer + ", id=" + id
+                + ", items=" + items + ", occurrence=" + occurrence + ", payments=" + payments + ", plan=" + plan
+                + ", status=" + status + ", subscriptionCode=" + subscriptionCode + "]";
     }
 
 }

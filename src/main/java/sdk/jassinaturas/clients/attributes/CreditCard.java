@@ -62,4 +62,11 @@ public class CreditCard {
         return this;
     }
 
+    @Override
+    public String toString() {
+        return "CreditCard [brand=" + brand + ", expirationMonth=" + expirationMonth + ", expirationYear="
+                + expirationYear + ", firstSixDigits=" + firstSixDigits + ", holderName=" + holderName
+                + ", lastFourDigits=" + lastFourDigits + ", number=" + number + ", vault=" + vault + "]";
+    }
+
 }

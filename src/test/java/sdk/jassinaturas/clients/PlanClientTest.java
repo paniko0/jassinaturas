@@ -51,7 +51,6 @@ public class PlanClientTest {
         Plan created = assinaturas.plans().create(toCreate);
 
         assertEquals("Plano criado com sucesso", created.getMessage());
-        assertFalse(created.hasAlerts());
     }
 
     @Betamax(tape = "INACTIVATE_PLAN", match = { MatchRule.method, MatchRule.headers, MatchRule.uri })

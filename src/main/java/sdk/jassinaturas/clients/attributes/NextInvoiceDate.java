@@ -1,6 +1,5 @@
 package sdk.jassinaturas.clients.attributes;
 
-
 public class NextInvoiceDate {
     private int day;
     private int month;
@@ -32,4 +31,10 @@ public class NextInvoiceDate {
         this.year = year;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "NextInvoiceDate [day=" + day + ", month=" + month + ", year=" + year + "]";
+    }
+
 }

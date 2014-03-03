@@ -1,33 +1,30 @@
 package sdk.jassinaturas.clients.attributes;
 
 public class Interval {
-	private Unit unit;
-	private int length;
-	
-	public Interval withUnit(Unit unit) {
-		this.unit = unit;
-		return this;
-	}
-	
-	public Interval withLength(int length) {
-		this.length = length;
-		return this;
-	}
+    private Unit unit;
+    private int length;
 
-	public Unit getUnit() {
-		return unit;
-	}
+    public Interval withUnit(final Unit unit) {
+        this.unit = unit;
+        return this;
+    }
 
-	public void setUnit(Unit unit) {
-		this.unit = unit;
-	}
+    public Interval withLength(final int length) {
+        this.length = length;
+        return this;
+    }
 
-	public int getLength() {
-		return length;
-	}
+    public Unit getUnit() {
+        return unit;
+    }
 
-	public void setLength(int length) {
-		this.length = length;
-	}
+    public int getLength() {
+        return length;
+    }
+
+    @Override
+    public String toString() {
+        return "Interval [unit=" + unit + ", length=" + length + "]";
+    }
 
 }

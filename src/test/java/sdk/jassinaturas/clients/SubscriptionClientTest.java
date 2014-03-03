@@ -1,7 +1,6 @@
 package sdk.jassinaturas.clients;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.fail;
 
 import java.util.Calendar;
@@ -92,8 +91,6 @@ public class SubscriptionClientTest {
         Subscription created = assinaturas.subscriptions().create(toBeCreated);
 
         assertEquals("Assinatura criada com sucesso", created.getMessage());
-        assertFalse(created.hasAlerts());
-        assertFalse(created.hasErrors());
 
         assertEquals(created.getAmount(), 100);
         assertEquals(created.getPlan().getName(), "Plano de Teste Atualizado");
@@ -123,8 +120,6 @@ public class SubscriptionClientTest {
         Subscription created = assinaturas.subscriptions().create(toBeCreated);
 
         assertEquals("Assinatura criada com sucesso", created.getMessage());
-        assertFalse(created.hasAlerts());
-        assertFalse(created.hasErrors());
 
         assertEquals(created.getAmount(), 100);
         assertEquals(created.getPlan().getName(), "Plano de Teste Atualizado");
@@ -175,12 +170,12 @@ public class SubscriptionClientTest {
         List<Invoice> invoices = assinaturas.subscriptions().invoices("subscription00001");
         Invoice invoice = invoices.get(0);
 
-        assertEquals(0, invoice.getCreationDate().get(Calendar.MINUTE));
-        assertEquals(40, invoice.getCreationDate().get(Calendar.SECOND));
-        assertEquals(Calendar.JANUARY, invoice.getCreationDate().get(Calendar.MONTH));
-        assertEquals(2014, invoice.getCreationDate().get(Calendar.YEAR));
-        assertEquals(23, invoice.getCreationDate().get(Calendar.HOUR_OF_DAY));
-        assertEquals(21, invoice.getCreationDate().get(Calendar.DAY_OF_MONTH));
+        assertEquals(0, invoice.getCreationDate().getMinute());
+        assertEquals(40, invoice.getCreationDate().getSecond());
+        assertEquals(Month.JANUARY, invoice.getCreationDate().getMonth());
+        assertEquals(2014, invoice.getCreationDate().getYear());
+        assertEquals(23, invoice.getCreationDate().getHour());
+        assertEquals(21, invoice.getCreationDate().getDay());
 
         assertEquals(1100, invoice.getAmount());
         assertEquals("subscription00001", invoice.getSubscriptionCode());
@@ -198,12 +193,12 @@ public class SubscriptionClientTest {
 
         Subscription subscription = assinaturas.subscriptions().show("subscription00001");
 
-        assertEquals(0, subscription.getCreationDate().get(Calendar.MINUTE));
-        assertEquals(40, subscription.getCreationDate().get(Calendar.SECOND));
-        assertEquals(Calendar.JANUARY, subscription.getCreationDate().get(Calendar.MONTH));
-        assertEquals(2014, subscription.getCreationDate().get(Calendar.YEAR));
-        assertEquals(23, subscription.getCreationDate().get(Calendar.HOUR_OF_DAY));
-        assertEquals(21, subscription.getCreationDate().get(Calendar.DAY_OF_MONTH));
+        assertEquals(0, subscription.getCreationDate().getMinute());
+        assertEquals(40, subscription.getCreationDate().getSecond());
+        assertEquals(Month.JANUARY, subscription.getCreationDate().getMonth());
+        assertEquals(2014, subscription.getCreationDate().getYear());
+        assertEquals(23, subscription.getCreationDate().getHour());
+        assertEquals(21, subscription.getCreationDate().getDay());
 
         assertEquals(100, subscription.getAmount());
         assertEquals(SubscriptionStatus.OVERDUE, subscription.getStatus());
@@ -216,9 +211,9 @@ public class SubscriptionClientTest {
         assertEquals("Plano de Teste Atualizado", subscription.getPlan().getName());
         assertEquals("plan001", subscription.getPlan().getCode());
 
-        assertEquals(Calendar.OCTOBER, subscription.getExpirationDate().get(Calendar.MONTH));
-        assertEquals(2016, subscription.getExpirationDate().get(Calendar.YEAR));
-        assertEquals(17, subscription.getExpirationDate().get(Calendar.DAY_OF_MONTH));
+        assertEquals(Month.OCTOBER, subscription.getExpirationDate().getMonth());
+        assertEquals(2016, subscription.getExpirationDate().getYear());
+        assertEquals(17, subscription.getExpirationDate().getDay());
 
         assertEquals(Calendar.MAY, subscription.getNextInvoiceDate().get(Calendar.MONTH));
         assertEquals(2014, subscription.getNextInvoiceDate().get(Calendar.YEAR));

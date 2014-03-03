@@ -3,6 +3,7 @@ package sdk.jassinaturas.clients.attributes;
 import java.util.List;
 
 public class Customer {
+    private List<Alerts> alerts;
     private Address address;
     private BillingInfo billingInfo;
     private Birthdate birthdate;
@@ -18,6 +19,10 @@ public class Customer {
     private int birthdateDay;
     private int birthdateMonth;
     private int birthdateYear;
+
+    public List<Alerts> getAlerts() {
+        return alerts;
+    }
 
     public Address getAddress() {
         return address;

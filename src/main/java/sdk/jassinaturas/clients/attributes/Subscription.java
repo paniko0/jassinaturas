@@ -4,6 +4,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 public class Subscription {
+    private List<Alerts> alerts;
     private int amount;
     private String code;
     private CreationDate creationDate;
@@ -16,6 +17,10 @@ public class Subscription {
     private Plan plan;
     private SubscriptionStatus status;
     private List<Subscription> subscriptions;
+
+    public List<Alerts> getAlerts() {
+        return alerts;
+    }
 
     public int getAmount() {
         return amount;

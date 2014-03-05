@@ -7,9 +7,6 @@ Moip Assinaturas is a Moip's project that makes recurrence charges. It allows to
 
 API documentation is available at: http://moiplabs.github.io/assinaturas-docs/api.html
 
- - Author: Danillo Souza
-
-Still working on it
 ====================
 
 # Dependencies
@@ -366,9 +363,9 @@ Showing a single customer:
 Thanks
 ====================
 
-Rodrigo Saito - @rodrigosaito\n
-Breno Oliveira - @brenohdo\n
-Fernando Petroni
+- Rodrigo Saito - @rodrigosaito
+- Breno Oliveira - @brenohdo
+- Fernando Petroni
 
 Contributing
 ====================

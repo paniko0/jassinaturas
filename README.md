@@ -7,13 +7,15 @@ Moip Assinaturas is a Moip's project that makes recurrence charges. It allows to
 
 API documentation is available at: http://moiplabs.github.io/assinaturas-docs/api.html
 
-====================
-
+=====================
 # Dependencies
+=====================
 
 - Feign Client - 6.0.1
 
+=====================
 # Using
+=====================
 
 First of all, you'll have to instanciate a new Assinaturas passing your credentials and the environment you want to connect.
 
@@ -21,7 +23,9 @@ First of all, you'll have to instanciate a new Assinaturas passing your credenti
 	Assinaturas assinaturas = new Assinaturas(new Authentication("YOUR_TOKEN", "YOUR_SECRET"), new (SandboxCommunicator|ProductionCommunicator)());
 ```
 
+=====================
 ### Plans
+=====================
 
 Creating a new plan:
 
@@ -102,7 +106,9 @@ Inactivating a plan:
 	Plan plan = assinaturas.plan().inactive(toInactivate);
 ```
 
+=====================
 ### Subscriptions
+=====================
 
 Creating a new subscription
 
@@ -222,7 +228,9 @@ Listing invoices from a subscription:
 	List<Invoice> invoices = assinaturas.subscription().invoices("SUBSCRIPTION_CODE");
 ```
 
+=====================
 ### Customers
+=====================
 
 Creating a new customer:
 
@@ -360,6 +368,28 @@ Showing a single customer:
     Customer customer = assinaturas.customer().show("CUSTOMER_CODE");
 ```
 
+=====================
+### Invoices
+=====================
+
+Getting single invoice:
+
+```java
+    Invoice invoice = assinaturas.invoices().show(INVOICE_ID);
+```
+
+Getting payments from an invoice:
+
+```java
+    List<Payment> payments = assinaturas.invoices().payments(INVOICE_ID);
+```
+
+Retring an invoice:
+
+```java
+    Invoice invoice = assinaturas.invoices().retry(INVOICE_ID);
+```
+
 Thanks
 ====================
 
@@ -368,6 +398,9 @@ Thanks
 - Fernando Petroni
 
 Contributing
+====================
+
+License
 ====================
 
 == Copyright

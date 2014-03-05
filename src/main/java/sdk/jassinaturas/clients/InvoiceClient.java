@@ -23,4 +23,9 @@ public class InvoiceClient {
         Invoice invoice = invoiceCommunicator.show(id);
         return invoice;
     }
+
+    public Invoice retry(final int id) {
+        Invoice invoice = invoiceCommunicator.retry(id);
+        return invoice;
+    }
 }

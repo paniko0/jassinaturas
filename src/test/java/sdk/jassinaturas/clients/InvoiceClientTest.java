@@ -86,6 +86,16 @@ public class InvoiceClientTest {
         assertEquals("customer_created_with_subscription_0001", invoice.getCustomer().getCode());
     }
 
+    @Betamax(tape = "RETRY_INVOICE", match = { MatchRule.method, MatchRule.headers, MatchRule.uri })
+    @Test
+    public void shouldRetryAInvoice() {
+        Invoice invoice = assinaturas.invoices().retry(14606);
+
+        // There isn't any response from Moip Assinaturas when invoice have been
+        // retried
+        // So, I didn't do any assert
+    }
+
     @Betamax(tape = "GET_SINGLE_INVOICE", match = { MatchRule.method, MatchRule.headers, MatchRule.uri })
     @Test
     public void shouldGetResultFromToString() {

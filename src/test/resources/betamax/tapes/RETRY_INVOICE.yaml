@@ -1,0 +1,24 @@
+!tape
+name: RETRY_INVOICE
+interactions:
+- recorded: 2014-03-05T00:04:48.121Z
+  request:
+    method: POST
+    uri: https://sandbox.moip.com.br/assinaturas/v1/invoices/14606/retry
+    headers:
+      Accept: application/json
+      Accept-Charset: utf-8
+      Accept-Encoding: utf-8
+      Authorization: Basic U0dQQTBLMFI3TzBJVkxSUE9WTEpES0FXWUJPMURaRjM6UVVKRVNHTTlKVTE3NU9HWFJGUkpJWU0wU0lGT01JRlVZQ0JXSDlXQQ==
+      Connection: keep-alive
+      Content-Type: application/json; charset=utf-8
+      Host: sandbox.moip.com.br
+      User-Agent: Java/1.7.0_45
+  response:
+    status: 200
+    headers:
+      Content-Type: text/plain; charset=UTF-8
+      Date: Wed, 05 Mar 2014 00:04:48 GMT
+      Server: Apache
+      Vary: Accept-Encoding
+    body: ''

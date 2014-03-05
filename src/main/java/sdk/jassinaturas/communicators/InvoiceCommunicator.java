@@ -12,4 +12,7 @@ public interface InvoiceCommunicator {
 
     @RequestLine("GET /invoices/{id}")
     Invoice show(@Named("id") int id);
+
+    @RequestLine("POST /invoices/{id}/retry")
+    Invoice retry(@Named("id") int id);
 }

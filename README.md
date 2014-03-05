@@ -9,13 +9,11 @@ API documentation is available at: http://moiplabs.github.io/assinaturas-docs/ap
 
 =====================
 # Dependencies
-=====================
 
 - Feign Client - 6.0.1
 
 =====================
 # Using
-=====================
 
 First of all, you'll have to instanciate a new Assinaturas passing your credentials and the environment you want to connect.
 
@@ -25,7 +23,6 @@ First of all, you'll have to instanciate a new Assinaturas passing your credenti
 
 =====================
 ### Plans
-=====================
 
 Creating a new plan:
 
@@ -108,7 +105,6 @@ Inactivating a plan:
 
 =====================
 ### Subscriptions
-=====================
 
 Creating a new subscription
 
@@ -230,7 +226,6 @@ Listing invoices from a subscription:
 
 =====================
 ### Customers
-=====================
 
 Creating a new customer:
 
@@ -370,7 +365,6 @@ Showing a single customer:
 
 =====================
 ### Invoices
-=====================
 
 Getting single invoice:
 
@@ -390,18 +384,18 @@ Retring an invoice:
     Invoice invoice = assinaturas.invoices().retry(INVOICE_ID);
 ```
 
-Thanks
 ====================
+### Thanks
 
 - Rodrigo Saito - @rodrigosaito
 - Breno Oliveira - @brenohdo
 - Fernando Petroni
 
-Contributing
 ====================
+### Contributing
 
-License
 ====================
+### License
 
 == Copyright
 

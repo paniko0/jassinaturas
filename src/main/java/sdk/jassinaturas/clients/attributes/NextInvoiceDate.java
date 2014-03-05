@@ -9,8 +9,8 @@ public class NextInvoiceDate {
         return day;
     }
 
-    public int getMonth() {
-        return month;
+    public Month getMonth() {
+        return Month.getMonth(month);
     }
 
     public int getYear() {
@@ -22,8 +22,8 @@ public class NextInvoiceDate {
         return this;
     }
 
-    public NextInvoiceDate withMonth(final int month) {
-        this.month = month + 1;
+    public NextInvoiceDate withMonth(final Month month) {
+        this.month = month.getNumeric();
         return this;
     }
 

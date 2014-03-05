@@ -1,6 +1,5 @@
 package sdk.jassinaturas.clients.attributes;
 
-import java.util.GregorianCalendar;
 import java.util.List;
 
 public class Subscription {
@@ -54,9 +53,8 @@ public class Subscription {
         return message;
     }
 
-    public GregorianCalendar getNextInvoiceDate() {
-        return new GregorianCalendar(nextInvoiceDate.getYear(), nextInvoiceDate.getMonth() - 1,
-                nextInvoiceDate.getDay());
+    public NextInvoiceDate getNextInvoiceDate() {
+        return nextInvoiceDate;
     }
 
     public Plan getPlan() {

@@ -178,7 +178,7 @@ Updating a subscription
     	.withAmount(990)
         .withNextInvoiceDate(new NextInvoiceDate()
 			.withDay(20)
-			.withMonth(Calendar.OCTOBER)
+			.withMonth(Month.OCTOBER)
 			.withYear(2015));
 ```
 

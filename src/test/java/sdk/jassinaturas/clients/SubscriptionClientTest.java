@@ -3,7 +3,6 @@ package sdk.jassinaturas.clients;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-import java.util.Calendar;
 import java.util.List;
 
 import org.junit.Rule;
@@ -101,9 +100,9 @@ public class SubscriptionClientTest {
         assertEquals(created.getInvoice().getId(), 12872);
         assertEquals(created.getInvoice().getStatus().getDescription(), "Atrasada");
         assertEquals(created.getInvoice().getStatus().getCode(), 5);
-        assertEquals(1, created.getNextInvoiceDate().get(Calendar.DAY_OF_MONTH));
-        assertEquals(Calendar.MAY, created.getNextInvoiceDate().get(Calendar.MONTH));
-        assertEquals(2014, created.getNextInvoiceDate().get(Calendar.YEAR));
+        assertEquals(1, created.getNextInvoiceDate().getDay());
+        assertEquals(Month.MAY, created.getNextInvoiceDate().getMonth());
+        assertEquals(2014, created.getNextInvoiceDate().getYear());
         assertEquals(created.getCode(), "subscription_with_new_customer_00001");
         assertEquals(created.getCustomer().getEmail(), "teste@teste.com");
         assertEquals(created.getCustomer().getCode(), "customer_created_with_subscription_0001");
@@ -130,9 +129,9 @@ public class SubscriptionClientTest {
         assertEquals(created.getInvoice().getId(), 12873);
         assertEquals(created.getInvoice().getStatus().getDescription(), "Atrasada");
         assertEquals(created.getInvoice().getStatus().getCode(), 5);
-        assertEquals(1, created.getNextInvoiceDate().get(Calendar.DAY_OF_MONTH));
-        assertEquals(Calendar.MAY, created.getNextInvoiceDate().get(Calendar.MONTH));
-        assertEquals(2014, created.getNextInvoiceDate().get(Calendar.YEAR));
+        assertEquals(1, created.getNextInvoiceDate().getDay());
+        assertEquals(Month.MAY, created.getNextInvoiceDate().getMonth());
+        assertEquals(2014, created.getNextInvoiceDate().getYear());
         assertEquals(created.getCode(), "subscription00001");
         assertEquals(created.getCustomer().getEmail(), "teste@teste.com");
         assertEquals(created.getCustomer().getCode(), "customer000000001");
@@ -216,9 +215,9 @@ public class SubscriptionClientTest {
         assertEquals(2016, subscription.getExpirationDate().getYear());
         assertEquals(17, subscription.getExpirationDate().getDay());
 
-        assertEquals(Calendar.MAY, subscription.getNextInvoiceDate().get(Calendar.MONTH));
-        assertEquals(2014, subscription.getNextInvoiceDate().get(Calendar.YEAR));
-        assertEquals(1, subscription.getNextInvoiceDate().get(Calendar.DAY_OF_MONTH));
+        assertEquals(Month.MAY, subscription.getNextInvoiceDate().getMonth());
+        assertEquals(2014, subscription.getNextInvoiceDate().getYear());
+        assertEquals(1, subscription.getNextInvoiceDate().getDay());
     }
 
     @Betamax(tape = "SUSPEND_SUBSCRIPTION", match = { MatchRule.method, MatchRule.headers, MatchRule.uri })
@@ -239,7 +238,7 @@ public class SubscriptionClientTest {
 
         Subscription toUpdate = new Subscription();
         toUpdate.withCode("assinatura46").withPlan(new Plan().withCode("plano01")).withAmount(990)
-                .withNextInvoiceDate(new NextInvoiceDate().withDay(20).withMonth(Calendar.OCTOBER).withYear(2015));
+                .withNextInvoiceDate(new NextInvoiceDate().withDay(20).withMonth(Month.OCTOBER).withYear(2015));
 
         Subscription subscription = assinaturas.subscriptions().update(toUpdate);
 

@@ -1,0 +1,12 @@
+box: wercker/android
+# Build definition
+build:
+  steps:
+    - script:
+        name: show maven information
+        code: |
+          mvn --version
+    - script:
+        name: run maven
+        code: |
+          mvn clean package

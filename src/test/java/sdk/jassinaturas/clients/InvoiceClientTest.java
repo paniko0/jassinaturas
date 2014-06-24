@@ -25,7 +25,7 @@ public class InvoiceClientTest {
     @Rule
     public Recorder recorder = new Recorder();
 
-    @Betamax(tape = "GET_PAYMENTS_FROM_INVOICE", match = { MatchRule.method, MatchRule.headers, MatchRule.uri })
+    @Betamax(tape = "GET_PAYMENTS_FROM_INVOICE", match = { MatchRule.method, MatchRule.uri })
     @Test
     public void shouldGetPaymentsFromAInvoice() {
         List<Payment> payments = assinaturas.invoices().payments(12872);
@@ -55,7 +55,7 @@ public class InvoiceClientTest {
 
     }
 
-    @Betamax(tape = "GET_SINGLE_INVOICE", match = { MatchRule.method, MatchRule.headers, MatchRule.uri })
+    @Betamax(tape = "GET_SINGLE_INVOICE", match = { MatchRule.method, MatchRule.uri })
     @Test
     public void shouldShowAInvoice() {
         Invoice invoice = assinaturas.invoices().show(12872);
@@ -86,7 +86,7 @@ public class InvoiceClientTest {
         assertEquals("customer_created_with_subscription_0001", invoice.getCustomer().getCode());
     }
 
-    @Betamax(tape = "RETRY_INVOICE", match = { MatchRule.method, MatchRule.headers, MatchRule.uri })
+    @Betamax(tape = "RETRY_INVOICE", match = { MatchRule.method, MatchRule.uri })
     @Test
     public void shouldRetryAInvoice() {
         Invoice invoice = assinaturas.invoices().retry(14606);

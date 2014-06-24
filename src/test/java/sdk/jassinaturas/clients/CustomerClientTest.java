@@ -33,7 +33,7 @@ public class CustomerClientTest {
     @Rule
     public Recorder recorder = new Recorder();
 
-    @Betamax(tape = "CREATE_CUSTOMER", match = { MatchRule.body, MatchRule.method, MatchRule.headers })
+    @Betamax(tape = "CREATE_CUSTOMER", match = { MatchRule.body, MatchRule.method })
     @Test
     public void shouldCreateANewCustomer() {
         Customer toCreate = new Customer();
@@ -59,7 +59,7 @@ public class CustomerClientTest {
     }
 
     @Betamax(tape = "CREATE_CUSTOMER_WITHOUT_CREDITCARD",
-            match = { MatchRule.body, MatchRule.method, MatchRule.headers })
+            match = { MatchRule.body, MatchRule.method })
     @Test
     public void shouldCreateANewCustomerWithoutCreditCard() {
         Customer toCreate = new Customer();
@@ -80,7 +80,7 @@ public class CustomerClientTest {
         assertEquals("Cliente criado com sucesso", created.getMessage());
     }
 
-    @Betamax(tape = "LIST_ALL_CUSTOMERS", match = { MatchRule.method, MatchRule.headers })
+    @Betamax(tape = "LIST_ALL_CUSTOMERS", match = { MatchRule.method })
     @Test
     public void shouldListAllCustomers() {
         List<Customer> customers = assinaturas.customers().list();
@@ -124,7 +124,7 @@ public class CustomerClientTest {
 
     }
 
-    @Betamax(tape = "GET_SINGLE_CUSTOMER", match = { MatchRule.method, MatchRule.headers })
+    @Betamax(tape = "GET_SINGLE_CUSTOMER", match = { MatchRule.method })
     @Test
     public void shouldShowACustomer() {
         Customer customer = assinaturas.customers().show("customer000000001");
@@ -156,7 +156,7 @@ public class CustomerClientTest {
 
     }
 
-    @Betamax(tape = "UPDATE_CREDITCARD", match = { MatchRule.body, MatchRule.method, MatchRule.headers })
+    @Betamax(tape = "UPDATE_CREDITCARD", match = { MatchRule.body, MatchRule.method })
     @Test
     public void shouldUpdateACreditCard() {
         Customer toUpdate = new Customer();
@@ -170,7 +170,7 @@ public class CustomerClientTest {
 
     }
 
-    @Betamax(tape = "UPDATE_CUSTOMER", match = { MatchRule.body, MatchRule.method, MatchRule.headers })
+    @Betamax(tape = "UPDATE_CUSTOMER", match = { MatchRule.body, MatchRule.method })
     @Test
     public void shouldUpdateACustomer() {
         Customer toUpdate = new Customer();
@@ -193,7 +193,7 @@ public class CustomerClientTest {
 
     }
 
-    @Betamax(tape = "CREATE_CUSTOMER_PRODUCTION", match = { MatchRule.body, MatchRule.method, MatchRule.headers,
+    @Betamax(tape = "CREATE_CUSTOMER_PRODUCTION", match = { MatchRule.body, MatchRule.method,
             MatchRule.uri })
     @Test
     public void shouldUseProductionEnvironmentToCreateACustomer() {
@@ -222,7 +222,7 @@ public class CustomerClientTest {
         assertEquals("Cliente criado com sucesso", created.getMessage());
     }
 
-    @Betamax(tape = "GET_SINGLE_CUSTOMER", match = { MatchRule.method, MatchRule.headers })
+    @Betamax(tape = "GET_SINGLE_CUSTOMER", match = { MatchRule.method })
     @Test
     public void shouldGetResultFromToString() {
         String customer = assinaturas.customers().show("customer000000001").toString();

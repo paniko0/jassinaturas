@@ -391,8 +391,8 @@ Retring an invoice:
 ### Thanks
 
 - Rodrigo Saito - @rodrigosaito
-- Breno Oliveira - @brenohdo
-- Fernando Petroni
+- Breno Oliveira - @brenooliveira
+- Fernando Petroni - @febpetroni
 
 [![wercker status](https://app.wercker.com/status/6de4cd22b6c24643861eb225115a3ac5/m/master "wercker status")](https://app.wercker.com/project/bykey/6de4cd22b6c24643861eb225115a3ac5)
 

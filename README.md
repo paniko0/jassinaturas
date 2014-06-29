@@ -9,8 +9,7 @@ API documentation is available at: http://moiplabs.github.io/assinaturas-docs/ap
 
 [![Build Status](https://travis-ci.org/paniko0/jassinaturas.svg?branch=master)](https://travis-ci.org/paniko0/jassinaturas)
 [![Build Status](https://drone.io/github.com/paniko0/jassinaturas/status.png)](https://drone.io/github.com/paniko0/jassinaturas/latest)
-[![wercker status](https://app.wercker.com/status/6de4cd22b6c24643861eb225115a3ac5/m/master "wercker status")](https://app.wercker.com/project/bykey/6de4cd22b6c24643861eb225115a3ac5)
-
+[![wercker status](https://app.wercker.com/status/6de4cd22b6c24643861eb225115a3ac5/s/master "wercker status")](https://app.wercker.com/project/bykey/6de4cd22b6c24643861eb225115a3ac5)
 =====================
 # Dependencies
 
@@ -394,6 +393,8 @@ Retring an invoice:
 - Rodrigo Saito - @rodrigosaito
 - Breno Oliveira - @brenohdo
 - Fernando Petroni
+
+[![wercker status](https://app.wercker.com/status/6de4cd22b6c24643861eb225115a3ac5/m/master "wercker status")](https://app.wercker.com/project/bykey/6de4cd22b6c24643861eb225115a3ac5)
 
 ====================
 ### Contributing

@@ -11,3 +11,5 @@ test-classes/
 maven-archiver/
 surefire-reports/
 surefire/
+.idea/
+jassinaturas.iml

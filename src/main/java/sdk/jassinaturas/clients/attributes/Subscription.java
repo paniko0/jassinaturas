@@ -16,6 +16,7 @@ public class Subscription {
     private Plan plan;
     private SubscriptionStatus status;
     private List<Subscription> subscriptions;
+    private Coupon coupon;
 
     public List<Alerts> getAlerts() {
         return alerts;
@@ -70,6 +71,10 @@ public class Subscription {
         return this.subscriptions;
     }
 
+    public Coupon getCoupon() {
+        return coupon;
+    }
+
     public Subscription withAmount(final int amount) {
         this.amount = amount;
         return this;
@@ -95,12 +100,17 @@ public class Subscription {
         return this;
     }
 
+    public Subscription withCoupon(final Coupon coupon) {
+        this.coupon = coupon;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "Subscription [amount=" + amount + ", code=" + code + ", creationDate=" + creationDate + ", customer="
                 + customer + ", expirationDate=" + expirationDate + ", invoice=" + invoice + ", invoices=" + invoices
                 + ", message=" + message + ", nextInvoiceDate=" + nextInvoiceDate + ", plan=" + plan + ", status="
-                + status + ", subscriptions=" + subscriptions + "]";
+                + status + ", subscriptions=" + subscriptions + ", coupon=" + coupon + "]";
     }
 
 }

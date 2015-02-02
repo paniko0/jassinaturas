@@ -142,6 +142,9 @@ public class SubscriptionClientTest {
     @Test
     public void shouldListAllSubscriptions() {
 
+        Assinaturas assinaturas = new Assinaturas(new Authentication("SGPA0K0R7O0IVLRPOVLJDKAWYBO1DZF3",
+                "QUJESGM9JU175OGXRFRJIYM0SIFOMIFUYCBWH9WA"), new SandboxCommunicator());
+
         List<Subscription> subscriptions = assinaturas.subscriptions().list();
         assertEquals(60, subscriptions.size());
     }
@@ -190,6 +193,9 @@ public class SubscriptionClientTest {
     @Betamax(tape = "GET_SINGLE_SUBSCRIPTION", match = { MatchRule.method, MatchRule.uri })
     @Test
     public void shouldShowASubscription() {
+
+        Assinaturas assinaturas = new Assinaturas(new Authentication("SGPA0K0R7O0IVLRPOVLJDKAWYBO1DZF3",
+                "QUJESGM9JU175OGXRFRJIYM0SIFOMIFUYCBWH9WA"), new SandboxCommunicator());
 
         Subscription subscription = assinaturas.subscriptions().show("subscription00001");
 

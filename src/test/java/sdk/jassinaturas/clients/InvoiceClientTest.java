@@ -96,7 +96,7 @@ public class InvoiceClientTest {
         // So, I didn't do any assert
     }
 
-    @Betamax(tape = "GET_SINGLE_INVOICE", match = { MatchRule.method, MatchRule.headers, MatchRule.uri })
+    @Betamax(tape = "GET_SINGLE_INVOICE", match = { MatchRule.method, MatchRule.uri })
     @Test
     public void shouldGetResultFromToString() {
         String invoice = assinaturas.invoices().show(12872).toString();

@@ -9,4 +9,4 @@ build:
     - script:
         name: run gradle
         code: |
-          ./gradlew build -PossrhUsername=test -PossrhPassword=test
+          ./gradlew test -PossrhUsername=test -PossrhPassword=test

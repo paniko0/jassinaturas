@@ -3,10 +3,10 @@ box: wercker/android
 build:
   steps:
     - script:
-        name: show maven information
+        name: show gradle information
         code: |
-          mvn --version
+          gradle --version
     - script:
-        name: run maven
+        name: run gradle
         code: |
-          mvn clean package
+          gradle check

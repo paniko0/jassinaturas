@@ -9,4 +9,4 @@ build:
     - script:
         name: run gradle
         code: |
-          gradle test --info
+          gradle --full-stacktrace build

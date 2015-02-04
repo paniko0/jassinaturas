@@ -13,3 +13,5 @@ surefire-reports/
 surefire/
 .idea/
 jassinaturas.iml
+.gradle
+build/

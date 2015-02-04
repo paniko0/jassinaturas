@@ -1,0 +1,83 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'signing'
+
+sourceCompatibility = 1.7
+group = "com.github.paniko0"
+archivesBaseName = "jassinaturas"
+version = '1.0.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.netflix.feign:feign-gson:6.0.1'
+
+    testCompile 'junit:junit:4.11'
+    testCompile 'co.freeside:betamax:1.1.2'
+    testCompile 'commons-httpclient:commons-httpclient:3.1'
+    testCompile 'org.codehaus.groovy:groovy-all:2.2.1'
+}
+
+task javadocJar(type: Jar) {
+    classifier = 'javadoc'
+    from javadoc
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives javadocJar, sourcesJar
+}
+
+signing {
+    sign configurations.archives
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+
+            snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+
+            pom.project {
+                name 'JAssinaturas'
+                packaging 'jar'
+                description 'A cools DSL to integrate to Moip Assinaturas'
+                url 'https://github.com/paniko0/jassinaturas'
+
+                scm {
+                    connection 'scm:git:ssh://git@github.com:paniko0/jassinaturas.git'
+                    developerConnection 'scm:git:ssh://git@github.com:paniko0/jassinaturas.git'
+                    url 'https://github.com/paniko0/jassinaturas'
+                }
+
+                licenses {
+                    license {
+                        name 'MIT License'
+                        url 'http://www.opensource.org/licenses/mit-license.php'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id 'paniko0'
+                        name 'Danillo Souza'
+                        email 'danillo.fs@gmail.com'
+                    }
+                }
+            }
+        }
+    }
+}

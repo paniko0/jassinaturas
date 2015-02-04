@@ -4,5 +4,4 @@ jdk:
 install: /bin/true
 before_script:
   - ./gradlew --version
-  - ./gradlew assemble -PossrhUsername=test -PossrhPassword=test
 script: ./gradlew test -PossrhUsername=test -PossrhPassword=test 

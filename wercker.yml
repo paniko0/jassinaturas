@@ -9,4 +9,4 @@ build:
     - script:
         name: run gradle
         code: |
-          gradle check
+          gradle test

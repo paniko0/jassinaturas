@@ -2,6 +2,5 @@ language: java
 jdk:
   - oraclejdk7
 before_script:
-  - mvn --version
-install: mvn install -DskipTests=true -B
-script: mvn test
+  - gradle --version
+script: gradle check

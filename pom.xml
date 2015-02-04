@@ -3,7 +3,7 @@
     <groupId>com.github.paniko0</groupId>
     <artifactId>jassinaturas</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
     <name>Jassinaturas SDK</name>
     <description>Moip Assinaturas Client Library for Java</description>
     <url>https://github.com/paniko0/jassinaturas/</url>

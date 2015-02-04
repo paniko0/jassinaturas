@@ -2,5 +2,6 @@ language: java
 jdk:
   - oraclejdk7
 before_script:
-  - gradle --version
+  - ./gradlew --version
+  - ./gradlew assemble -PossrhUsername=test -PossrhPassword=test
 script: ./gradlew build -PossrhUsername=test -PossrhPassword=test 

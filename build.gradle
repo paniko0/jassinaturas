@@ -5,7 +5,7 @@ apply plugin: 'signing'
 sourceCompatibility = 1.7
 group = "com.github.paniko0"
 archivesBaseName = "jassinaturas"
-version = '1.0.0'
+version = '1.1.0'
 
 repositories {
     mavenCentral()

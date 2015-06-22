@@ -1,10 +1,10 @@
 package sdk.jassinaturas.clients.attributes;
 
 public class Duration {
-    private String type;
+    private DurationType type;
     private int occurrences;
 
-    public String getType() {
+    public DurationType getType() {
         return type;
     }
 
@@ -12,7 +12,7 @@ public class Duration {
         return occurrences;
     }
 
-    public Duration withType(String type) {
+    public Duration withType(DurationType type) {
         this.type = type;
         return this;
     }

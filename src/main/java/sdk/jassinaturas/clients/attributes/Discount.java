@@ -1,14 +1,14 @@
 package sdk.jassinaturas.clients.attributes;
 
 public class Discount {
-    private String type;
+    private DiscountType type;
     private int value;
 
-    public String getType() {
+    public DiscountType getType() {
         return type;
     }
 
-    public Discount withType(String type) {
+    public Discount withType(DiscountType type) {
         this.type = type;
         return this;
     }

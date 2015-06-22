@@ -1,0 +1,30 @@
+!tape
+name: CREATE_COUPON
+interactions:
+- recorded: 2015-06-22T00:51:44.152Z
+  request:
+    method: POST
+    uri: https://sandbox.moip.com.br/assinaturas/v1/coupons
+    headers:
+      Accept: application/json
+      Accept-Charset: utf-8
+      Accept-Encoding: utf-8
+      Authorization: Basic U0dQQTBLMFI3TzBJVkxSUE9WTEpES0FXWUJPMURaRjM6UVVKRVNHTTlKVTE3NU9HWFJGUkpJWU0wU0lGT01JRlVZQ0JXSDlXQQ==
+      Connection: keep-alive
+      Content-Length: '279'
+      Content-Type: application/json; charset=utf-8
+      Host: sandbox.moip.com.br
+      User-Agent: Java/1.7.0_45
+    body: '{"code":"jassinaturas_coupon_01","name":"JAssinaturas","description":"Coupon for test control","discount":{"type":"PERCENT","value":1000},"status":"ACTIVE","duration":{"type":"REPEATING","occurrences":1},"max_redemptions":1000,"expiration_date":{"day":10,"month":10,"year":2020}}'
+  response:
+    status: 201
+    headers:
+      Content-Type: application/json
+      Date: Mon, 22 Jun 2015 00:51:44 GMT
+      Server: nginx
+      Status: 201 Created
+      X-Content-Type-Options: nosniff
+      location: https://assinaturas/assinaturas/v1/coupon/jassinaturas_coupon_01
+      vary: Accept-Encoding
+      x-newrelic-app-data: PxQFUlBXAQoTVlhbAwEOVUYdFGQHBDcQUQxLA1tMXV1dORYzVBJHNQFUZAQUFVFQVThOFAZtGAULREZcDBVDSmAtazYRGhgCHVUVUR9RBFpSAABXUE8KBAlIQ1FUU1EEUQMEUABXVFMBWgpAZQ==
+    body: '{"code":"jassinaturas_coupon_01","name":"JAssinaturas","description":"Coupon for test control","discount":{"value":1000,"type":"PERCENT"},"status":"ACTIVE","duration":{"type":"REPEATING","occurrences":1},"expiration_date":{"day":10,"month":10,"year":2020},"max_redemptions":1000,"in_use":false,"creation_date":{"day":21,"month":6,"year":2015,"hour":21,"minute":51,"second":43}}'

@@ -20,7 +20,7 @@ API documentation is available at: http://moiplabs.github.io/assinaturas-docs/ap
 <dependency>
   <groupId>com.github.paniko0</groupId>
   <artifactId>jassinaturas</artifactId>
-  <version>1.0.0</version>
+  <version>1.1.0</version>
 </dependency>
 ```
 

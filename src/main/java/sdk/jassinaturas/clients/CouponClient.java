@@ -19,4 +19,12 @@ public class CouponClient {
     public Coupon create(final Coupon toBeCreated) {
         return couponCommunicator.create(toBeCreated);
     }
+
+    public Coupon activate(final String code) {
+        return couponCommunicator.activate(code);
+    }
+
+    public Coupon inactivate(final String code) {
+        return couponCommunicator.inactivate(code);
+    }
 }

@@ -5,11 +5,12 @@ public class Coupon {
     private String name;
     private String description;
     private Discount discount;
-    private String status;
+    private CouponStatus status;
     private Duration duration;
-    private int max_redemptions;
-    private ExpirationDate expiration_date;
-    private CreationDate creation_date;
+    private Integer maxRedemptions;
+    private ExpirationDate expirationDate;
+    private CreationDate creationDate;
+    private Boolean inUse;
 
     public String getCode() {
         return code;
@@ -47,11 +48,11 @@ public class Coupon {
         return this;
     }
 
-    public String getStatus() {
+    public CouponStatus getStatus() {
         return status;
     }
 
-    public Coupon withStatus(String status) {
+    public Coupon withStatus(CouponStatus status) {
         this.status = status;
         return this;
     }
@@ -65,31 +66,39 @@ public class Coupon {
         return this;
     }
 
-    public int getMax_redemptions() {
-        return max_redemptions;
+    public Integer getMaxRedemptions() {
+        return maxRedemptions;
     }
 
-    public Coupon withMax_redemptions(int max_redemptions) {
-        this.max_redemptions = max_redemptions;
+    public Coupon withMaxRedemptions(Integer max_redemptions) {
+        this.maxRedemptions = max_redemptions;
         return this;
     }
 
-    public ExpirationDate getExpiration_date() {
-        return expiration_date;
+    public ExpirationDate getExpirationDate() {
+        return expirationDate;
     }
 
-    public Coupon withExpiration_date(ExpirationDate expiration_date) {
-        this.expiration_date = expiration_date;
+    public Coupon withExpirationDate(ExpirationDate expiration_date) {
+        this.expirationDate = expiration_date;
         return this;
     }
 
-    public CreationDate getCreation_date() {
-        return creation_date;
+    public CreationDate getCreationDate() {
+        return creationDate;
     }
 
     public Coupon withCreation_date(CreationDate creation_date) {
-        this.creation_date = creation_date;
+        this.creationDate = creation_date;
         return this;
+    }
+
+    public boolean inUse() {
+        if (inUse != null) {
+            return inUse;
+        }
+
+        return false;
     }
 
     @Override
@@ -101,9 +110,9 @@ public class Coupon {
                 ", discount=" + discount +
                 ", status='" + status + '\'' +
                 ", duration=" + duration +
-                ", max_redemptions=" + max_redemptions +
-                ", expiration_date=" + expiration_date +
-                ", creation_date=" + creation_date +
+                ", maxRedemptions=" + maxRedemptions +
+                ", expirationDate=" + expirationDate +
+                ", creationDate=" + creationDate +
                 '}';
     }
 }

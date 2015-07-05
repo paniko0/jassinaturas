@@ -396,6 +396,47 @@ Retring an invoice:
     Invoice invoice = assinaturas.invoices().retry(INVOICE_ID);
 ```
 
+=====================
+### Coupons
+
+Creating coupon:
+
+```java
+    toBeCreated.withCode("COUPON_CODE")
+            .withName("COUPON_NAME")
+            .withDescription("COUPON_DESCRIPTION")
+            .withDiscount(new Discount()
+                        .withValue(1000)
+                        .withType(DiscountType.PERCENT))
+            .withStatus(CouponStatus.ACTIVE)
+            .withDuration(new Duration()
+                    .withType(DurationType.REPEATING)
+                    .withOccurrences(1))
+            .withExpirationDate(new ExpirationDate()
+                    .withDay(10)
+                    .withMonth(Month.OCTOBER)
+                    .withYear(2020))
+            .withMaxRedemptions(1000);
+```
+
+Then call:
+
+```java
+    Coupon coupon = assinaturas.coupons().create(toBeCreated);
+```
+
+To activate a coupon:
+
+```java
+    Coupon coupon = assinaturas.coupons().inactivate(couponCode);
+```
+
+To inactive a coupon:
+
+```java
+    Coupon coupon = assinaturas.coupons().inactivate(couponCode);
+```
+
 ====================
 ### Thanks
 

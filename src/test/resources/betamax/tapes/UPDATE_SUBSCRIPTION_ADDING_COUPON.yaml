@@ -1,0 +1,29 @@
+!tape
+name: UPDATE_SUBSCRIPTION_ADDING_COUPON
+interactions:
+- recorded: 2015-07-05T22:58:36.387Z
+  request:
+    method: PUT
+    uri: https://sandbox.moip.com.br/assinaturas/v1/subscriptions/assinatura46
+    headers:
+      Accept: application/json
+      Accept-Charset: utf-8
+      Accept-Encoding: utf-8
+      Authorization: Basic U0dQQTBLMFI3TzBJVkxSUE9WTEpES0FXWUJPMURaRjM6UVVKRVNHTTlKVTE3NU9HWFJGUkpJWU0wU0lGT01JRlVZQ0JXSDlXQQ==
+      Connection: keep-alive
+      Content-Length: '235'
+      Content-Type: application/json; charset=utf-8
+      Host: sandbox.moip.com.br
+      User-Agent: Java/1.7.0_45
+    body: '{"amount":990,"code":"assinatura46","next_invoice_date":{"day":20,"month":10,"year":2015},"plan":{"amount":0,"billing_cycles":0,"code":"plano01","max_qty":0,"setup_fee":0},"coupon":{"code":"jassinaturas_coupon_01","max_redemptions":0}}'
+  response:
+    status: 200
+    headers:
+      Content-Type: text/plain; charset=UTF-8
+      Date: Sun, 05 Jul 2015 22:58:32 GMT
+      Server: nginx
+      Status: 200 OK
+      X-Content-Type-Options: nosniff
+      vary: Accept-Encoding
+      x-newrelic-app-data: PxQFUlBXAQoTVlhbAwEOVUYdFGQHBDcQUQxLA1tMXV1dORYzVBJHNQFUZAQUFVFQVThOFAZtGBURU0VQEA8TFlkNVhFkF09BRgdKAkMIQxYNWVkiCQddThBMMTdjGBVKVB8GH1JIUVoAWgFWCQsYAABQFUNTBFAGBg4HBVFVXQMFB1haFWw=
+    body: ''

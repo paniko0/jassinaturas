@@ -14,6 +14,7 @@ import sdk.jassinaturas.clients.attributes.Authentication;
 import sdk.jassinaturas.clients.attributes.BillingInfo;
 import sdk.jassinaturas.clients.attributes.Birthdate;
 import sdk.jassinaturas.clients.attributes.Country;
+import sdk.jassinaturas.clients.attributes.Coupon;
 import sdk.jassinaturas.clients.attributes.CreditCard;
 import sdk.jassinaturas.clients.attributes.Customer;
 import sdk.jassinaturas.clients.attributes.Invoice;
@@ -262,5 +263,20 @@ public class SubscriptionClientTest {
         assertEquals(
                 "Subscription [amount=100, code=subscription00001, creationDate=CreationDate [day=21, hour=23, minute=0, month=1, second=40, year=2014], customer=Customer [address=null, billingInfo=null, birthdate=null, code=customer000000001, cpf=null, customers=null, email=teste@teste.com, fullname=Danillo Souza, message=null, phoneAreaCode=null, phoneNumber=null, birthdateDay=0, birthdateMonth=0, birthdateYear=0], expirationDate=ExpirationDate [day=17, month=OCTOBER, year=2016], invoice=null, invoices=null, message=null, nextInvoiceDate=NextInvoiceDate [day=1, month=5, year=2014], plan=Plan [alerts=null, amount=0, billingCycles=0, code=plan001, description=null, interval=null, maxQty=0, message=null, name=Plano de Teste Atualizado, plans=null, setupFee=0, status=null, trial=null], status=OVERDUE, subscriptions=null, coupon=null]",
                 subscription);
+    }
+
+    @Betamax(tape = "UPDATE_SUBSCRIPTION_ADDING_COUPON", match = { MatchRule.method, MatchRule.uri })
+    @Test
+    public void addingCouponToASubscription() {
+        Subscription toUpdate = new Subscription();
+        toUpdate.withCode("assinatura46").withPlan(new Plan().withCode("plano01")).withAmount(990)
+                .withNextInvoiceDate(new NextInvoiceDate().withDay(20).withMonth(Month.OCTOBER).withYear(2015))
+                .withCoupon(new Coupon().withCode("jassinaturas_coupon_01"));
+
+        Subscription subscription = assinaturas.subscriptions().update(toUpdate);
+
+        // There isn't any response from Moip Assinaturas when subscription is
+        // updated
+        // So, I didn't do any assert
     }
 }

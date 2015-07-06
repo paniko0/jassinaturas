@@ -10,4 +10,4 @@ env:
   - TERM=dumb
 
 after_success:
-  - ./gradlew cobertura coveralls
+  - ./gradlew cobertura coveralls -PossrhUsername=test -PossrhPassword=test

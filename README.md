@@ -6,7 +6,7 @@ Client library to integrate Moip Assinaturas in Java.
 Moip Assinaturas is a Moip's project that makes recurrence charges. It allows to create plans, customers, subscriptions and so on.
 
 API documentation is available at: http://moiplabs.github.io/assinaturas-docs/api.html
-
+[![Coverage Status](https://coveralls.io/repos/paniko0/jassinaturas/badge.svg?branch=master)](https://coveralls.io/r/paniko0/jassinaturas?branch=master)
 [![Build Status](https://travis-ci.org/paniko0/jassinaturas.svg?branch=master)](https://travis-ci.org/paniko0/jassinaturas)
 [![Build Status](https://drone.io/github.com/paniko0/jassinaturas/status.png)](https://drone.io/github.com/paniko0/jassinaturas/latest)
 [![wercker status](https://app.wercker.com/status/6de4cd22b6c24643861eb225115a3ac5/s/master "wercker status")](https://app.wercker.com/project/bykey/6de4cd22b6c24643861eb225115a3ac5)

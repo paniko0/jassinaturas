@@ -4,4 +4,10 @@ jdk:
 install: /bin/true
 before_script:
   - ./gradlew --version
-script: ./gradlew test -PossrhUsername=test -PossrhPassword=test 
+script: ./gradlew test -PossrhUsername=test -PossrhPassword=test
+
+env:
+  - TERM=dumb
+
+after_success:
+  - ./gradlew cobertura coveralls
